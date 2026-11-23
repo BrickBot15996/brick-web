@@ -1,0 +1,498 @@
+{
+  "Nav": {
+    "title": "Menu",
+    "DesktopButtons": {
+      "BrickLog": "BRICKLOG",
+      "OurTeam": "OUR TEAM",
+      "Projects": "PROJECTS",
+      "SupportUs": "SUPPORT US"
+    },
+    "MobileButtons": {
+      "Home": "HOME",
+      "BrickLog": "BRICKLOG",
+      "OurTeam": "OUR TEAM",
+      "Projects": "PROJECTS",
+      "SupportUs": "SUPPORT US"
+    }
+  },
+
+  "Home": {
+    "Banner": {
+      "title": "We build our future\nBrick by Brick!",
+      "buttonText": "BECOME A SPONSOR"
+    },
+    "AboutUs": {
+      "title": "About Us",
+      "text": {
+        "paragraph0": "We are team #15996, BrickBot, from <cnu>\"Unirea\" National College, Focșani, Romania</cnu>.",
+        "paragraph1": "We are proud to be the first robotics team in our county to take part in the international competition <ftc>FIRST Tech Challenge</ftc>.",
+        "paragraph2": "We dedicate ourselves with a passion for building robots and promoting STEAM education within our community."
+      },
+      "Carousel": {
+        "BrickSapiens2026": "Bucharest Twin Cup Finalist Alliance, August 2026",
+        "Worlds2026": "FIRST Championship Division Finalists, May 2026",
+        "Nationals2026": "Romania Championship Finalists, March 2026",
+        "Regionals2026": "East League Tournament, February 2026",
+        "SparkHope2025": "SparkHope Robotics Cup Winning Alliance, August 2025",
+        "Caravan2025": "BrickBot In Schools, May 2025",
+        "Italy2025": "Italy Championship, Feb 2025",
+        "Regionals2025": "Romania East Championship, Jan 2025",
+        "FocsaniMeet2025": "DIVE Into Innovation League Meet, Jan 2025",
+        "BTC2024": "Bucharest Twin Cup, Aug 2024",
+        "Regionals2023": "Romania Qualifying Tournament, Feb 2023"
+      }
+    },
+    "Projects": {
+      "title": "Projects",
+      "buttonText": "SEE ALL"
+    },
+    "Sponsors": {
+      "title": "Sponsors",
+      "buttonText": "BECOME OUR NEXT SPONSOR"
+    },
+    "FAQ": {
+      "0": {
+        "Question": "What is FIRST?",
+        "Answer": {
+          "paragraph0": "FIRST (For Inspiration and Recognition of Science and Technology) is an organization that encourages young people to study STEAM subjects through robotics competitions.",
+          "paragraph1": "Within <ftc>FIRST Tech Challenge (FTC)</ftc>, teams of primary school and high school build and program robots every year, to fulfill a series of dynamic tasks.",
+          "paragraph2": "The competition was brought to Romania by <natie>Nație Prin Educație</natie>, partnering with <brd>BRD</brd>."
+        }
+      },
+      "1": {
+        "Question": "What fields does the team work in?",
+        "Answer": {
+          "paragraph0": "Our team combines technical skills with non-technical ones, both branches working together frequently.",
+          "paragraph1": "The technical side consists of the assembly, 3D design and programming departments, while the non-tehcnical side takes on the mission of promoting the team and its social media pages (PR), graphic design, photography and attracting new sponsors."
+        }
+      },
+      "2": {
+        "Question": "How can I join BrickBot?",
+        "Answer": {
+          "paragraph0": "To join the team you have to be a student of <cnu>\"Unirea\" National College of Focșani</cnu> and to be over 13 years old.",
+          "paragraph1": "You don't need to have prior experience within your desired department. You will start off as a recruit and, with our help, you will be brought up to speed with all aspects of your chosen branch.",
+          "paragraph2": "Complete the application form by clicking <apply>here</apply>."
+        }
+      },
+      "3": {
+        "Question": "How can I help BrickBot?",
+        "Answer": {
+          "paragraph0": "You can support us through sponsorships or donations, receiving appropriate benefit according to our sponsorship packages. Likewise, we are open to attending or organizing events alongside companies or institutions.",
+          "paragraph1": "You can find more details <supportUs>here</supportUs>."
+        }
+      }
+    }
+  },
+
+  "Blog": {
+    "description": "Official Team Blog"
+  },
+
+  "OurTeam": {
+    "title": "Our Team",
+    "Introduction": {
+      "title": "Introduction",
+      "text": {
+        "paragraph0": "Since 2016, season after season, we've been building robots for the <ftc>FIRST Tech Challenge</ftc> and we live by the values that represent us: outreach, creativity, ambition and team spirit.",
+        "paragraph1": "Every step, from the first sketch to the final tests, reflects steady progress, built brick by brick. This is how we’ve shaped our team's identity and contributed to making STEAM education more accessible to young people."
+      },
+      "Carousel": {
+        "2026-27": "BrickBot in 2026-27",
+        "2025-26": "BrickBot in 2025-26",
+        "2024-25": "BrickBot in 2024-25",
+        "2023-24": "BrickBot in 2023-24",
+        "2022-23": "BrickBot in 2022-23",
+        "2021-22": "BrickBot in 2021-22",
+        "2020-21": "BrickBot in 2020-21",
+        "2019-20": "BrickBot in 2019-20",
+        "2018-19": "BrickBot in 2018-19",
+        "2017-18": "BrickBot in 2017-18",
+        "2016-17": "BrickBot in 2016-17"
+      }
+    },
+    "Achievements": {
+      "title": "Achievements"
+    },
+    "JoinBrickBot": {
+      "title": "Join Brickbot",
+      "text": "Passionate about robotics? Fill out the form to show your interest in joining our team.",
+      "buttonText": "APPLY"
+    }
+  },
+
+  "Projects": {
+    "title": "Projects",
+    "tag": "Project",
+    "TheVault": {
+      "submitTitle": "Submit your Engineering Portfolio",
+      "submitText": "Inspire the FTC community with your work.",
+      "submitButton": "Submit",
+      "otherTeams": "Other Teams"
+    },
+    "Checkpoint": {
+      "BrickBotInSchools": {
+        "title": "BrickBot in Schools",
+        "text": {
+          "paragraph0": "Every year, student from more and more primary schools in our town discover robotics through our interactive presentations.",
+          "paragraph1": "After they learn more things about us and the competitions we take part in, they get the chance to drive our robot and ask us any questions they might have."
+        }
+      },
+      "InteractingWithThePublic": {
+        "title": "Interacting with the Public",
+        "text": "We get involved in our local community through presentations at different events, humanitarian activites, partnerships with businesses to spread our passion for robotics with as large a public as possible.",
+        "Carousel": {
+          "BehindTheScrews": "Behind The Screws - Collaboration with CEX Vrancea",
+          "OpenDoorsDay": "Open Doors Day",
+          "MicrometEvent": "Exchange Event with our Main Sponsor, Micromet",
+          "JoyInMotion": "Joy in Motion",
+          "Christmas2024": "Christmas Humanitarian Event, 2024",
+          "Christmas2023": "Christmas Humanitarian Event, 2023",
+          "MeetRobotics": "Focșani FIRST Robotics Presentation"
+        }
+      }
+    },
+    "Sparks": {
+      "Sparks1": {
+        "title": "Sparks I (with SIRIUS SOCRATE)",
+        "text": {
+          "paragraph0": "An online meeting dedicated to the new FTC teams in Romania and the Moldovan Republic. We shared lessons we learned from our challenges and memorable moments of past competitions.",
+          "paragraph1": "This event was organized in collaboration with team #25482 SIRIUS, which we are mentoring."
+        }
+      }
+    }
+  },
+
+  "SupportUs": {
+    "title": "Support Us",
+    "HowToHelp": {
+      "title": "How to Help",
+      "text": "BrickBot operates with the support of sponsors (companies, businesses, individuals). There are three ways to support us:",
+      "Redirect": {
+        "title": "Redirect 3.5%",
+        "text": "Romanian citizens can help BrickBot by redirecting 3.5% of income tax through Form 230 from the start of the year, until the 25th of May."
+      },
+      "Donate": {
+        "title": "Donate",
+        "text": "Anyone can support the BrickBot Association by making a secure donation through Stripe."
+      },
+      "Contracts": {
+        "title": "Sponsorship Contracts",
+        "text": "You can support our initiative through financial contributions and/or services. The partnership will be formalized via a contract between your business and our organization.",
+        "sampleButton": "VIEW SAMPLE",
+        "contactButton": "CONTACT US"
+      }
+    },
+    "SponsorshipTiers": {
+      "title": "Sponsorship Tiers"
+    },
+    "Sponsors": {
+      "title": "Sponsors 2025-26"
+    }
+  },
+
+  "Footer": {
+    "Projects": {
+      "title": "Projects",
+      "links": {
+        "TheVault": "The Vault",
+        "Checkpoint": "Checkpoint",
+        "Sparks": "Sparks",
+        "BrickDocs": "BrickDocs",
+        "SimplicityFTC": "SimplicityFTC"
+      }
+    },
+    "Team": {
+      "title": "Team",
+      "links": {
+        "OurTeam": "Our Team",
+        "BrickLog": "BrickLog",
+        "JoinBrickBot": "Join Us",
+        "BrickLinks": "Links"
+      }
+    },
+    "GetInvolved": {
+      "title": "Get Involved",
+      "links": {
+        "SupportUs": "Support Us",
+        "Contact": "Contact",
+        "TermsAndConditions": "Terms and Conditions",
+        "ConfidentialityPolicy": "Privacy Policy"
+      }
+    }
+  },
+
+  "Contact": {
+    "title": "Contact Us",
+    "primary": "Primary",
+    "Association": {
+      "title": "Association Details",
+      "subsidiary": "Focșani Subsidiary",
+      "iban": "RO05BTRLEURCRT0690572901"
+    },
+    "Address": {
+      "title": "Address",
+      "address": "13-15 Cezar Bolliac Street, Focșani, Vrancea, Romania"
+    }
+  },
+
+  "TermsAndConditions": {
+    "title": "Terms and Conditions - BrickBot Association",
+    "content": "Last updated: 26.03.2026\n\n1. General Information\nThis site is operated by the Brickbot Association, a non-governmental, non-profit organization, headquartered in Focșani, 15 Cezar Bolliac Street, Vrancea, legally registered in Romania with CIF 50846996. The purpose of our platform is to support STEM education and ensure the necessary infrastructure for our robotics team's participation in national and international competitions.\n\n2. Nature of Transactions: Donations and Sponsorships\nAll payments processed through this site represent voluntary donations or sponsorships intended exclusively to support the educational activities of the Brickbot Association.\nThese contributions do not represent payment for commercial goods, services, pre-orders, or financial investments.\nDonors do not receive material goods in exchange for the amounts offered, their contribution having a strictly philanthropic and performance-supporting purpose.\n\n3. Refund Policy\nConsidering the legal nature of donations to an NGO, the transferred amounts are, in principle, non-refundable. However, we treat every interaction with transparency and fairness. We will process a full refund exclusively under the following exceptional conditions:\nTechnical errors: If a donation was processed twice due to a system error.\nUnauthorized transactions: If it is determined that the payment was made fraudulently, without the cardholder's consent.\nTo request a refund for the reasons mentioned above, please contact us within a maximum of 14 days from the transaction date at the email address: brickbot@liceulunirea.ro. Requests will be analyzed and resolved within 5-7 business days.\n\n4. Payment Security\nAll financial transactions are processed in a strictly secure environment by our partner, Stripe. The Brickbot Association does not request or store your bank card data. Payment processing is done in RON / EUR, and the association does not charge any additional transaction fees.\n\n5. Contact Information\nFor any questions related to donations, partnerships, or the operation of the association, you can contact us anytime at:\nEmail: brickbot@liceulunirea.ro\nPhone: +40744707212\nPhysical address: Focsani, 15 Cezar Bolliac Street, Vrancea, Romania"
+  },
+
+  "ConfidentialityPolicy": {
+    "title": "Privacy Policy - BrickBot Association",
+    "content": "Privacy Policy – Brickbot Association\nLast updated: 22.03.2026\n\nAt the Brickbot Association, we build robots with precision and treat your personal data with the exact same care. This policy simply and transparently explains what information we collect when you visit brickbot.ro or choose to support STEM education through donations, and how we use this data.\n\n1. What data we collect and why\nWhen you make a donation or sponsorship to support our team, we collect only the data strictly necessary to process the transaction and comply with current financial legislation:\nIdentification data: First name, last name, email address (to send you the donation confirmation and our thanks).\nFinancial data: We do not store your card data. All transactions are securely processed by our payment partner, Stripe. We only receive the transaction confirmation and a history necessary for our accounting (as an NGO).\n\n2. The intent behind the data\nWe do not trade information. We use your data exclusively for:\nSecure processing of donations and sponsorships.\nIssuing supporting documents according to the law (receipts, sponsorship contracts).\nCommunication related to payment confirmation or, if you have given your consent, brief updates about our team's progress in robotics competitions.\n\n3. Who else has access to your data\nOur ecosystem is closed and secure. The only external entities that interact with your data are:\nStripe: Our payment processor, which handles financial transactions at the highest global security standards.\nState authorities: Only if the law compels us to report the Association's financial-accounting documents.\n\n4. Your rights (GDPR)\nYou have total control over the data you provide to us. You have the right to request access to it, correct it, or request its deletion from our database (within the limits imposed by financial legislation regarding the archiving of donations).\n\n5. Contact\nIf you have questions about how we protect your data, you can write directly to us at: brickbot@liceulunirea.ro"
+  },
+
+  "Author": "Built by Marius Baican",
+
+  "ProjectData": {
+    "TheVault": {
+      "name": "The Vault",
+      "extendedName": "The Vault: Portfolio Library",
+      "subtitle": "Portfolio Library",
+      "description": "An online library of FTC portfolios to help new teams."
+    },
+    "Checkpoint": {
+      "name": "Checkpoint",
+      "extendedName": "Checkpoint: Outreach Events",
+      "subtitle": "Outreach, Events & Activities",
+      "description": "Events and activities in the local community or within FIRST that we have been involved in."
+    },
+    "Sparks": {
+      "name": "Sparks",
+      "extendedName": "Sparks: Connecting FTC Teams",
+      "subtitle": "Connecting FTC Teams",
+      "description": "Meeting and activities organized alongside other FTC teams to keep in touch."
+    },
+    "BrickDocs": {
+      "name": "BrickDocs",
+      "extendedName": "BrickDocs: Team Guide",
+      "subtitle": "Guide & Documentation",
+      "description": "Public documentation we use to train new BrickBot members."
+    },
+    "SimplicityFTC": {
+      "name": "SimplicityFTC",
+      "extendedName": "SimplicityFTC: Programming Library",
+      "subtitle": "Programming Library",
+      "description": "Programming library designed to simplify coding for FTC teams."
+    }
+  },
+
+  "SeasonData": {
+    "BioBuzz": {
+      "awards": {
+        "0": {
+          "event": "Season started on",
+          "awardName": "September 12th"
+        }
+      }
+    },
+    "Decode": {
+      "awards": {
+        "0": {
+          "event": "Bucharest Twin Cup",
+          "awardName": "Finalist Alliance"
+        },
+        "1": {
+          "event": "FIRST Championship",
+          "awardName": "Division Finalist Alliance"
+        },
+        "2": {
+          "event": "FIRST Championship",
+          "awardName": "Design Award 2nd Place"
+        },
+        "3": {
+          "event": "Romania National Championship",
+          "awardName": "Finalist Alliance"
+        },
+        "4": {
+          "event": "East League Tournament",
+          "awardName": "Think Award 2nd Place"
+        }
+      }
+    },
+    "IntoTheDeep": {
+      "awards": {
+        "0": {
+          "event": "SparkHope Robotics Cup",
+          "awardName": "Winners"
+        },
+        "1": {
+          "event": "Italy Championship",
+          "awardName": "Innovate Award 2nd Place"
+        },
+        "2": {
+          "event": "Romania East Championship",
+          "awardName": "Motivate Award 2nd Place"
+        }
+      }
+    },
+    "Centerstage": {
+      "awards": {
+        "0": {
+          "event": "Bucharest Twin Cup",
+          "awardName": "8th Place"
+        },
+        "1": {
+          "event": "Romania East Championship",
+          "awardName": "Think Award 3rd Place"
+        }
+      }
+    },
+    "Powerplay": {
+      "awards": {
+        "0": {
+          "event": "Quantum League",
+          "awardName": "Winners"
+        },
+        "1": {
+          "event": "Dean's List",
+          "awardName": "Finalist"
+        },
+        "2": {
+          "event": "Qualifying Tournament",
+          "awardName": "Innovate Award 1st Place"
+        }
+      }
+    },
+    "FreightFrenzy": {
+      "awards": {
+        "0": {
+          "event": "Romania Regional #3",
+          "awardName": "Design Award Winners"
+        }
+      }
+    },
+    "UltimateGoal": {
+      "awards": {
+        "0": {
+          "event": "Romania National Championship",
+          "awardName": "Innovate Award 2nd place"
+        },
+        "1": {
+          "event": "Romania Qualifying Tournament #3",
+          "awardName": "Inspire Award Winners"
+        }
+      }
+    },
+    "Skystone": {
+      "awards": {
+        "0": {
+          "event": "Romania Moldova Regional",
+          "awardName": "Think Award 2nd Place"
+        }
+      }
+    },
+    "RoverRuckus": {
+      "awards": {
+        "0": {
+          "event": "Dean's List",
+          "awardName": "Finalist"
+        },
+        "1": {
+          "event": "Romania National Championship",
+          "awardName": "Finalists"
+        },
+        "2": {
+          "event": "Romania Moldova Regional",
+          "awardName": "Control Award Winners"
+        },
+        "3": {
+          "event": "Romania Moldova Regional",
+          "awardName": "Winners"
+        }
+      }
+    },
+    "RelicRecovery": {
+      "awards": {
+      }
+    },
+    "VelocityVortex": {
+      "awards": {
+      }
+    }
+  },
+
+  "PortfolioData": {
+    "Perpetuum": {
+      "Centerstage": {
+        "awards": {}
+      },
+      "Powerplay": {
+        "awards": {}
+      }
+    },
+    "InfinityEdge": {
+      "Centerstage": {
+        "awards": {
+          "0": {
+            "event": "Romania East Championship",
+            "awardName": "Motivate Award 3rd Place"
+          }
+        }
+      },
+      "Powerplay": {
+        "awards": {}
+      },
+      "FreightFrenzy": {
+        "awards": {
+          "0": {
+            "event": "Romania Regional #3",
+            "awardName": "Control Award 2nd Place"
+          },
+          "1": {
+            "event": "Romania National Championship",
+            "awardName": "Motivate Award 3rd Place"
+          }
+        }
+      },
+      "UltimateGoal": {
+        "awards": {
+          "0": {
+            "event": "Romania Qualifying Tournament #3",
+            "awardName": "Connect Award 3rd Place"
+          }
+        }
+      }
+    },
+    "Alphabit": {
+      "Powerplay": {
+        "awards": {
+          "0": {
+            "event": "Qualifying Tournament",
+            "awardName": "Connect Award 3rd Place"
+          }
+        }
+      }
+    },
+    "SnakeTech": {
+      "Centerstage": {
+        "awards": {
+          "0": {
+            "event": "Romania East Championship",
+            "awardName": "Design Award 3rd Place"
+          }
+        }
+      }
+    }
+  },
+
+  "SponsorshipTierData": {
+    "Currency": "EUR",
+    "Benefits": {
+      "Benefit1": "Post on social media",
+      "Benefit2": "Logo in Engineer's Notebook",
+      "Benefit3": "Logo on website",
+      "Benefit4": "Logo on roll-Up",
+      "Benefit5": "Logo on robot",
+      "Benefit6": "Logo on team shirt",
+      "Benefit7": "Merch with your logo"
+    }
+  },
+
+  "ComingSoon": {
+    "ComingSoon": "COMING SOON"
+  }
+}

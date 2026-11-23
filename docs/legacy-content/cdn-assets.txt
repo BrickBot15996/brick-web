@@ -1,0 +1,165 @@
+# Every cdn.brickbot.ro asset path referenced by the legacy website and linktree, grouped by source file.
+
+## layout.tsx
+/branding/new-favicon.ico
+/new-embed.jpg
+
+## _pages/home/sections/hero.tsx
+/branding/banner-text.svg
+/images/hero/brickbot-practice-worlds.webp
+/images/hero/bricksapiens-at-field.webp
+/images/hero/btc-2024.webp
+/images/hero/italy-2025.webp
+/images/hero/nationals-celebrations-2026.webp
+/images/hero/sparkhope-2025.webp
+
+## _pages/home/sections/about-us.tsx
+/images/home/bricksapiens-2026.webp
+/images/home/btc-2024.webp
+/images/home/caravan-2025.webp
+/images/home/focsani-meet-2025.webp
+/images/home/italy-2025.webp
+/images/home/nationals-2026.webp
+/images/home/regionals-2023.webp
+/images/home/regionals-2025.webp
+/images/home/regionals-2026.webp
+/images/home/sparkhope-2025.webp
+/images/home/worlds-2026.webp
+
+## _pages/contact/sections/association-details.tsx
+/sponsors/banca-transilvania.webp
+
+## _pages/projects/checkpoint/checkpoint-page.tsx
+/projects/checkpoint/images/public/behind-the-screws.webp
+/projects/checkpoint/images/public/christmas-2023.webp
+/projects/checkpoint/images/public/christmas-2024.webp
+/projects/checkpoint/images/public/joy-in-motion.webp
+/projects/checkpoint/images/public/meet-keynote.webp
+/projects/checkpoint/images/public/micromet-meeting.webp
+/projects/checkpoint/images/public/open-doors-day.webp
+/projects/checkpoint/images/schools/bis1.webp
+/projects/checkpoint/images/schools/bis2.webp
+/projects/checkpoint/images/schools/bis3.webp
+/projects/checkpoint/images/schools/bis4.webp
+/projects/checkpoint/images/schools/bis5.webp
+/projects/checkpoint/images/schools/bis6.webp
+/projects/checkpoint/images/schools/bis7.webp
+/projects/checkpoint/images/schools/bis8.webp
+
+## _pages/projects/sparks/sparks-page.tsx
+/projects/sparks/images/sirius1.webp
+/projects/sparks/images/sirius2.webp
+/projects/sparks/images/sirius3.webp
+/projects/sparks/images/sirius4.webp
+/projects/sparks/images/sirius5.webp
+
+## _pages/support-us/sections/how-to-help.tsx
+/contract.pdf
+/icons/230.svg
+/icons/contract.svg
+/icons/donate.svg
+
+## _pages/our-team/sections/team-introduction.tsx
+/images/seasonal/biobuzz.webp
+/images/seasonal/centerstage.webp
+/images/seasonal/decode.webp
+/images/seasonal/freight-frenzy.webp
+/images/seasonal/into-the-deep.webp
+/images/seasonal/powerplay.webp
+/images/seasonal/relic-recovery.webp
+/images/seasonal/rover-ruckus.webp
+/images/seasonal/skystone.webp
+/images/seasonal/ultimate-goal.webp
+/images/seasonal/velocity-vortex.webp
+
+## _components/brick-footer.tsx
+/anpc/sal.webp
+/anpc/sol.webp
+/branding/wordmark.svg
+/natie/logo-bar.svg
+
+## _components/navbar/brick-mobile-nav.tsx
+/branding/logo-wordmark.svg
+
+## _data/projects-data.tsx
+/projects/brickdocs/icon.svg
+/projects/brickdocs/logo.svg
+/projects/checkpoint/icon.svg
+/projects/checkpoint/logo.svg
+/projects/simplicityftc/icon.svg
+/projects/simplicityftc/logo.svg
+/projects/sparks/icon.svg
+/projects/sparks/logo.svg
+/projects/the-vault/icon.svg
+/projects/the-vault/logo.svg
+
+## _components/navbar/brick-desktop-nav.tsx
+/branding/new-logo.svg
+
+## _data/seasons-data.tsx
+/seasons/biobuzz/logo.svg
+/seasons/centerstage/logo.webp
+/seasons/decode/logo.webp
+/seasons/freight-frenzy/logo.webp
+/seasons/into-the-deep/logo.webp
+/seasons/powerplay/logo.webp
+/seasons/relic-recovery/logo.webp
+/seasons/rover-ruckus/logo.webp
+/seasons/skystone/logo.webp
+/seasons/ultimate-goal/logo.webp
+/seasons/velocity-vortex/logo.webp
+
+## brickbot-links/app/layout.tsx
+/branding/new-embed.jpg
+/branding/new-favicon.ico
+
+## _data/portfolio-data.tsx
+/projects/the-vault/portfolios/alphabit-powerplay.pdf
+/projects/the-vault/portfolios/brickbot-centerstage.pdf
+/projects/the-vault/portfolios/brickbot-decode.pdf
+/projects/the-vault/portfolios/brickbot-freight-frenzy.pdf
+/projects/the-vault/portfolios/brickbot-into-the-deep.pdf
+/projects/the-vault/portfolios/brickbot-powerplay.pdf
+/projects/the-vault/portfolios/infinityedge-powerplay.pdf
+/projects/the-vault/portfolios/perpetuum-centerstage.pdf
+/projects/the-vault/portfolios/perpetuum-powerplay.pdf
+/projects/the-vault/portfolios/snake-tech-centerstage.pdf
+/projects/the-vault/thumbnails/alphabit-powerplay.webp
+/projects/the-vault/thumbnails/brickbot-centerstage.webp
+/projects/the-vault/thumbnails/brickbot-decode.webp
+/projects/the-vault/thumbnails/brickbot-into-the-deep.webp
+/projects/the-vault/thumbnails/brickbot-powerplay.webp
+/projects/the-vault/thumbnails/infinityedge-powerplay.webp
+/projects/the-vault/thumbnails/perpetuum-centerstage.webp
+/projects/the-vault/thumbnails/perpetuum-powerplay.webp
+/projects/the-vault/thumbnails/snake-tech-centerstage.webp
+
+## _data/sponsor-data.tsx
+/sponsors/asociatia-uniristii.webp
+/sponsors/autovip.webp
+/sponsors/aviputna.webp
+/sponsors/banca-transilvania.webp
+/sponsors/cdp-smart.webp
+/sponsors/ceproinv.webp
+/sponsors/deepserv.webp
+/sponsors/dentexcel.webp
+/sponsors/dentrust.webp
+/sponsors/dr-de-zambete.webp
+/sponsors/electric-srl.webp
+/sponsors/gm-extractions.png
+/sponsors/il-gusto.webp
+/sponsors/micromet.svg
+/sponsors/novagym.webp
+/sponsors/primaria.webp
+/sponsors/ravenol.webp
+/sponsors/romans.png
+/sponsors/scorpion.webp
+/sponsors/termofutura.webp
+/sponsors/unior-tepid.png
+/sponsors/vivacredit.webp
+
+## brickbot-links/app/page.tsx
+/branding/new-logo.svg
+/branding/new-logo.svg)
+/branding/wordmark.svg
+/icons/230.svg)
