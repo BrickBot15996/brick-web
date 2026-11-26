@@ -55,7 +55,7 @@ Wrangler (the Cloudflare CLI) is installed per project as a dev dependency, so t
   ```
   The localhost port may change once the CMS exists; update this then.
 - [ ] **Turnstile** (the contact form's bot check). Go to Turnstile → *Add widget*.
-  - Hostnames: `brickbot.ro` and `localhost`.
+  - Hostnames: `brickbot.ro` only. Turnstile won't accept `localhost`, and you don't need it: local development uses Cloudflare's dummy test keys (see `.env.example`), which work on any hostname.
   - Mode: *Managed*.
   - Save the **site key** (public, goes in the website) and the **secret key** (private, goes in Supabase Edge Function secrets).
 - [ ] **Web Analytics.** Go to Analytics & Logs → Web Analytics → *Add a site*: `brickbot.ro`, then `links.brickbot.ro`. Save the snippet token if it shows one.
@@ -85,7 +85,7 @@ Wrangler (the Cloudflare CLI) is installed per project as a dev dependency, so t
   - Resend API key
   - Turnstile secret
   - Cloudflare deploy hook URLs
-- [ ] **Workers Builds.** For each app (`website`, `links`, `cms`, `auth`, `admin`, `scheduler`), go to Workers & Pages → *Create* → *Import a repository*. Pick this repo, then set the app's root directory and build command (agents will give the exact values). Then attach the custom domain (`brickbot.ro`, `links.`, `cms.`, `auth.`, `admin.`).
+- [ ] **Workers Builds.** For each app (`website`, `links`, `cms`, `auth`, `scheduler`), go to Workers & Pages → *Create* → *Import a repository*. Pick this repo, then set the app's root directory and build command (agents will give the exact values). Then attach the custom domain (`brickbot.ro`, `links.`, `cms.`, `auth.`).
 - [ ] **Deploy hooks.** Create a deploy hook for `website` and for `links` in each project's build settings. The CMS "Publish" button and the scheduler call these URLs.
 - [ ] **Localhost redirect URLs** in Supabase, and the final dev ports in the R2 CORS policy.
 

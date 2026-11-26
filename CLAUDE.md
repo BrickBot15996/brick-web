@@ -14,9 +14,10 @@ Monorepo for every web platform of BrickBot, the FIRST Tech Challenge robotics t
 |---|---|---|---|
 | 1 | `apps/website` | brickbot.ro | Public presentation website, EN + RO |
 | 2 | `apps/links` | links.brickbot.ro | Custom link-in-bio page, EN only |
-| 3 | `apps/cms` | cms.brickbot.ro | Manages all content of the website and the linktree |
+| 3 | `apps/cms` | cms.brickbot.ro | Manages all content of the website and the linktree, plus team members, their permissions and the audit log (the **Admin** section, §5) |
 | 4 | `apps/auth` | auth.brickbot.ro | Team member accounts: login, invites, password reset, account settings, app launcher |
-| 5 | `apps/admin` | admin.brickbot.ro | Users and their permissions across platforms, audit log |
+
+There is no separate admin app: user and permission management is a section of the CMS (§5).
 
 ---
 
@@ -26,12 +27,12 @@ Monorepo for every web platform of BrickBot, the FIRST Tech Challenge robotics t
 |---|---|---|
 | Monorepo | **pnpm workspaces + Turborepo** | |
 | website, links | **Astro**, static output; React islands only where interactive; Tailwind | Content is read from Supabase **at build time**. Publishing in the CMS triggers a rebuild (~1–2 min). |
-| cms, auth, admin | **Vite + React SPA**, TanStack Router + TanStack Query, Tailwind | No SSR (behind login, no SEO). Talks to Supabase directly; Row Level Security is the security boundary. |
+| cms, auth | **Vite + React SPA**, TanStack Router + TanStack Query, Tailwind | No SSR (behind login, no SEO). Talks to Supabase directly; Row Level Security is the security boundary. |
 | Rich text (blog) | **Tiptap**, stored as JSON, rendered to HTML at build time | |
 | Backend | **Supabase**: Postgres, Auth, Edge Functions | One free project for production; local development via the Supabase CLI (Docker). Region: EU (Frankfurt). |
 | Media | **Cloudflare R2**, served at `cdn.brickbot.ro` | Uploads go directly from the browser to R2 using presigned URLs issued by an Edge Function. The CMS resizes images **in the browser** into several WebP widths before upload, so no paid image service is needed. Bucket structure and naming: §11. |
 | Email | **Resend**, sending from `@brickbot.ro` | Used as Supabase Auth's custom SMTP and by the contact form. |
-| Hosting | **Cloudflare Workers with static assets**, deployed by Workers Builds from GitHub | All five apps are static, which avoids the 3 MiB Worker size limit on the free plan. |
+| Hosting | **Cloudflare Workers with static assets**, deployed by Workers Builds from GitHub | All four apps are static, which avoids the 3 MiB Worker size limit on the free plan. |
 | Analytics | Cloudflare Web Analytics | Replaces the old Vercel Analytics. |
 | Bot protection | Cloudflare Turnstile | Contact form. |
 | Forms | **Google Forms** (kept) | Recruiting, Academy, portfolio submission. Linked through short URLs. |
@@ -41,7 +42,7 @@ Monorepo for every web platform of BrickBot, the FIRST Tech Challenge robotics t
 
 ```
 apps/
-  website/  links/  cms/  auth/  admin/
+  website/  links/  cms/  auth/
   scheduler/          tiny Cloudflare Worker with a Cron Trigger (see §7)
 packages/
   ui/                 shared React components (usable in the SPAs and in Astro islands)
@@ -56,12 +57,12 @@ docs/
 
 ### Auth and permissions model
 
-- **Invite-only.** Public signups are disabled; admins invite members from the admin panel. The first and only initial admin is the repo owner.
-- **Single sign-on across subdomains:** the Supabase session lives in a cookie scoped to `.brickbot.ro`, shared by auth, cms and admin. Unauthenticated users of cms/admin are sent to `auth.brickbot.ro?redirect=…`.
+- **Invite-only.** Public signups are disabled; admins invite members from the CMS's Admin section. The first and only initial admin is the repo owner.
+- **Single sign-on across subdomains:** the Supabase session lives in a cookie scoped to `.brickbot.ro`, shared by auth and cms. Unauthenticated CMS users are sent to `auth.brickbot.ro?redirect=…`.
 - **Permissions are strings** stored per user in a `user_permissions` table, backed by a `permissions` catalog so new platforms can add permissions without schema changes. Initial set:
   - `cms.website`: edit website content in the CMS
   - `cms.links`: edit the linktree and short URLs in the CMS
-  - `admin`: access the admin panel
+  - `admin`: access the CMS's Admin section (users, permissions, audit log). It does not imply `cms.*`; an admin who also edits content holds those permissions too.
 - A Supabase **custom access token hook** copies the user's permissions into the JWT. SPAs read them for UI gating; **RLS policies enforce them**.
 - **Privileged operations** run in Edge Functions that check the caller's JWT for `admin`: inviting, deactivating and deleting users, changing permissions.
 - Deactivated users are banned in Supabase Auth, not deleted, so authorship history is preserved.
@@ -292,7 +293,7 @@ English only. Its audience is people who arrive from social media.
 ---
 
 ## 5. CMS (cms.brickbot.ro)
-Modules, each gated by a permission:
+Modules, each gated by a permission. The sidebar shows only the modules the user's permissions allow; the Admin modules are grouped in their own section. A user with `admin` alone (no `cms.*`) sees only that section.
 
 | Module | Permission | Manages |
 |---|---|---|
@@ -308,25 +309,23 @@ Modules, each gated by a permission:
 | Short URLs | `cms.links` | Create / edit / delete redirects |
 | Media library | any `cms.*` | Browse and upload to R2 (client-side resize to WebP variants) |
 | **Publish** | any `cms.*` | Triggers website and/or links rebuilds via Cloudflare deploy hooks, through an Edge Function. Shows the last build status. |
+| **Admin → Users** | `admin` | User list, invite user, deactivate / reactivate |
+| **Admin → Permissions** | `admin` | Permission matrix (users × permissions) |
+| **Admin → Audit log** | `admin` | Audit log viewer, filterable by user, table and date |
 
 Translatable fields are stored as `jsonb` in the form `{ "en": "...", "ro": "..." }`. The CMS shows both languages side by side and blocks publishing when either is missing (website content only; the linktree is EN only).
 
 ---
 
-## 6. Auth (auth.brickbot.ro) and Admin (admin.brickbot.ro)
-- **Auth app:**
-  - login (email + password, magic link)
-  - accept invite / set password
-  - forgot / reset password
-  - account settings (display name, avatar, password)
-  - **app launcher** showing only the apps the user has permission for
-- **Admin app:**
-  - user list
-  - invite user
-  - deactivate / reactivate
-  - **permission matrix** (users × permissions)
-  - audit log viewer
+## 6. Auth (auth.brickbot.ro)
+- login (email + password, magic link)
+- accept invite / set password
+- forgot / reset password
+- account settings (display name, avatar, password)
+- **app launcher** showing only the apps the user has permission for (currently just the CMS; it exists so future team apps can be added)
 - **Auth emails** (invite, reset, magic link) use Resend SMTP, branded for BrickBot.
+
+User and permission management lives in the CMS (§5, Admin modules).
 
 ---
 
