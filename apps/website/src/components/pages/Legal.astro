@@ -1,0 +1,16 @@
+---
+import PageHead from '../PageHead.astro';
+import type { Locale } from '../../lib/site';
+interface Props { locale: Locale; doc: 'terms' | 'privacy' }
+const { locale, doc } = Astro.props;
+const files = import.meta.glob<{ Content: any }>('../../content/legal/*.md', { eager: true });
+const { Content } = files[`../../content/legal/${doc}.${locale}.md`];
+const title = {
+  terms: { en: 'Terms and conditions.', ro: 'Termeni și condiții.' },
+  privacy: { en: 'Privacy policy.', ro: 'Politica de confidențialitate.' },
+}[doc][locale];
+---
+<PageHead locale={locale} title={title} compact />
+<section class="sec sec--tight">
+  <div class="wrap"><div class="prose legal"><Content /></div></div>
+</section>

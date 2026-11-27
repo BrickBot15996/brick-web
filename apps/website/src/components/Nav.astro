@@ -1,0 +1,104 @@
+---
+import Brand from './Brand.astro';
+import { routes, type Locale, type RouteId } from '../lib/site';
+import { copy } from '../lib/copy';
+import { cdn } from '../lib/cdn';
+import { projects, projectLogo } from '../lib/projects';
+interface Props { locale: Locale; route: RouteId; paths?: Record<Locale, string> }
+const { locale, route, paths = routes[route] } = Astro.props;
+const t = copy[locale].nav;
+const c = copy[locale];
+const r = (id: RouteId) => routes[id][locale];
+const other: Locale = locale === 'en' ? 'ro' : 'en';
+const cur = (ids: RouteId[]) => (ids.includes(route) ? 'page' : undefined);
+interface Item { label: string; href: string; logo?: string; external?: boolean }
+interface Group { id: string; label: string; href: string; ids: RouteId[]; items?: Item[]; grid?: boolean }
+const groups: Group[] = [
+  { id: 'about', label: t.about, href: r('about'), ids: ['about', 'team', 'gallery'],
+    items: [{ label: t.story, href: r('about') }, { label: t.team, href: r('team') }, { label: t.gallery, href: r('gallery') }] },
+  { id: 'seasons', label: t.seasons, href: r('seasons'), ids: ['seasons'] },
+  { id: 'projects', label: t.projects, href: r('projects'), ids: ['projects'], grid: true,
+    items: projects.map((p) => ({ label: p.name[locale], href: p.external ?? `${r('projects')}${p.slug}/`, logo: cdn(projectLogo(p)), external: !!p.external })) },
+  { id: 'blog', label: t.blog, href: r('blog'), ids: ['blog'] },
+  { id: 'join', label: t.join, href: r('join'), ids: ['join'] },
+  { id: 'support', label: t.support, href: r('partners'), ids: ['partners', 'donate', 'sponsors', 'press'],
+    items: [{ label: t.partners, href: r('partners') }, { label: t.donate, href: r('donate') }, { label: t.sponsors, href: r('sponsors') }, { label: t.press, href: r('press') }] },
+  { id: 'contact', label: t.contact, href: r('contact'), ids: ['contact'] },
+];
+const ext = (it: Item) => (it.external ? { rel: 'noopener', target: '_blank' } : {});
+const chev = '<svg class="nav__chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5" /></svg>';
+const out = '<svg class="nav__out" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6" /></svg>';
+const sub = groups.filter((g) => g.items);
+const rootCount = groups.length;
+---
+<header class="nav" data-nav>
+  <div class="wrap nav__bar">
+    <Brand href={r('home')} label={locale === 'en' ? 'BrickBot home' : 'Acasă BrickBot'} />
+    <nav class="nav__links" aria-label={locale === 'en' ? 'Main' : 'Principal'}>
+      <ul>
+        {groups.map((g) => (
+          <li class:list={['nav__item', g.items && 'has-menu']}>
+            <a class="nav__link" href={g.href} aria-current={cur(g.ids)}>
+              {g.label}
+              {g.items && <Fragment set:html={chev} />}
+            </a>
+            {g.items && (
+              <ul class:list={['nav__menu', g.grid && 'nav__menu--grid']}>
+                {g.items.map((it, i) => (
+                  <li style={`--i:${i}`}><a href={it.href} class:list={[it.logo && 'nav__proj']} {...ext(it)}>
+                    {it.logo && <span class="nav__plogo"><img src={it.logo} alt="" loading="lazy" decoding="async" /></span>}
+                    <span>{it.label}</span>
+                    {it.external && <Fragment set:html={out} />}
+                  </a></li>
+                ))}
+              </ul>
+            )}
+          </li>
+        ))}
+      </ul>
+    </nav>
+    <div class="nav__actions">
+      <a class="nav__lang" href={paths[other]} hreflang={other} lang={other} aria-label={c.langSwitch.label}>{c.langSwitch.short}</a>
+      <a class="btn btn--primary btn--sm" href={r('partners')}>{t.cta}</a>
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="mobile-menu"
+              data-open={c.menu.open} data-close={c.menu.close} aria-label={c.menu.open}>
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile: a root list; the sections with sub-pages open their own panel (drill-down), with a Back button -->
+  <div class="mmenu" id="mobile-menu" hidden>
+    <div class="wrap mmenu__inner">
+      <nav class="mmenu__panel" data-panel="root" aria-label={locale === 'en' ? 'Mobile' : 'Mobil'}>
+        {groups.map((g, i) => g.items ? (
+          <button class="mmenu__link mmenu__link--top mmenu__more" type="button" style={`--i:${i}`}
+                  data-open-panel={g.id} aria-controls={`mpanel-${g.id}`} aria-expanded="false" aria-current={cur(g.ids)}>
+            {g.label}<svg class="mmenu__chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3.5 10.5 8 6 12.5" /></svg>
+          </button>
+        ) : (
+          <a class="mmenu__link mmenu__link--top" href={g.href} style={`--i:${i}`} aria-current={cur(g.ids)}>{g.label}</a>
+        ))}
+        <div class="mmenu__foot" style={`--i:${rootCount}`}>
+          <a class="btn btn--primary" href={r('partners')}>{t.cta}</a>
+          <a class="nav__lang" href={paths[other]} hreflang={other} lang={other}>{c.langSwitch.label}</a>
+        </div>
+      </nav>
+      {sub.map((g) => (
+        <nav class="mmenu__panel" id={`mpanel-${g.id}`} data-panel={g.id} aria-label={g.label} hidden>
+          <button class="mmenu__back" type="button" data-back style="--i:0">
+            <svg class="mmenu__chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3.5 5.5 8 10 12.5" /></svg>{c.menu.back}
+          </button>
+          <p class="mmenu__title" style="--i:1">{g.label}</p>
+          {g.items!.map((it, i) => (
+            <a class:list={['mmenu__link mmenu__link--top', it.logo && 'mmenu__proj']} href={it.href} style={`--i:${i + 2}`} {...ext(it)}>
+              {it.logo && <span class="nav__plogo"><img src={it.logo} alt="" loading="lazy" decoding="async" /></span>}
+              <span>{it.label}</span>
+              {it.external && <Fragment set:html={out} />}
+            </a>
+          ))}
+        </nav>
+      ))}
+    </div>
+  </div>
+</header>

@@ -73,6 +73,11 @@ Wrangler (the Cloudflare CLI) is installed per project as a dev dependency, so t
   - Then go to Authentication → Rate Limits and raise the email limit. The built-in limit is only a few per hour.
 - [ ] **Check the department inboxes.** Confirm these receive mail, since the contact form CCs them: `pr@`, `design@`, `engineering@`, `programming@`, `sponsorships@brickbot.ro`.
 
+### FTC Events
+- [ ] **API access.** Register at https://ftc-events.firstinspires.org/services/API/register (use a real email: it must be confirmed; answer "Yes" to the FTC team question and enter 15996).
+  - FIRST emails an authorization key. Put the username in `FTC_EVENTS_USERNAME` and the key in `FTC_EVENTS_TOKEN` in the root `.env`.
+  - Also add both as build environment variables (secrets) to the `website` Workers Build, so production builds get the results.
+
 ### Google
 - [ ] **Google Maps embed link.** Open the BrickBot Business Profile in Google Maps → *Share* → *Embed a map* and copy the `src` URL from the iframe code. Also copy the normal *Send a link* URL, used for the "Open in Google Maps" button. Both get stored in the CMS site settings.
 

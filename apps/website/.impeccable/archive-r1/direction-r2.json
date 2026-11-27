@@ -1,0 +1,56 @@
+{
+  "title": "Choose the visual world for brickbot.ro (familiar hand)",
+  "question": "The familiar end: three of my grounded directions plus the category standard, each with a rough first-screen sketch. This is the second re-roll; if none fits, use Steer to tell me what's missing (a feeling, a site you like, something to avoid).",
+  "options": [
+    {
+      "id": "broadcast",
+      "kind": "grounded",
+      "label": "Matchday Broadcast",
+      "lineage": "sports and FTC livestream on-air graphics",
+      "thesis": "The home page broadcasts this season: DECODE's results as on-air graphics over full-bleed match photography.",
+      "palette": ["#000000", "#FFEC17", "#7A1027", "#FFFFFF"],
+      "materials": ["full-bleed match photography", "lower-third bars", "score bug", "results ticker"],
+      "viewport": "The Worlds celebration photo fills the screen. A score bug top left (DECODE · 2025–26 · #15996), a giant lower-third 'Division finalists, FIRST Championship 2026', and a burgundy ticker running this season's results along the bottom.",
+      "risk": "Broadcast graphics are familiar from sport and esports; the bars must stay crisp and editorial or it turns into a gaming overlay.",
+      "html": ".impeccable/sketch/broadcast.html"
+    },
+    {
+      "id": "voltage",
+      "kind": "grounded",
+      "label": "High Voltage",
+      "lineage": "electrical warning plates and machine rating plates",
+      "thesis": "BrickBot labelled like live equipment: the brand yellow as enamel warning plates, and this season's results stamped on a rating plate.",
+      "palette": ["#000000", "#FFEC17", "#FFFFFF", "#7A1027"],
+      "materials": ["enamel warning plates", "stamped rating plate", "pictograms", "cable tags"],
+      "viewport": "A big yellow warning plate with the bolt and 'High voltage since 2016', and beside it a stamped rating plate listing DECODE's results line by line. Match photos run below.",
+      "risk": "Hazard signage is a well-worn industrial look; it needs restraint and real photography to avoid feeling like a construction site.",
+      "html": ".impeccable/sketch/voltage.html"
+    },
+    {
+      "id": "bill",
+      "kind": "grounded",
+      "label": "Main Event Bill",
+      "lineage": "boxing and concert event posters",
+      "thesis": "This season billed like a main event: towering condensed type, duotone photos, the result as the headline act.",
+      "palette": ["#000000", "#FFEC17", "#7A1027", "#FFFFFF"],
+      "materials": ["condensed poster type", "yellow duotone photography", "stacked billing lines"],
+      "viewport": "Left: 'FTC #15996 presents · Season DECODE' in towering condensed caps, 'Worlds division finalists' on a burgundy band. Right: the celebration photo as a yellow duotone, full height.",
+      "risk": "Fight-poster energy can feel combative; FIRST values cooperation, so the billing must celebrate rather than taunt.",
+      "html": ".impeccable/sketch/bill.html"
+    }
+  ],
+  "reroll": { "registers": ["safer", "bolder"] },
+  "buildPath": { "value": "code" },
+  "canon": true,
+  "canonCard": {
+    "kind": "canon",
+    "label": "The category standard",
+    "thesis": "A dark team site with a yellow accent, built to the level of team254.com and citruscircuits.org.",
+    "palette": ["#000000", "#FFEC17", "#FFFFFF"],
+    "materials": ["full-bleed photo hero", "season results", "sponsor logo strip"],
+    "viewport": "The team photo with a headline and two buttons, then the season, posts and sponsors.",
+    "risk": "Close to the removed first attempt; it looks like every other strong team's site.",
+    "html": ".impeccable/sketch/canon.html"
+  },
+  "steer": true
+}

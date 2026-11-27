@@ -1,0 +1,14 @@
+{
+  "name": "@brickbot/website",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1 --port 4321",
+    "build": "astro build",
+    "preview": "astro preview",
+    "tunnel": "cloudflared tunnel --url http://127.0.0.1:4321"
+  },
+  "dependencies": {
+    "astro": "^5.14.0"
+  }
+}

@@ -1,0 +1,4 @@
+# Fonts never change under the same name (rename the file when replacing one), so browsers keep them for a year
+# and page-to-page navigation never waits on them.
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable

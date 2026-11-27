@@ -1,0 +1,22 @@
+---
+/**
+ * Slim LED perimeter strip: dot-matrix text scrolling on its own, draggable and nudged by page scroll
+ * (see site.ts). The moving copy is decorative; `plain` carries the same facts for assistive tech.
+ */
+interface Item { hi?: string; text: string }
+interface Props { items: Item[]; plain: string; class?: string; repeat?: number }
+const { items, plain, class: cls, repeat = 3 } = Astro.props;
+const run = Array.from({ length: repeat }, () => items).flat();
+---
+<div class:list={['led', cls]} data-marquee>
+  <p class="sr-only">{plain}</p>
+  <div class="led__window" aria-hidden="true"><div class="led__view" data-marquee-run>
+    {[0, 1].map(() => (
+      <ul class="led__track" aria-hidden="true">
+        {run.map((it) => (
+          <li>{it.hi && <b>{it.hi}</b>}{it.hi && ' '}{it.text}<span class="led__sep"></span></li>
+        ))}
+      </ul>
+    ))}
+  </div></div>
+</div>

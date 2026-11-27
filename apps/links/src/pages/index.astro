@@ -1,0 +1,86 @@
+---
+import '../styles/links.css';
+import { links, socials, siteUrl, isLive, endLabel } from '../lib/links';
+import { icons } from '../lib/icons';
+import { cdn } from '../lib/cdn';
+
+const live = links.filter((l) => isLive(l));
+const pins = live.filter((l) => l.highlighted);
+const rows = live.filter((l) => !l.highlighted);
+const year = new Date().getFullYear();
+const chip = (l: (typeof links)[number]) => (l.chip && l.end ? l.chip.replace('{end}', endLabel(l.end)) : '');
+const title = 'BrickBot · FTC Team 15996';
+const desc = 'Links from BrickBot, the FIRST Tech Challenge robotics team of “Unirea” National College, Focșani.';
+const site = Astro.site ?? new URL('https://links.brickbot.ro');
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={desc} />
+    <link rel="canonical" href={site.href} />
+    <meta name="theme-color" content="#000000" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="icon" href={cdn('brand/logo.svg')} type="image/svg+xml" />
+    <link rel="preload" href="/fonts/anek-latin-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="BrickBot" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:url" content={site.href} />
+    <meta property="og:image" content={new URL(cdn('brand/og-default.jpg'), site).href} />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body style={`--wordmark: url(${cdn('brand/wordmark.svg')}); --logomark: url(${cdn('brand/logo.svg')})`}>
+    <main class="page">
+      <header class="head">
+        <h1><span class="sr-only">BrickBot, FTC Team 15996</span></h1>
+        <a class="head__link" href={siteUrl} aria-label="BrickBot website">
+          <span class="head__mark" aria-hidden="true"></span>
+          <span class="head__word" aria-hidden="true"></span>
+        </a>
+      </header>
+
+      <ul class="socials" role="list" aria-label="Social media">
+        {socials.map((s) => {
+          const p = icons[s.id];
+          return (
+            <li>
+              <a class="ico" href={s.href} aria-label={s.label} rel={s.id === 'email' ? undefined : 'me noopener'} target={s.id === 'email' ? undefined : '_blank'}>
+                <svg viewBox={p.vb} aria-hidden="true" fill={p.stroke ? 'none' : 'currentColor'} stroke={p.stroke ? 'currentColor' : undefined}
+                     stroke-width={p.stroke ? 2 : undefined} stroke-linecap="round" stroke-linejoin="round"><path d={p.d} /></svg>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+
+      {pins.length > 0 && (
+        <section class="pins" aria-label="Featured">
+          {pins.map((l) => (
+            <a class="pin" href={l.href} rel="noopener" target="_blank" data-start={l.start} data-end={l.end}>
+              {l.image && <img class="pin__img" src={cdn(l.image)} alt="" loading="eager" decoding="async" style={l.imagePosition ? `object-position:${l.imagePosition}` : undefined} />}
+              {chip(l) && <span class="chip pin__chip"><i aria-hidden="true"></i>{chip(l)}</span>}
+              <p class="pin__t">{l.title}</p>
+              <p class="pin__s"><span>{l.note}</span><svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></p>
+            </a>
+          ))}
+        </section>
+      )}
+
+      <nav class="rows" aria-label="Links">
+        {rows.map((l) => (
+          <a class="row" href={l.href} rel="noopener" data-start={l.start} data-end={l.end}>
+            <span>{l.title}</span>
+            <svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+          </a>
+        ))}
+      </nav>
+
+      <footer class="foot">BrickBot © {year}</footer>
+    </main>
+    <script>import '../scripts/links';</script>
+  </body>
+</html>

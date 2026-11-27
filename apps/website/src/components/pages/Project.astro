@@ -1,0 +1,144 @@
+---
+import PageHead from '../PageHead.astro';
+import Img from '../Img.astro';
+import Arrow from '../Arrow.astro';
+import { cdn } from '../../lib/cdn';
+import { routes, type Locale } from '../../lib/site';
+import { projects, projectLogo, withSample, type Project } from '../../lib/projects';
+import { posts } from '../../lib/blog';
+interface Props { locale: Locale; project: Project }
+const { locale } = Astro.props;
+const p = withSample(Astro.props.project);
+const stats = (p.stats ?? []).slice(0, 4);
+const body = p.body?.[locale] ?? [];
+const facts = p.facts ?? [];
+const photos = p.photos ?? [];
+const partners = p.partners ?? [];
+const related = posts.filter((x) => x.projects?.includes(p.id));
+const others = projects.filter((x) => x.id !== p.id);
+const t = {
+  en: {
+    sample: 'Development sample: the numbers, text, photos and partners below are placeholders and are not published.',
+    impact: 'Impact', aboutH: 'About the project', photosH: 'In pictures', open: 'Enlarge photo',
+    partnersH: 'Made possible by', partnersP: 'Want your company behind this project?', partnersCta: 'Partner with us', visit: 'visit website',
+    postsH: 'From the BrickLog', othersH: 'More projects', all: 'All projects',
+    helpH: 'Want to take part or lend a hand?', help: 'Get in touch',
+  },
+  ro: {
+    sample: 'Exemplu de dezvoltare: cifrele, textul, fotografiile și partenerii de mai jos sunt provizorii și nu se publică.',
+    impact: 'Impact', aboutH: 'Despre proiect', photosH: 'În imagini', open: 'Mărește fotografia',
+    partnersH: 'Cu sprijinul', partnersP: 'Vrei ca firma ta să susțină acest proiect?', partnersCta: 'Devino partener', visit: 'vezi site-ul',
+    postsH: 'Din BrickLog', othersH: 'Alte proiecte', all: 'Toate proiectele',
+    helpH: 'Vrei să participi sau să ne dai o mână de ajutor?', help: 'Scrie-ne',
+  },
+}[locale];
+const href = (x: Project) => x.external ?? `${routes.projects[locale]}${x.slug}/`;
+const out = (url: string) => (/^https?:/.test(url) ? { rel: 'noopener', target: '_blank' } : {});
+---
+<PageHead locale={locale} title={p.name[locale]} lede={p.summary[locale]} compact />
+
+{p.sample && <div class="wrap"><p class="tag tag--warn psample">{t.sample}</p></div>}
+
+<!-- the scoreboard: the project's logo on an LED board, its impact numbers in readouts beside it -->
+<div class="wrap">
+  <div class:list={['pboard board', stats.length > 0 && 'pboard--stats']}>
+    <div class="pstage">
+      <img src={cdn(projectLogo(p))} alt={`${p.name[locale]} logo`} loading="eager" fetchpriority="high" />
+    </div>
+    {stats.length > 0 && (
+      <dl class="pstats" aria-label={t.impact}>
+        {stats.map((s) => (
+          <div class="pstat"><dt>{s.label[locale]}</dt><dd>{s.value}</dd></div>
+        ))}
+      </dl>
+    )}
+  </div>
+</div>
+
+{(body.length > 0 || facts.length > 0) && (
+  <section class="sec" aria-labelledby="about-h">
+    <div class="wrap split pabout">
+      <div class="sechead">
+        <h2 id="about-h" class="h-lg sechead__h" data-reveal>{t.aboutH}</h2>
+        {facts.length > 0 && (
+          <dl class="pfacts">{facts.map((f) => <div><dt>{f.label[locale]}</dt><dd>{f.value[locale]}</dd></div>)}</dl>
+        )}
+      </div>
+      {body.length > 0 && <div class="prose pabout__body">{body.map((para) => <p>{para}</p>)}</div>}
+    </div>
+  </section>
+)}
+
+{photos.length > 0 && (
+  <section class="sec" aria-labelledby="photos-h">
+    <div class="wrap">
+      <div class="sechead"><h2 id="photos-h" class="h-lg sechead__h" data-reveal>{t.photosH}</h2></div>
+      <ul class:list={['pphotos', `pphotos--${Math.min(photos.length, 5)}`]} data-lightbox-group>
+        {photos.map((ph) => (
+          <li>
+            <figure class="pphoto board">
+              <Img src={ph.key} width={ph.width} height={ph.height} alt={ph.alt[locale]} zoom sizes="(max-width: 760px) 100vw, 50vw" />
+              {ph.caption && <figcaption>{ph.caption[locale]}</figcaption>}
+            </figure>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+)}
+
+{partners.length > 0 && (
+  <section class="sec" aria-labelledby="partners-h">
+    <div class="wrap">
+      <div class="pmore__head">
+        <h2 id="partners-h" class="h-lg">{t.partnersH}</h2>
+      </div>
+      <ul class="logos ppartners">
+        {partners.map((s) => (
+          <li class="logos__item board">
+            {s.href
+              ? <a href={s.href} rel="noopener" target="_blank">{s.logo && <img src={cdn(s.logo)} alt="" loading="lazy" decoding="async" />}<span class="logos__name">{s.name}<span class="sr-only"> ({t.visit})</span></span></a>
+              : <div>{s.logo && <img src={cdn(s.logo)} alt="" loading="lazy" decoding="async" />}<span class="logos__name">{s.name}</span></div>}
+          </li>
+        ))}
+      </ul>
+      <p class="ppartners__ask">{t.partnersP} <a class="link" href={routes.partners[locale]}>{t.partnersCta}<Arrow /></a></p>
+    </div>
+  </section>
+)}
+
+{related.length > 0 && (
+  <section class="sec" aria-labelledby="po-h">
+    <div class="wrap">
+      <div class="sechead"><h2 id="po-h" class="h-lg sechead__h">{t.postsH}</h2></div>
+      <ul class="rows">{related.map((x) => <li><h3><a href={`${routes.blog[locale]}${x.slug[locale]}/`}>{x.title[locale]}</a></h3><p>{x.excerpt[locale]}</p></li>)}</ul>
+    </div>
+  </section>
+)}
+
+<section class="sec" aria-labelledby="more-h">
+  <div class="wrap">
+    <div class="pmore__head">
+      <h2 id="more-h" class="h-lg">{t.othersH}</h2>
+      <a class="link" href={routes.projects[locale]}>{t.all}<Arrow /></a>
+    </div>
+    <ul class="rows rows--two rows--icons pmore">
+      {others.map((x) => (
+        <li>
+          <span class="tile tile--logo"><img src={cdn(projectLogo(x))} alt="" loading="lazy" /></span>
+          <h3><a href={href(x)} {...out(href(x))}>{x.name[locale]}</a></h3>
+          <p>{x.summary[locale]}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="help-h">
+  <div class="wrap">
+    <div class="note board">
+      <h2 id="help-h" class="h-md">{t.helpH}</h2>
+      <a class="btn btn--primary" href={routes.contact[locale]}>{t.help}<Arrow /></a>
+    </div>
+  </div>
+</section>

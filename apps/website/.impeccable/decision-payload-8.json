@@ -1,0 +1,106 @@
+{
+ "title": "People first, revised: quieter bottom line",
+ "question": "Same four cards, revised as you asked: the line at the bottom of the hero is now small, quiet text, with only “Top 10 in the world” picked out in yellow. Arena Lights, which you said is closest, comes first: its LED board is now a slim, dim strip. Open a card's expand chip to see it at full size.",
+ "options": [
+  {
+   "id": "arena",
+   "kind": "grounded",
+   "label": "Arena Lights",
+   "lineage": "competition-arena night: LED perimeter boards, floodlit crowds, broadcast tickers",
+   "thesis": "The hero is the arena at the moment of the win: the full-bleed crowd photo, and below it an LED perimeter board scrolling Focșani, Romania and Top 10 in the world, the kind of board sponsors already pay to be on.",
+   "palette": [
+    "#000000",
+    "#FFEC17",
+    "#F4F1E8",
+    "#1D1C19"
+   ],
+   "materials": [
+    "full-bleed photo",
+    "dot-matrix LED board with a bolt-notched top edge",
+    "one live arc along the board",
+    "Anek Latin Condensed on the LEDs, Expanded for headings"
+   ],
+   "viewport": "Full-bleed Nationals photo with a soft dark scrim only at the lower left, holding the wordmark, motto and two buttons. A slim, dim LED strip along the bottom edge slowly scrolls “Focșani, Romania · Top 10 in the world · 2025–26 season · FTC team #15996”, with only the top-10 line in yellow.",
+   "risk": "A scrolling strip is familiar from sports sites; it stays slow, dim and pausable so it doesn't compete with the photo.",
+   "comp": ".impeccable/mocks/decision/arena.webp",
+   "html": ".impeccable/sketches/r12/arena.html"
+  },
+  {
+   "id": "kit",
+   "kind": "grounded",
+   "label": "Team Kit",
+   "lineage": "the team's own yellow jerseys: raglan panel curves, sublimated patterns, piping and the woven hem tag",
+   "thesis": "The site wears the team's kit: a black side panel curves into the photo like a jersey seam with yellow and burgundy piping, and a yellow hem band at the bottom carries the facts like a woven tag.",
+   "palette": [
+    "#000000",
+    "#FFEC17",
+    "#8C1530",
+    "#F4F1E8"
+   ],
+   "materials": [
+    "curved jersey-panel cuts",
+    "yellow and burgundy piping",
+    "a faint sublimated stripe pattern",
+    "a woven hem tag"
+   ],
+   "viewport": "The photo fills the right two-thirds untouched; a black panel with a curved seam edge holds the wordmark, motto and buttons on the left; a yellow hem band across the bottom reads “Made in Focșani, Romania · Top 10 in the world · 2025–26 season · FTC #15996”.",
+   "risk": "The seam curve is the whole idea; if it's drawn timidly it's just a split hero.",
+   "comp": ".impeccable/mocks/decision/kit.webp",
+   "html": ".impeccable/sketches/r12/kit.html"
+  },
+  {
+   "id": "stickers",
+   "kind": "grounded",
+   "label": "Sticker Bomb",
+   "lineage": "die-cut vinyl stickers on a laptop or robot case, kiss-cut white borders",
+   "thesis": "Everything is a die-cut sticker: the photo is one big sticker with a white kiss-cut border and a custom-cut corner, the wordmark is a sticker, and the facts are a row of pill stickers. Lightning arrives as a bolt sticker.",
+   "palette": [
+    "#0C0C0B",
+    "#FFEC17",
+    "#F4F1E8",
+    "#8C1530"
+   ],
+   "materials": [
+    "white kiss-cut borders",
+    "custom die-cut shapes",
+    "slight rotations",
+    "one peel on hover"
+   ],
+   "viewport": "The photo as a large tilted sticker on the right; the wordmark sticker, motto and buttons on the left; a round “Top 10 in the world” sticker on the photo's corner (off the faces); a row of pill stickers at the bottom: Focșani, Romania · Top 10 in the world, 2025–26 · FTC team #15996.",
+   "risk": "The most playful card: it can tip into teen clutter, and sponsors may read it as less serious.",
+   "comp": ".impeccable/mocks/decision/stickers.webp",
+   "html": ".impeccable/sketches/r12/stickers.html"
+  }
+ ],
+ "reroll": {
+  "registers": [
+   "safer",
+   "bolder"
+  ]
+ },
+ "buildPath": {
+  "value": "code",
+  "toggle": false
+ },
+ "canon": true,
+ "canonCard": {
+  "kind": "canon",
+  "label": "The category standard",
+  "thesis": "Played straight at the craft of landonorris.com, McLaren Racing and Red Bull Racing: full-bleed photo, name and motto at the bottom, buttons, a thin fact bar.",
+  "palette": [
+   "#000000",
+   "#FFEC17",
+   "#F4F1E8"
+  ],
+  "materials": [
+   "full-bleed photo",
+   "bottom scrim",
+   "thin fact bar"
+  ],
+  "viewport": "Full-bleed photo, the wordmark and motto lower left, buttons lower right, a hairline bar at the bottom with Focșani, Romania and Top 10 in the world.",
+  "risk": "Familiar by design: personality has to come from motion and the sections below.",
+  "comp": ".impeccable/mocks/decision/canon.webp",
+  "html": ".impeccable/sketches/r12/canon.html"
+ },
+ "steer": true
+}

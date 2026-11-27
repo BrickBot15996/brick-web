@@ -1,0 +1,60 @@
+{
+  "title": "Choose the visual world for brickbot.ro (round 5)",
+  "question": "Every card now opens with the BrickBot wordmark and makes electricity structural rather than decorative, while keeping the students' photos front and centre. The deal put Two-Ink Issue first; Live Circuit beats it on both counts.",
+  "options": [
+    {
+      "id": "assigned",
+      "kind": "assigned",
+      "catalogId": "posters-covers-sleeves-risograph-zine-cover",
+      "label": "Two-Ink Issue",
+      "kicker": "THE ROLL",
+      "lineage": "risograph zines: two spot inks, printed slightly out of register",
+      "thesis": "Each season printed as a two-ink issue: student photos in yellow halftone, the wordmark overprinted in burgundy a hair out of register, so it vibrates like it's charged.",
+      "palette": ["#050505", "#FFEC17", "#B5173A", "#F4F4F2"],
+      "materials": ["yellow halftone photography", "misregistered overprint", "visible dot screen", "ink on dark stock"],
+      "viewport": "The wordmark huge across the top, doubled in yellow and burgundy slightly out of line; the Nationals celebration as a yellow halftone filling the right two-thirds; a short line and 'Partner with us' on the left.",
+      "risk": "Zines are DIY by nature: it could slip toward the school-project look you want to avoid, and halftone costs faces some detail.",
+      "raised": [
+        {"from": "challenger-specimen", "raise": "Hierarchy by scale contrast alone: a huge wordmark and small, quiet text, no badges."},
+        {"from": "challenger-segment", "raise": "Unlit states are designed too: inactive links and filters keep a ghost of their full form."},
+        {"from": "challenger-disk", "raise": "One unmarked centre per screen, where nothing competes with the photo."}
+      ],
+      "html": ".impeccable/sketch/riso.html"
+    },
+    {
+      "id": "challenger-circuit",
+      "kind": "challenger",
+      "catalogId": "kraftwerk-man-machine",
+      "verdict": "wins",
+      "label": "Live Circuit",
+      "lineage": "man-machine band graphics: line diagrams wired on a strict grid",
+      "thesis": "The team drawn as a live circuit: yellow wires on a strict grid connect the students' photos, and current visibly runs from the robot to the drive team, the workshop, the Worlds field and the town's classrooms.",
+      "palette": ["#050505", "#FFEC17", "#FFFFFF", "#7A1027"],
+      "materials": ["flat enamel black", "orthogonal yellow wiring with node dots", "photos framed as circuit nodes", "tracked-caps labels", "current pulses along the wires"],
+      "viewport": "The wordmark large at top left, 'Students wired into something bigger.' and 'Partner with us' under it. To the right, five student photos sit on the grid as nodes (Nationals, drive team, build, Worlds, schools), joined by yellow wires that pulses of current travel along.",
+      "case": "Beats the leader on both counts: electricity becomes the structure of the page instead of an ornament, and it connects people rather than listing trophies.",
+      "risk": "Flat lines on black can drift toward a tech-diagram look; the photos must stay big, and the current must stay flat (no glow) to keep clear of neon.",
+      "board": "https://impeccable.style/worlds/cards/kraftwerk-man-machine.webp",
+      "hero": "https://impeccable.style/worlds/cards/kraftwerk-man-machine-hero.webp",
+      "html": ".impeccable/sketch/wiring.html"
+    },
+    {"id": "challenger-segment", "kind": "challenger", "catalogId": "signals-instruments-seven-segment-alarm-clock", "verdict": "declined", "label": "Seven Segment", "lineage": "LED segment displays", "thesis": "Results as lit segments on a scoreboard.", "palette": ["#0A0A0A", "#FFEC17", "#2A2A2A"], "materials": ["segment masks", "ghost cells"], "viewport": "A scoreboard of this season's numbers.", "case": "Declined: too close to the Nixie Counter, and it has no faces.", "risk": "Numbers over people.", "kept": "Unlit states designed too."},
+    {"id": "challenger-specimen", "kind": "challenger", "catalogId": "variable-font-specimen", "verdict": "declined", "label": "Type Specimen", "lineage": "variable-font specimens", "thesis": "The wordmark as a live specimen.", "palette": ["#F4F4F2", "#000000", "#FFEC17"], "materials": ["axis sliders", "glyph grid"], "viewport": "A giant letter morphing under a slider.", "case": "Declined: about type, not about students.", "risk": "Self-referential.", "kept": "Hierarchy by scale alone."},
+    {"id": "challenger-kiln", "kind": "challenger", "catalogId": "clay-ceramics-fracture-glaze-river-shelf", "verdict": "declined", "label": "Glaze Shelf", "lineage": "kiln glaze runs", "thesis": "Molten colour running down cups.", "palette": ["#F2F2EE", "#1F4FBF", "#0B2A6B"], "materials": ["glaze", "kiln shelf"], "viewport": "A row of glazed cups.", "case": "Declined: ceramics have nothing to do with robots or energy.", "risk": "Off-subject.", "kept": "Gravity sets the reading order."},
+    {"id": "challenger-disk", "kind": "challenger", "catalogId": "galaxies-nebulae-deep-time-accretion-disk-threshold", "verdict": "declined", "label": "Event Horizon", "lineage": "black-hole accretion disks", "thesis": "Light bending round a horizon.", "palette": ["#000000", "#BFD7FF", "#E0A23A"], "materials": ["shader light", "rings"], "viewport": "A glowing disk around black.", "case": "Declined: abstract space art with no people.", "risk": "Spectacle without substance.", "kept": "One unmarked centre per screen."}
+  ],
+  "reroll": { "registers": ["safer", "bolder"] },
+  "buildPath": { "value": "code" },
+  "canon": true,
+  "canonCard": {
+    "kind": "canon",
+    "label": "The category standard",
+    "thesis": "A dark team site with a yellow accent and the wordmark, built to the level of team254.com and citruscircuits.org.",
+    "palette": ["#000000", "#FFEC17", "#FFFFFF"],
+    "materials": ["full-bleed photo hero", "season results", "sponsor logo strip"],
+    "viewport": "The team photo with a headline and two buttons, then the season, posts and sponsors.",
+    "risk": "Close to the removed first attempt; it looks like every other strong team's site.",
+    "html": ".impeccable/sketch/canon.html"
+  },
+  "steer": true
+}

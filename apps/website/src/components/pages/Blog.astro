@@ -1,0 +1,90 @@
+---
+import PageHead from '../PageHead.astro';
+import Img from '../Img.astro';
+import Arrow from '../Arrow.astro';
+import { routes, type Locale } from '../../lib/site';
+import { posts, topics, projects, topicById, readingMinutes } from '../../lib/blog';
+import PostTags from '../PostTags.astro';
+import { seasons, seasonBySlug } from '../../lib/seasons';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const list = [...posts].sort((a, b) => b.date.localeCompare(a.date));
+const usedTopics = topics.filter((c) => list.some((p) => p.topics.includes(c.id)));
+const usedProjects = projects.filter((c) => list.some((p) => p.projects?.includes(c.id)));
+const usedSeasons = seasons.filter((x) => list.some((p) => p.season === x.slug));
+const facets = [
+  { id: 'season', label: '', multi: false, items: usedSeasons.map((x) => ({ id: x.slug, label: `${x.name} ${x.years}` })) },
+  { id: 'topic', label: '', multi: true, items: usedTopics.map((x) => ({ id: x.id, label: x.label[locale] })) },
+  { id: 'project', label: '', multi: true, items: usedProjects.map((x) => ({ id: x.id, label: x.label[locale] })) },
+].filter((f) => f.items.length);
+const fmt = (iso: string) => new Date(iso + 'T12:00:00').toLocaleDateString(locale === 'en' ? 'en-GB' : 'ro-RO', { day: 'numeric', month: 'long', year: 'numeric' });
+const t = {
+  en: { title: 'BrickLog.', lede: 'Competition recaps, engineering notes and life on the team, written by the students.', filters: 'Filters', clear: 'Clear all', f: { season: 'Season', topic: 'Topic', project: 'Project' }, one: '1 post', many: '{n} posts', none: 'No posts', noneH: 'Nothing matches these filters.', noneP: 'Try removing one, or start over.', reset: 'Reset filters', min: 'min read',
+        soon: 'Under construction', emptyH: 'The BrickLog is under construction.', emptyP: 'We’re building a new home for our stories: competition recaps, engineering notes and life on the team. Until it opens, the latest from the team is on Instagram.', emptyCta: 'Follow us on Instagram', seasons: 'See our seasons' },
+  ro: { title: 'BrickLog.', lede: 'Povești de la competiții, note de inginerie și viața în echipă, scrise de elevi.', filters: 'Filtre', clear: 'Șterge tot', f: { season: 'Sezon', topic: 'Subiect', project: 'Proiect' }, one: '1 articol', many: '{n} articole', none: 'Niciun articol', noneH: 'Niciun articol nu se potrivește filtrelor.', noneP: 'Încearcă să elimini unul sau începe de la zero.', reset: 'Resetează filtrele', min: 'min de citit',
+        soon: 'În construcție', emptyH: 'BrickLog este în construcție.', emptyP: 'Construim o casă nouă pentru poveștile noastre: competiții, note de inginerie și viața în echipă. Până se deschide, noutățile echipei sunt pe Instagram.', emptyCta: 'Urmărește-ne pe Instagram', seasons: 'Vezi sezoanele noastre' },
+}[locale];
+---
+<PageHead locale={locale} title={t.title} lede={t.lede} compact />
+
+<section class="sec sec--tight" aria-label={t.title}>
+  <div class="wrap">
+    {list.length ? (
+      <div data-blogfilter data-one={t.one} data-many={t.many} data-none={t.none}>
+        <div class="bfilter board" hidden data-bfilter>
+          <div class="bfilter__bar">
+            <button class="bfilter__toggle" type="button" aria-expanded="false" aria-controls="bfilter-panel" data-bf-toggle>
+              {t.filters}<span class="bfilter__badge" data-bf-badge hidden>0</span>
+            </button>
+            <p class="bfilter__count" role="status" aria-live="polite" data-bf-count>{list.length === 1 ? t.one : t.many.replace('{n}', String(list.length))}</p>
+            <button class="bfilter__clear" type="button" hidden data-bf-clear>{t.clear}</button>
+          </div>
+          <div class="bfilter__panel" id="bfilter-panel" data-bf-panel>
+            {facets.map((f) => (
+              <div class="bfilter__group" role="group" aria-label={t.f[f.id as 'season']}>
+                <p class="bfilter__label" aria-hidden="true">{t.f[f.id as 'season']}</p>
+                <div class="bfilter__chips">
+                  {f.items.map((i) => <button class="chip chip--sm" type="button" aria-pressed="false" data-facet={f.id} data-multi={f.multi ? '1' : '0'} data-value={i.id}>{i.label}</button>)}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <ul class="posts">
+          {list.map((p) => {
+            const season = p.season ? seasonBySlug(p.season) : undefined;
+            return (
+              <li data-item data-season={p.season ?? ''} data-topics={p.topics.join(' ')} data-projects={(p.projects ?? []).join(' ')}>
+                <article class="post board">
+                  {p.cover && <span class="post__cover"><Img src={p.cover.key} width={p.cover.width} height={p.cover.height} alt="" /></span>}
+                  <div class="post__body">
+                    <p class="post__meta"><time datetime={p.date}>{fmt(p.date)}</time> · {readingMinutes(p.html[locale])} {t.min}</p>
+                    <h2 class="post__title"><a class="post__link" href={`${routes.blog[locale]}${p.slug[locale]}/`}>{p.title[locale]}</a></h2>
+                    <p class="post__excerpt">{p.excerpt[locale]}</p>
+                    <PostTags locale={locale} post={p} />
+                  </div>
+                </article>
+              </li>
+            );
+          })}
+        </ul>
+        <div class="empty board" hidden data-bf-empty>
+          <div class="empty__text">
+            <h2 class="h-md">{t.noneH}</h2>
+            <p>{t.noneP}</p>
+            <button class="chip" type="button" data-bf-clear>{t.reset}</button>
+          </div>
+        </div>
+      </div>
+    ) : (
+      <div class="empty board">
+        <p class="empty__led" aria-hidden="true"><span>{t.soon}</span></p>
+        <div class="empty__text">
+          <h2 class="h-md">{t.emptyH}</h2>
+          <p>{t.emptyP}</p>
+          <a class="link" href="https://instagram.com/brickbotcnu" rel="noopener" target="_blank">{t.emptyCta}<Arrow /></a>
+        </div>
+      </div>
+    )}
+  </div>
+</section>

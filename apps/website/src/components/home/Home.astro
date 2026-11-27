@@ -1,0 +1,207 @@
+---
+import Img from '../Img.astro';
+import Led from '../Led.astro';
+import Arc from '../Arc.astro';
+import Perimeter from '../Perimeter.astro';
+import Arrow from '../Arrow.astro';
+import Icon from '../Icon.astro';
+import { routes, type Locale, type RouteId } from '../../lib/site';
+import { copy } from '../../lib/copy';
+import { sponsors } from '../../lib/sponsors';
+import { cdn } from '../../lib/cdn';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = copy[locale];
+const reachIcons = ['graduation', 'flag', 'users'] as const;
+const r = (id: RouteId) => routes[id][locale];
+---
+<!-- ───────── Hero ───────── -->
+<section class="hero" aria-labelledby="hero-h">
+  <div class="hero__media">
+    <Img class="hero__img" src="site/home/hero.webp" width={1616} height={1080} alt={t.hero.photoAlt}
+         loading="eager" fetchpriority="high" />
+  </div>
+  <div class="wrap hero__body">
+    <h1 id="hero-h" class="hero__title">
+      <span class="wordmark hero__wordmark" role="img" aria-label={t.hero.name}></span>
+      <span class="hero__motto">
+        <span class="hero__line">{t.hero.mottoA}</span>
+        <span class="hero__line hl">{t.hero.mottoB}</span>
+      </span>
+    </h1>
+    <div class="hero__actions">
+      <a class="btn btn--primary" href={r('partners')}>{t.hero.primary}<Arrow /></a>
+      <a class="btn btn--ghost" href={r('contact')}>{t.hero.secondary}</a>
+    </div>
+  </div>
+  <div class="hero__base">
+    <Arc class="hero__arc" />
+    <Led items={t.hero.strip} plain={t.hero.stripPlain} />
+  </div>
+</section>
+
+<!-- ───────── Who we are ───────── -->
+<section class="intro" aria-labelledby="intro-h">
+  <div class="wrap intro__grid">
+    <h2 id="intro-h" class="h-xl intro__h" data-reveal>{t.intro.heading}</h2>
+    <div class="intro__text">
+      <p class="lead">{t.intro.body}</p>
+      <dl class="facts">
+        {t.intro.facts.map((f) => <div><dt>{f.k}</dt><dd>{f.v}</dd></div>)}
+      </dl>
+    </div>
+    <figure class="intro__photo board">
+      <Img src="seasons/decode/team-photo.webp" width={960} height={640} alt={t.intro.photoAlt} zoom />
+    </figure>
+    <aside class="intro__ftc">
+      <h3>{t.intro.ftcQ}</h3>
+      <p>{t.intro.ftcA}</p>
+    </aside>
+  </div>
+</section>
+
+<!-- ───────── Season scoreboard ───────── -->
+<section class="score" aria-labelledby="score-h">
+  <div class="wrap score__grid">
+    <div class="score__text">
+      <h2 id="score-h" class="h-lg" data-reveal>{t.season.heading}</h2>
+      <p>{t.season.body}</p>
+      <a class="link" href={`${r('seasons')}decode/`}>{t.season.link}<Arrow /></a>
+    </div>
+    <div class="score__board board">
+      <figure class="score__screen">
+        <Img src="gallery/decode/worlds-practice-field.webp" width={1600} height={1069} alt={t.season.photoAlt} zoom />
+      </figure>
+      {t.season.rows.filter((row) => row.hi).map((row) => (
+        <p class="score__readout"><span>{row.event}</span><strong>{row.result}</strong></p>
+      ))}
+      <table class="score__table">
+        <caption class="sr-only">{t.season.heading}</caption>
+        <thead><tr><th scope="col">{t.season.cols.event}</th><th scope="col">{t.season.cols.result}</th></tr></thead>
+        <tbody>
+          {t.season.rows.filter((row) => !row.hi).map((row) => (
+            <tr>
+              <th scope="row">{row.event}</th>
+              <td>{row.result}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── Outreach ───────── -->
+<section class="reach" aria-labelledby="reach-h">
+  <div class="wrap reach__grid">
+    <figure class="reach__a board">
+      <Img src="site/home/schools-classroom.webp" width={1280} height={960} alt={t.outreach.photoA} zoom />
+    </figure>
+    <figure class="reach__b board">
+      <Img src="site/home/joy-in-motion.webp" width={1680} height={1120} alt={t.outreach.photoB} zoom />
+    </figure>
+    <div class="reach__text">
+      <h2 id="reach-h" class="h-lg" data-reveal>{t.outreach.heading}</h2>
+      <p class="lead">{t.outreach.body}</p>
+      <ul class="reach__list">
+        {t.outreach.items.map((it, i) => <li><span class="tile"><Icon name={reachIcons[i]} /></span><h3>{it.t}</h3><p>{it.d}</p></li>)}
+      </ul>
+      <p class="reach__ask">{t.outreach.ask}</p>
+      <a class="btn btn--ghost" href={r('contact')}>{t.outreach.cta}<Arrow /></a>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── Support ───────── -->
+<section class="support" id="support" aria-labelledby="sup-h">
+  <div class="wrap">
+    <div class="support__head">
+      <h2 id="sup-h" class="h-xl" data-reveal>{t.support.heading}</h2>
+      <p class="lead">{t.support.lede}</p>
+    </div>
+    <div class="support__grid">
+      <a class="way way--sponsor board" href={r('partners')}>
+        <span class="way__led" aria-hidden="true"><span>{t.support.board}</span></span>
+        <span class="way__body">
+          <h3 class="way__title">{t.support.sponsor.title}</h3>
+          <p>{t.support.sponsor.body}</p>
+          <span class="btn btn--primary way__cta">{t.support.sponsor.cta}<Arrow /></span>
+        </span>
+      </a>
+      <a class="way way--donate board" href={r('donate')}>
+        <h3 class="way__title">{t.support.donate.title}</h3>
+        <p>{t.support.donate.body}</p>
+        <span class="way__link">{t.support.donate.cta}<Arrow /></span>
+      </a>
+      <a class="way way--collab board" href={r('contact')}>
+        <h3 class="way__title">{t.support.collab.title}</h3>
+        <p>{t.support.collab.body}</p>
+        <span class="way__link">{t.support.collab.cta}<Arrow /></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── Sponsors: perimeter board ───────── -->
+<section class="perimeter" aria-labelledby="spo-h">
+  <div class="wrap perimeter__head">
+    <h2 id="spo-h" class="h-md">{t.sponsors.heading}</h2>
+    <a class="link" href={r('sponsors')}>{t.sponsors.link}<Arrow /></a>
+  </div>
+  <Perimeter locale={locale} />
+  </div>
+</section>
+
+<!-- ───────── FAQ ───────── -->
+<section class="faq" aria-labelledby="faq-h">
+  <div class="wrap faq__grid">
+    <h2 id="faq-h" class="h-lg faq__h">{t.faq.heading}</h2>
+    <div class="faq__list">
+      {t.faq.items.map((it, i) => (
+        <details class={`faq__item${i === 0 ? ' is-open' : ''}`} open={i === 0}>
+          <summary><span>{it.q}</span><span class="faq__icon" aria-hidden="true"></span></summary>
+          <p>{it.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  // FAQ: one item open at a time, with a height animation. <details> alone snaps open and shut, and it can't animate its
+  // own closing, so the open attribute is only removed once the closing animation has finished.
+  const items = [...document.querySelectorAll<HTMLDetailsElement>('.faq__item')];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  const running = new WeakMap<HTMLDetailsElement, Animation>();
+  const frame = (d: HTMLDetailsElement) => d.offsetHeight - d.clientHeight; // the border-top
+  const closedH = (d: HTMLDetailsElement) => d.querySelector('summary')!.offsetHeight + frame(d);
+
+  // Animate the item's height from where it is right now to `to`. A cancelled animation's events arrive late, so they only
+  // touch the item if they still belong to the current animation: otherwise a stale cancel would unclip an item mid-animation.
+  function run(d: HTMLDetailsElement, from: number, to: number, done?: () => void) {
+    running.get(d)?.cancel();
+    running.delete(d);
+    if (reduce.matches || from === to) { d.style.overflow = ''; done?.(); return; }
+    d.style.overflow = 'hidden';
+    const a = d.animate({ height: [`${from}px`, `${to}px`] }, { duration: 380, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' });
+    running.set(d, a);
+    a.onfinish = () => { if (running.get(d) !== a) return; running.delete(d); d.style.overflow = ''; done?.(); };
+  }
+  function show(d: HTMLDetailsElement) {
+    const from = d.offsetHeight;   // read before touching anything: mid-animation this is the height on screen
+    d.classList.add('is-open');
+    d.open = true;
+    run(d, from, d.querySelector('summary')!.offsetHeight + d.querySelector('p')!.offsetHeight + frame(d));
+  }
+  function hide(d: HTMLDetailsElement) {
+    const from = d.offsetHeight;
+    d.classList.remove('is-open');
+    run(d, from, closedH(d), () => { d.open = false; });
+  }
+  items.forEach((d) => d.querySelector('summary')!.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (d.classList.contains('is-open')) { hide(d); return; }
+    items.forEach((o) => { if (o !== d && o.classList.contains('is-open')) hide(o); });
+    show(d);
+  }));
+</script>

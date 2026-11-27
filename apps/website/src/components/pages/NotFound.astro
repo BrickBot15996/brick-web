@@ -1,0 +1,25 @@
+---
+import Base from '../../layouts/Base.astro';
+import Arrow from '../Arrow.astro';
+import { routes, type Locale } from '../../lib/site';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = {
+  en: { title: 'Page not found · BrickBot', desc: 'This page doesn’t exist.', h: 'Page not found.', p: 'We couldn’t find the page you were looking for.', cta: 'Go to the home page' },
+  ro: { title: 'Pagina nu a fost găsită · BrickBot', desc: 'Această pagină nu există.', h: 'Pagina nu a fost găsită.', p: 'Nu am găsit pagina pe care o căutai.', cta: 'Mergi la prima pagină' },
+}[locale];
+---
+<Base locale={locale} route="home" title={t.title} description={t.desc} noindex>
+  <section class="lost">
+    <div class="wrap lost__grid">
+      <p class="lost__led" aria-hidden="true"><span>404</span></p>
+      <div>
+        <h1 class="h-xl">{t.h}</h1>
+        <p class="lead">{t.p}</p>
+        <div class="lost__actions">
+          <a class="btn btn--primary" href={routes.home[locale]}>{t.cta}<Arrow /></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

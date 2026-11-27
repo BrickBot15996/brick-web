@@ -1,0 +1,42 @@
+---
+import Img from '../Img.astro';
+import Arrow from '../Arrow.astro';
+import { routes, type Locale } from '../../lib/site';
+import PostTags from '../PostTags.astro';
+import { posts, readingMinutes, type Post } from '../../lib/blog';
+import { seasonBySlug } from '../../lib/seasons';
+interface Props { locale: Locale; post: Post }
+const { locale, post } = Astro.props;
+const season = post.season ? seasonBySlug(post.season) : undefined;
+const related = posts.filter((p) => p !== post && (p.topics.some((x) => post.topics.includes(x)) || (!!post.season && p.season === post.season))).slice(0, 3);
+const fmt = (iso: string) => new Date(iso + 'T12:00:00').toLocaleDateString(locale === 'en' ? 'en-GB' : 'ro-RO', { day: 'numeric', month: 'long', year: 'numeric' });
+const t = {
+  en: { back: 'All posts', min: 'min read', related: 'Keep reading', sample: 'Development sample: not published.' },
+  ro: { back: 'Toate articolele', min: 'min de citit', related: 'Citește mai departe', sample: 'Exemplu de dezvoltare: nu se publică.' },
+}[locale];
+---
+<article class="article">
+  <header class="wrap article__head">
+    <a class="link article__back" href={routes.blog[locale]}><svg class="arr arr--back" viewBox="0 0 16 16" aria-hidden="true"><path d="M14 8H3M7 3.5 2.5 8 7 12.5" /></svg>{t.back}</a>
+    {post.sample && <p class="tag tag--warn">{t.sample}</p>}
+    <p class="article__meta">
+      <time datetime={post.date}>{fmt(post.date)}</time> · {readingMinutes(post.html[locale])} {t.min}
+      {season && <> · <a href={`${routes.seasons[locale]}${season.slug}/`}>{season.name} {season.years}</a></>}
+    </p>
+    <PostTags locale={locale} post={post} />
+    <h1 class="h-xl article__h">{post.title[locale]}</h1>
+    <p class="lead article__lede">{post.excerpt[locale]}</p>
+  </header>
+  {post.cover && (
+    <div class="wrap"><figure class="article__cover board"><Img src={post.cover.key} width={post.cover.width} height={post.cover.height} alt="" zoom loading="eager" fetchpriority="high" /></figure></div>
+  )}
+  <div class="wrap"><div class="prose article__body" set:html={post.html[locale]} /></div>
+</article>
+{related.length > 0 && (
+  <section class="sec" aria-labelledby="rel-h">
+    <div class="wrap">
+      <h2 id="rel-h" class="h-md">{t.related}</h2>
+      <ul class="rows">{related.map((p) => <li><h3><a href={`${routes.blog[locale]}${p.slug[locale]}/`}>{p.title[locale]}</a></h3><p>{p.excerpt[locale]}</p></li>)}</ul>
+    </div>
+  </section>
+)}

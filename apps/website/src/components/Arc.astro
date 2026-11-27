@@ -1,0 +1,15 @@
+---
+/**
+ * The live arc: a thin yellow line with one zigzag; a pulse of current travels along it.
+ * Built from a straight CSS line plus a fixed-size SVG zigzag, so it never distorts at any width.
+ * `at` is the zigzag's position along the line, in percent.
+ */
+interface Props { class?: string; at?: number }
+const { class: cls, at = 64 } = Astro.props;
+---
+<div class:list={['arc', cls]} style={`--at:${at}%`} aria-hidden="true">
+  <i class="arc__pulse"></i>
+  <svg class="arc__zig" viewBox="0 0 40 14" width="40" height="14" focusable="false">
+    <path d="M0 11 l9 -7 l5 6 l6 -10 l6 9 l7 -5 l5 7" />
+  </svg>
+</div>

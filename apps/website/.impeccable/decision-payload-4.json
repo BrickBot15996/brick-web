@@ -1,0 +1,189 @@
+{
+ "title": "Choose the visual world for brickbot.ro (round 4)",
+ "question": "Every card now keeps the content you pinned: the wordmark, the motto, one main photo, two buttons. Only the world around them changes.",
+ "options": [
+  {
+   "id": "assigned",
+   "kind": "assigned",
+   "label": "Curved-Crease Shell",
+   "kicker": "THE ROLL",
+   "lineage": "curved-crease paper folding: one sweeping arc lifts a flat sheet into a rigid shell",
+   "thesis": "Brick by brick, as engineering: one black sheet folded along a single yellow arc into a structure, with the team photo held on the curved face.",
+   "palette": [
+    "#0B0A09",
+    "#FFEC17",
+    "#2A2723",
+    "#6E0A1E"
+   ],
+   "materials": [
+    "black card stock",
+    "one yellow crease arc",
+    "graphite shadow depth",
+    "plate-numbered figures"
+   ],
+   "viewport": "Pinned by you: BRICKBOT wordmark + “We build our future brick by brick!” + one main photo + main and secondary buttons. The photo sits on a panel curved by one sweeping yellow arc; the wordmark runs along the crease, the motto below, buttons at the foot of the arc.",
+   "risk": "Quiet and elegant rather than electric: it may read too calm for a teen team.",
+   "raised": [
+    {
+     "from": "challenger-sapeur",
+     "raise": "Exactly three coordinated colours on the first screen: black, #FFEC17, burgundy."
+    },
+    {
+     "from": "challenger-ikeda",
+     "raise": "One full-frame inversion as the single motion moment."
+    }
+   ],
+   "html": ".impeccable/sketches/shell.html",
+   "hero": "https://impeccable.style/worlds/cards/paper-folds-pleats-deployable-curved-crease-shell-hero.webp"
+  },
+  {
+   "id": "challenger-collider",
+   "kind": "challenger",
+   "catalogId": "scientific-notation-particle-detector-event-display",
+   "label": "Event Display",
+   "verdict": "wins",
+   "lineage": "particle-collider event displays",
+   "thesis": "The team photo is the collision point: yellow tracks burst out of it through detector rings, and the wordmark, motto and buttons are pinned to the tracks like readouts.",
+   "palette": [
+    "#0A0A09",
+    "#FFEC17",
+    "#6E7F96",
+    "#A3122F"
+   ],
+   "materials": [
+    "concentric detector rings",
+    "signal-yellow particle tracks",
+    "tabular readout labels",
+    "calorimeter bars"
+   ],
+   "viewport": "Pinned by you: BRICKBOT wordmark + “We build our future brick by brick!” + one main photo + main and secondary buttons. A circular crop of the Nationals celebration sits at the centre-right as the collision; yellow tracks curl out across the screen. A giant wordmark rides one track, and the motto and buttons are pinned as readouts.",
+   "case": "Beats the shell on both axes: it is electric and STEM at once (the brand's lightning, made literal as energy tracks), and the photo stays the focal point.",
+   "risk": "Busy if too many tracks; the motion must be one burst on load, then calm.",
+   "html": ".impeccable/sketches/collider.html",
+   "hero": "https://impeccable.style/worlds/cards/scientific-notation-particle-detector-event-display-hero.webp"
+  },
+  {
+   "id": "challenger-cyc",
+   "kind": "challenger",
+   "catalogId": "stagecraft-theater-lighting-cyclorama-dawn",
+   "label": "Cyclorama Dawn",
+   "verdict": "competitive",
+   "lineage": "theatre cyclorama lit from night to day",
+   "thesis": "Build our future, staged as a dawn: the cyc rises from black through burgundy into brand yellow behind the team, who stand cut out against it.",
+   "palette": [
+    "#050505",
+    "#4C0414",
+    "#A3122F",
+    "#FFEC17"
+   ],
+   "materials": [
+    "light-only gradients",
+    "stencil cue labels",
+    "a cut-out team in front of the cyc"
+   ],
+   "viewport": "Pinned by you: BRICKBOT wordmark + “We build our future brick by brick!” + one main photo + main and secondary buttons. A huge wordmark sits low across the yellow horizon band, the team stands in front, and the motto and two buttons are set in stencil caps like a lighting cue sheet.",
+   "case": "A strong metaphor for “our future”, and dramatic. It's competitive on clarity, but the gradient world is less distinctive.",
+   "risk": "Gradients can look like a generic sunset wallpaper.",
+   "html": ".impeccable/sketches/cyc.html",
+   "hero": "https://impeccable.style/worlds/cards/stagecraft-theater-lighting-cyclorama-dawn-hero.webp"
+  },
+  {
+   "id": "challenger-shrine",
+   "kind": "challenger",
+   "catalogId": "digital-design-canon-fansite-shrine-page",
+   "label": "Fan Shrine",
+   "verdict": "competitive",
+   "lineage": "early-web single-subject fan pages",
+   "thesis": "The site as the shrine the team would build for itself: tiled bolt background, the wordmark as a banner, animated dividers, a visitor counter.",
+   "palette": [
+    "#0A0A09",
+    "#FFEC17",
+    "#8A0F2A",
+    "#FFFFFF"
+   ],
+   "materials": [
+    "seamless bolt tile",
+    "banner-image headings",
+    "animated divider bars",
+    "hit counter"
+   ],
+   "viewport": "Pinned by you: BRICKBOT wordmark + “We build our future brick by brick!” + one main photo + main and secondary buttons. A centred column on a tiled lightning background, the wordmark banner glowing, the photo framed in a bevel, and two chunky buttons. A blinking 'you are visitor No. 15996' at the foot.",
+   "case": "Maximum teen personality. It loses on how seriously a national sponsor will take it.",
+   "risk": "It can read as a joke rather than a team that went to Worlds.",
+   "html": ".impeccable/sketches/shrine.html",
+   "hero": "https://impeccable.style/worlds/cards/digital-design-canon-fansite-shrine-page-hero.webp"
+  },
+  {
+   "id": "challenger-sapeur",
+   "kind": "challenger",
+   "catalogId": "pop-culture-shelf-sapeur-portrait-plate",
+   "label": "Portrait Plate",
+   "verdict": "declined",
+   "lineage": "sapeur portrait plates",
+   "thesis": "Full-length portrait on a flat painted backdrop.",
+   "palette": [
+    "#FFEC17",
+    "#0A0A09",
+    "#6E0A1E"
+   ],
+   "materials": [
+    "painted backdrop",
+    "ruled plate"
+   ],
+   "viewport": "A full-length figure on a flat backdrop.",
+   "case": "Needs a new photoshoot; the existing photos are crowds.",
+   "risk": "Costume.",
+   "kept": "Exactly three coordinated colours."
+  },
+  {
+   "id": "challenger-ikeda",
+   "kind": "challenger",
+   "catalogId": "ikeda-datamatics",
+   "label": "Datamatics",
+   "verdict": "declined",
+   "lineage": "black-and-white data fields",
+   "thesis": "Barcode fields strobing.",
+   "palette": [
+    "#000000",
+    "#FFFFFF"
+   ],
+   "materials": [
+    "barcode bars",
+    "monospace"
+   ],
+   "viewport": "A wall of bars.",
+   "case": "No colour, so no #FFEC17, and no people.",
+   "risk": "Cold.",
+   "kept": "One full-frame inversion moment."
+  }
+ ],
+ "reroll": {
+  "registers": [
+   "safer",
+   "bolder"
+  ]
+ },
+ "buildPath": {
+  "value": "code",
+  "toggle": false
+ },
+ "canon": true,
+ "canonCard": {
+  "kind": "canon",
+  "label": "The category standard",
+  "thesis": "A dark robotics-team site done well: big photo hero, stats row, latest season, sponsor strip.",
+  "palette": [
+   "#0A0A0A",
+   "#FFEC17",
+   "#FFFFFF"
+  ],
+  "materials": [
+   "clean grid",
+   "event photography"
+  ],
+  "viewport": "A full-bleed photo, a headline with two buttons, and a stats row under it.",
+  "risk": "Looks like every other FTC team site, which is the problem the brief named.",
+  "html": ".impeccable/sketches/canon.html"
+ },
+ "steer": true
+}

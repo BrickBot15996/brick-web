@@ -1,0 +1,56 @@
+{
+  "title": "Choose the visual world for brickbot.ro (round 6, familiar)",
+  "question": "This is the sixth hand. If none of these is right, please use Steer to name what is still missing, or name a direction from an earlier round you'd like to go back to (Live Circuit, On Tour, Annotated Spread…). I can build from that directly instead of rolling again.",
+  "options": [
+    {
+      "id": "documentary",
+      "kind": "grounded",
+      "label": "Season Documentary",
+      "lineage": "sports documentary series: title cards over full-bleed footage",
+      "thesis": "The home page opens like a sports documentary: 'A season with' over the wordmark across a full-bleed shot of the students, then chapters.",
+      "palette": ["#000000", "#FFEC17", "#FFFFFF", "#7A1027"],
+      "materials": ["full-bleed photography and short clips", "series title card with the wordmark", "chapter markers", "bolt-shaped chapter wipes"],
+      "viewport": "The Nationals celebration fills the screen, darkened. 'A SEASON WITH' sits over the wordmark set huge in yellow, with one line and 'Partner with us' below it; a chapter marker in the corner (CH. 01 · Nationals · Mar 2026).",
+      "risk": "Familiar from streaming documentaries; it rests on the quality of the photos and clips.",
+      "html": ".impeccable/sketch/documentary.html"
+    },
+    {
+      "id": "pitwall",
+      "kind": "grounded",
+      "label": "Pit Wall",
+      "lineage": "the team's pit at FTC events: a banner, a photo wall, buttons to trade",
+      "thesis": "The page is BrickBot's pit at a competition: a yellow wordmark banner across the top, a wall of pinned student photos, and an open invitation to come and talk.",
+      "palette": ["#050505", "#FFEC17", "#7A1027", "#FFFFFF"],
+      "materials": ["yellow vinyl banner with the wordmark", "white-bordered photos pinned at slight angles", "a burgundy team button"],
+      "viewport": "The wordmark banner across the top in yellow; below it, five pinned photos (celebration, drive team, classroom, build, SparkHope win); 'Come find us in the pits' and 'Partner with us' at bottom left.",
+      "risk": "Pinned photos and buttons can tip into the scrapbook or school-project look; it needs strict alignment underneath.",
+      "html": ".impeccable/sketch/pitwall.html"
+    },
+    {
+      "id": "portfolio",
+      "kind": "grounded",
+      "label": "Engineering Portfolio",
+      "lineage": "FTC engineering portfolios: figures, call-outs, numbered annotations",
+      "thesis": "Laid out like the team's own award-winning engineering portfolio: student photos as numbered figures with yellow call-outs, people and process documented with care.",
+      "palette": ["#050505", "#FFEC17", "#FFFFFF", "#444444"],
+      "materials": ["figure numbering", "yellow call-out circles and leader lines", "photo plates", "technical caps labels"],
+      "viewport": "The wordmark at top left, then 'Engineered by students. Documented like professionals.' On the right, a student wiring the robot as Fig. 3 with yellow call-outs, and three smaller plates below.",
+      "risk": "Technical documentation can feel cold; the call-outs must point at people as often as at parts.",
+      "html": ".impeccable/sketch/portfolio.html"
+    }
+  ],
+  "reroll": { "registers": ["safer", "bolder"] },
+  "buildPath": { "value": "code" },
+  "canon": true,
+  "canonCard": {
+    "kind": "canon",
+    "label": "The category standard",
+    "thesis": "A dark team site with the wordmark and a yellow accent, built to the level of team254.com, citruscircuits.org and a top football club site.",
+    "palette": ["#000000", "#FFEC17", "#FFFFFF"],
+    "materials": ["full-bleed photo hero", "season results", "sponsor logo strip"],
+    "viewport": "The team photo with the wordmark, a headline and two buttons, then the season, posts and sponsors.",
+    "risk": "Close to the removed first attempt; it looks like every other strong team's site.",
+    "html": ".impeccable/sketch/canon.html"
+  },
+  "steer": true
+}

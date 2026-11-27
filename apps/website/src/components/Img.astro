@@ -1,0 +1,28 @@
+---
+/**
+ * A CDN photograph. A hand-uploaded placeholder (CLAUDE.md §11) is one file: no srcset.
+ * A CMS upload passes `widths` and its base key: srcset is built from the generated variants.
+ * `zoom`: wraps the image in a real <button> that opens it in the shared lightbox (never use inside a link).
+ */
+import { cdn, cdnSrcset } from '../lib/cdn';
+interface Props {
+  src: string; alt: string; width: number; height: number;
+  widths?: number[]; sizes?: string; class?: string; style?: string;
+  loading?: 'lazy' | 'eager'; fetchpriority?: 'high' | 'auto'; subject?: string; zoom?: boolean;
+}
+const { src, alt, width, height, widths, sizes = '100vw', class: cls, style, loading = 'lazy', fetchpriority, subject, zoom } = Astro.props;
+const url = widths?.length ? cdn(`${src}-${widths[widths.length - 1]}.webp`) : cdn(src);
+const ro = Astro.url.pathname.startsWith('/ro');
+const zoomLabel = `${ro ? 'Mărește fotografia' : 'Enlarge photo'}${alt ? `: ${alt}` : ''}`;
+---
+{zoom ? (
+<button type="button" class="zoom" data-lightbox aria-label={zoomLabel} aria-haspopup="dialog">
+<img src={url} srcset={widths?.length ? cdnSrcset(src, widths) : undefined} sizes={widths?.length ? sizes : undefined}
+     alt={alt} width={width} height={height} class={cls} style={style} loading={loading} decoding="async"
+     fetchpriority={fetchpriority} data-source="client" data-subject={subject} data-full={url} />
+</button>
+) : (
+<img src={url} srcset={widths?.length ? cdnSrcset(src, widths) : undefined} sizes={widths?.length ? sizes : undefined}
+     alt={alt} width={width} height={height} class={cls} style={style} loading={loading} decoding="async"
+     fetchpriority={fetchpriority} data-source="client" data-subject={subject} />
+)}

@@ -1,0 +1,9 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Page from '../../../components/pages/Join.astro';
+import { meta } from '../../../lib/meta';
+const m = meta.join!.ro;
+---
+<Base locale="ro" route="join" title={m.title} description={m.description}>
+  <Page locale="ro" />
+</Base>

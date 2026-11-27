@@ -1,0 +1,331 @@
+{
+ "title": "Every direction so far",
+ "question": "All sketched directions from the nine rounds, plus the six text-only ones. Pick the one with the most potential and I'll take it from there (wordmark, the motto, modest copy, student photos and the electric brand applied). Use Steer to combine two, e.g. 'Live Circuit hero with On Tour prints'.",
+ "options": [
+  {
+   "id": "broadcast",
+   "label": "Matchday Broadcast",
+   "lineage": "Round 2",
+   "thesis": "Results as on-air sports graphics over full-bleed photos.",
+   "palette": [],
+   "materials": [],
+   "viewport": "Results as on-air sports graphics over full-bleed photos.",
+   "risk": "Text predates your copy notes; it will be rewritten.",
+   "html": ".impeccable/sketch/broadcast.html"
+  },
+  {
+   "id": "voltage",
+   "label": "High Voltage",
+   "lineage": "Round 2",
+   "thesis": "Yellow enamel warning plate and a stamped rating plate of results.",
+   "palette": [],
+   "materials": [],
+   "viewport": "Yellow enamel warning plate and a stamped rating plate of results.",
+   "risk": "Text predates your copy notes; it will be rewritten.",
+   "html": ".impeccable/sketch/voltage.html"
+  },
+  {
+   "id": "bill",
+   "label": "Main Event Bill",
+   "lineage": "Round 2",
+   "thesis": "Towering condensed poster type and a yellow duotone photo.",
+   "palette": [],
+   "materials": [],
+   "viewport": "Towering condensed poster type and a yellow duotone photo.",
+   "risk": "Text predates your copy notes; it will be rewritten.",
+   "html": ".impeccable/sketch/bill.html"
+  },
+  {
+   "id": "instructions",
+   "label": "Build Instructions",
+   "lineage": "Round 3",
+   "thesis": "Step numerals and isometric exploded parts on a stud-grid ground.",
+   "palette": [],
+   "materials": [],
+   "viewport": "Step numerals and isometric exploded parts on a stud-grid ground.",
+   "risk": "Text predates your copy notes; it will be rewritten.",
+   "html": ".impeccable/sketch/instructions.html"
+  },
+  {
+   "id": "darkroom",
+   "label": "Safelight",
+   "lineage": "Round 3",
+   "thesis": "Yellow safelight page; photos develop in a white tray.",
+   "palette": [],
+   "materials": [],
+   "viewport": "Yellow safelight page; photos develop in a white tray.",
+   "risk": "Text predates your copy notes; it will be rewritten.",
+   "html": ".impeccable/sketch/darkroom.html"
+  },
+  {
+   "id": "depot",
+   "label": "Destination Blind",
+   "lineage": "Round 3",
+   "thesis": "Yellow legends on dark cloth courses stepping through a window.",
+   "palette": [],
+   "materials": [],
+   "viewport": "Yellow legends on dark cloth courses stepping through a window.",
+   "risk": "Text predates your copy notes; it will be rewritten.",
+   "html": ".impeccable/sketch/depot.html"
+  },
+  {
+   "id": "brine",
+   "label": "Brine Shelf",
+   "lineage": "Round 3",
+   "thesis": "Glowing jars, each a group of team members maturing.",
+   "palette": [],
+   "materials": [],
+   "viewport": "Glowing jars, each a group of team members maturing.",
+   "risk": "Text predates your copy notes; it will be rewritten.",
+   "html": ".impeccable/sketch/brine.html"
+  },
+  {
+   "id": "tour",
+   "label": "On Tour",
+   "lineage": "Round 4",
+   "thesis": "Stacked photobook prints, the season as tour dates, an all-access pass.",
+   "palette": [],
+   "materials": [],
+   "viewport": "Stacked photobook prints, the season as tour dates, an all-access pass.",
+   "risk": "Text predates your copy notes; it will be rewritten.",
+   "html": ".impeccable/sketch/tour.html"
+  },
+  {
+   "id": "contact",
+   "label": "Contact Sheet",
+   "lineage": "Round 4",
+   "thesis": "A sheet of frames, the keeper circled in yellow, a loupe.",
+   "palette": [],
+   "materials": [],
+   "viewport": "A sheet of frames, the keeper circled in yellow, a loupe.",
+   "risk": "Text predates your copy notes; it will be rewritten.",
+   "html": ".impeccable/sketch/contact.html"
+  },
+  {
+   "id": "annotated",
+   "label": "Annotated Spread",
+   "lineage": "Round 4",
+   "thesis": "Overlapping student photos with hand-drawn yellow annotations.",
+   "palette": [],
+   "materials": [],
+   "viewport": "Overlapping student photos with hand-drawn yellow annotations.",
+   "risk": "Text predates your copy notes; it will be rewritten.",
+   "html": ".impeccable/sketch/annotated.html"
+  },
+  {
+   "id": "hall",
+   "label": "Yellow Hall",
+   "lineage": "Round 4",
+   "thesis": "A yellow hall with a half sun; the crowd photo set in black.",
+   "palette": [],
+   "materials": [],
+   "viewport": "A yellow hall with a half sun; the crowd photo set in black.",
+   "risk": "Text predates your copy notes; it will be rewritten.",
+   "html": ".impeccable/sketch/hall.html"
+  },
+  {
+   "id": "riso",
+   "label": "Two-Ink Issue",
+   "lineage": "Round 5",
+   "thesis": "Halftone photo, wordmark doubled out of register.",
+   "palette": [],
+   "materials": [],
+   "viewport": "Halftone photo, wordmark doubled out of register.",
+   "risk": "Text predates your copy notes; it will be rewritten.",
+   "html": ".impeccable/sketch/riso.html"
+  },
+  {
+   "id": "wiring",
+   "label": "Live Circuit",
+   "lineage": "Round 5",
+   "thesis": "Yellow wires on a grid carry current between student photos.",
+   "palette": [],
+   "materials": [],
+   "viewport": "Yellow wires on a grid carry current between student photos.",
+   "risk": "Text predates your copy notes; it will be rewritten.",
+   "html": ".impeccable/sketch/wiring.html"
+  },
+  {
+   "id": "documentary",
+   "label": "Season Documentary",
+   "lineage": "Round 6",
+   "thesis": "A series title card over a full-bleed photo.",
+   "palette": [],
+   "materials": [],
+   "viewport": "A series title card over a full-bleed photo.",
+   "risk": "Text predates your copy notes; it will be rewritten.",
+   "html": ".impeccable/sketch/documentary.html"
+  },
+  {
+   "id": "pitwall",
+   "label": "Pit Wall",
+   "lineage": "Round 6",
+   "thesis": "Wordmark banner and a wall of pinned photos.",
+   "palette": [],
+   "materials": [],
+   "viewport": "Wordmark banner and a wall of pinned photos.",
+   "risk": "Text predates your copy notes; it will be rewritten.",
+   "html": ".impeccable/sketch/pitwall.html"
+  },
+  {
+   "id": "portfolio",
+   "label": "Engineering Portfolio",
+   "lineage": "Round 6",
+   "thesis": "Photos as numbered figures with yellow call-outs.",
+   "palette": [],
+   "materials": [],
+   "viewport": "Photos as numbered figures with yellow call-outs.",
+   "risk": "Text predates your copy notes; it will be rewritten.",
+   "html": ".impeccable/sketch/portfolio.html"
+  },
+  {
+   "id": "rain",
+   "label": "Rain Garden",
+   "lineage": "Round 7",
+   "thesis": "Yellow rain falling onto student photos.",
+   "palette": [],
+   "materials": [],
+   "viewport": "Yellow rain falling onto student photos.",
+   "risk": "Text predates your copy notes; it will be rewritten.",
+   "html": ".impeccable/sketch/rain.html"
+  },
+  {
+   "id": "detector",
+   "label": "Event Display",
+   "lineage": "Round 7",
+   "thesis": "Tracks curving out of one centre to photos of people and places.",
+   "palette": [],
+   "materials": [],
+   "viewport": "Tracks curving out of one centre to photos of people and places.",
+   "risk": "Text predates your copy notes; it will be rewritten.",
+   "html": ".impeccable/sketch/detector.html"
+  },
+  {
+   "id": "comic",
+   "label": "Album Page",
+   "lineage": "Round 7",
+   "thesis": "Photo panels with yellow narration boxes.",
+   "palette": [],
+   "materials": [],
+   "viewport": "Photo panels with yellow narration boxes.",
+   "risk": "Text predates your copy notes; it will be rewritten.",
+   "html": ".impeccable/sketch/comic.html"
+  },
+  {
+   "id": "rail",
+   "label": "Live Rail",
+   "lineage": "Round 8",
+   "thesis": "Two columns, students and season, around a yellow centre rail.",
+   "palette": [],
+   "materials": [],
+   "viewport": "Two columns, students and season, around a yellow centre rail.",
+   "risk": "Text predates your copy notes; it will be rewritten.",
+   "html": ".impeccable/sketch/rail.html"
+  },
+  {
+   "id": "market",
+   "label": "Event Night",
+   "lineage": "Round 8",
+   "thesis": "A string of lights over signed photo stalls.",
+   "palette": [],
+   "materials": [],
+   "viewport": "A string of lights over signed photo stalls.",
+   "risk": "Text predates your copy notes; it will be rewritten.",
+   "html": ".impeccable/sketch/market.html"
+  },
+  {
+   "id": "mediaday",
+   "label": "Media Day",
+   "lineage": "Round 9",
+   "thesis": "Yellow seamless backdrop, prints with hard studio shadows.",
+   "palette": [],
+   "materials": [],
+   "viewport": "Yellow seamless backdrop, prints with hard studio shadows.",
+   "risk": "Text predates your copy notes; it will be rewritten.",
+   "html": ".impeccable/sketch/mediaday.html"
+  },
+  {
+   "id": "flash",
+   "label": "Flash",
+   "lineage": "Round 9",
+   "thesis": "Flash-lit prints bursting out of the dark, the bolt as the flash.",
+   "palette": [],
+   "materials": [],
+   "viewport": "Flash-lit prints bursting out of the dark, the bolt as the flash.",
+   "risk": "Text predates your copy notes; it will be rewritten.",
+   "html": ".impeccable/sketch/flash.html"
+  },
+  {
+   "id": "canon",
+   "label": "Category Standard",
+   "lineage": "Every round",
+   "thesis": "Full-bleed team photo, headline, two buttons.",
+   "palette": [],
+   "materials": [],
+   "viewport": "Full-bleed team photo, headline, two buttons.",
+   "risk": "Text predates your copy notes; it will be rewritten.",
+   "html": ".impeccable/sketch/canon.html"
+  },
+  {
+   "id": "annual",
+   "label": "The Annual",
+   "lineage": "Round 1, no sketch",
+   "thesis": "Each season a volume of a black, foil-stamped club annual, signed in yellow.",
+   "palette": [],
+   "materials": [],
+   "viewport": "Each season a volume of a black, foil-stamped club annual, signed in yellow.",
+   "risk": "No sketch was made."
+  },
+  {
+   "id": "kit",
+   "label": "The Kit",
+   "lineage": "Round 1, no sketch",
+   "thesis": "Sports-club identity: the 15996 shirt number, sponsors on the kit.",
+   "palette": [],
+   "materials": [],
+   "viewport": "Sports-club identity: the 15996 shirt number, sponsors on the kit.",
+   "risk": "No sketch was made."
+  },
+  {
+   "id": "issue",
+   "label": "The Season Issue",
+   "lineage": "Round 1, no sketch",
+   "thesis": "Each season as a magazine issue with the bolt hidden on every page.",
+   "palette": [],
+   "materials": [],
+   "viewport": "Each season as a magazine issue with the bolt hidden on every page.",
+   "risk": "No sketch was made."
+  },
+  {
+   "id": "basin",
+   "label": "Charged Basin",
+   "lineage": "Bolder round 1, no sketch",
+   "thesis": "A live WebGL field of yellow charge your pointer drags.",
+   "palette": [],
+   "materials": [],
+   "viewport": "A live WebGL field of yellow charge your pointer drags.",
+   "risk": "No sketch was made."
+  },
+  {
+   "id": "livery",
+   "label": "Race Livery",
+   "lineage": "Bolder round 1, no sketch",
+   "thesis": "Photos wrapped across panels like a race car, sponsor strip along the sill.",
+   "palette": [],
+   "materials": [],
+   "viewport": "Photos wrapped across panels like a race car, sponsor strip along the sill.",
+   "risk": "No sketch was made."
+  },
+  {
+   "id": "nixie",
+   "label": "Nixie Counter",
+   "lineage": "Bolder round 1, no sketch",
+   "thesis": "This season's numbers as glowing tube digits.",
+   "palette": [],
+   "materials": [],
+   "viewport": "This season's numbers as glowing tube digits.",
+   "risk": "No sketch was made."
+  }
+ ],
+ "steer": true
+}

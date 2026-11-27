@@ -1,0 +1,9 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Page from '../../../components/pages/Press.astro';
+import { meta } from '../../../lib/meta';
+const m = meta.press!.ro;
+---
+<Base locale="ro" route="press" title={m.title} description={m.description}>
+  <Page locale="ro" />
+</Base>

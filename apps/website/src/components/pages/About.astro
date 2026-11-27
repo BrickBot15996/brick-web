@@ -1,0 +1,104 @@
+---
+import PageHead from '../PageHead.astro';
+import SecHead from '../SecHead.astro';
+import Img from '../Img.astro';
+import Arrow from '../Arrow.astro';
+import Icon from '../Icon.astro';
+import { routes, site, type Locale } from '../../lib/site';
+import { cdn } from '../../lib/cdn';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const firstIcons = ['globe', 'trophy', 'flag'] as const;
+const t = {
+  en: {
+    title: 'Our story.',
+    lede: 'In 2016 a handful of students in Focșani started the first FIRST Tech Challenge team in Vrancea county. Ten seasons later, we were division finalists at the world championship.',
+    photoAlt: 'The BrickBot team cheering in front of the SparkHope Robotics Cup stage in August 2025',
+    firstH: 'What we compete in',
+    first: [
+      { t: 'FIRST', d: 'A non-profit founded in the United States that gets young people into science and engineering through robotics competitions, from primary school to the end of high school.' },
+      { t: 'FIRST Tech Challenge', d: 'The high-school competition. Every September a new game is revealed, and teams have a few months to design, build and program a robot to play it, through league meets, regional and national championships, and finally the FIRST Championship in Houston.' },
+      { t: 'In Romania', d: 'FTC was brought to Romania by Nație prin Educație, in partnership with BRD. They run the league and the national championship that every Romanian team, us included, plays through.' },
+    ],
+    natie: 'Visit Nație prin Educație',
+    timeH: 'Ten seasons, brick by brick',
+    timeLede: 'The moments that got us here.',
+    seasonLink: 'See every season',
+    schoolH: 'Made at “Unirea” National College',
+    schoolP: 'Most BrickBot members are students at “Unirea” National College in Focșani. The team started there in 2016 and the school has been home ever since: it’s where we build, test and break things, and where the next generation of members comes from.',
+    schoolAlt: 'The 2026⁠–⁠27 BrickBot team in yellow shirts on the front steps of “Unirea” National College',
+    teamCta: 'Meet the team',
+  },
+  ro: {
+    title: 'Povestea noastră.',
+    lede: 'În 2016, câțiva elevi din Focșani au pornit prima echipă FIRST Tech Challenge din județul Vrancea. Zece sezoane mai târziu, am ajuns finaliști de divizie la Campionatul Mondial.',
+    photoAlt: 'Echipa BrickBot aclamând în fața scenei SparkHope Robotics Cup, în august 2025',
+    firstH: 'În ce concurăm',
+    first: [
+      { t: 'FIRST', d: 'O organizație non-profit fondată în Statele Unite, care îi aduce pe tineri spre știință și inginerie prin competiții de robotică, de la școala primară până la finalul liceului.' },
+      { t: 'FIRST Tech Challenge', d: 'Competiția pentru liceeni. În fiecare septembrie se anunță un joc nou, iar echipele au câteva luni să proiecteze, să construiască și să programeze un robot care să-l joace, prin etape de ligă, campionate regionale și naționale și, la final, Campionatul Mondial FIRST din Houston.' },
+      { t: 'În România', d: 'FTC a fost adus în România de Nație prin Educație, în parteneriat cu BRD. Ei organizează liga și campionatul național prin care trece fiecare echipă din țară, inclusiv noi.' },
+    ],
+    natie: 'Vezi Nație prin Educație',
+    timeH: 'Zece sezoane, cărămidă cu cărămidă',
+    timeLede: 'Momentele care ne-au adus aici.',
+    seasonLink: 'Vezi toate sezoanele',
+    schoolH: 'Făcut la Colegiul Național „Unirea”',
+    schoolP: 'Majoritatea membrilor BrickBot sunt elevi ai Colegiul Național „Unirea” din Focșani. Echipa s-a născut acolo în 2016, iar școala a rămas casa noastră de atunci: acolo construim, testăm și stricăm lucruri și tot de acolo vin membrii generației următoare.',
+    schoolAlt: 'Echipa BrickBot 2026⁠–⁠27, în tricouri galbene, pe treptele Colegiului Național „Unirea”',
+    teamCta: 'Cunoaște echipa',
+  },
+}[locale];
+
+// Timeline milestones (CMS "Team & story"); seeded from the legacy record.
+const milestones = [
+  { when: '2016', en: ['Team #15996 is born', 'Students at “Unirea” National College start the first FIRST Tech Challenge team in Vrancea county.'], ro: ['Se naște echipa #15996', 'Elevi de la Colegiul Național „Unirea” pornesc prima echipă FIRST Tech Challenge din județul Vrancea.'] },
+  { when: '2019', en: ['National finalists', 'In Rover Ruckus we reach the final of the Romania National Championship, win the Romania Moldova Regional and have a Dean’s List finalist.'], ro: ['Finaliști la Național', 'În Rover Ruckus ajungem în finala Campionatului Național, câștigăm Regionala Moldova și avem un finalist Dean’s List.'] },
+  { when: '2021', en: ['Inspire Award', 'The top award in FTC, at a Romanian qualifying tournament, plus the Innovate Award, 2nd place, at the National Championship.'], ro: ['Inspire Award', 'Cel mai important premiu din FTC, la un turneu de calificare, plus locul 2 la Innovate Award la Campionatul Național.'] },
+  { when: '2023', en: ['Our second Dean’s List Finalist', 'In POWERPLAY one of our members reaches the Dean’s List finals.'], ro: ['Al doilea Dean’s List Finalist', 'În POWERPLAY unul dintre membrii noștri ajunge în finala Dean’s List.'] },
+  { when: '2025', en: ['Abroad, in schools, and a cup', 'The Innovate Award, 2nd place, at the Italy Championship, robotics lessons in Focșani primary schools, and the SparkHope Robotics Cup title.'], ro: ['În străinătate, în școli și o cupă', 'Locul 2 la Innovate Award la Campionatul Italiei, lecții de robotică în școlile primare din Focșani și titlul la SparkHope Robotics Cup.'] },
+  { when: '2026', en: ['World championship', 'DECODE takes us to the FIRST Championship in Houston: division finalists, Design Award 2nd place, and a season in the world’s top 10.'], ro: ['Campionatul Mondial', 'DECODE ne duce la Campionatul Mondial FIRST din Houston: finaliști de divizie, locul 2 la Design Award și un sezon în top 10 mondial.'] },
+];
+---
+<PageHead locale={locale} title={t.title} lede={t.lede}
+          photo={{ key: 'site/join/sparkhope-2025.webp', width: 1280, height: 851, alt: t.photoAlt, position: '50% 40%' }} />
+
+<section class="sec" aria-labelledby="first-h">
+  <div class="wrap split">
+    <SecHead id="first-h" title={t.firstH}>
+      <a class="natie" href={site.links.natie} rel="noopener" target="_blank">
+        <img src={cdn('external/natie-prin-educatie.svg')} alt="" width="642" height="51" loading="lazy" />
+        <span>{t.natie}<Arrow /></span>
+      </a>
+    </SecHead>
+    <ul class="rows rows--icons">
+      {t.first.map((f, i) => <li><span class="tile"><Icon name={firstIcons[i]} /></span><h3>{f.t}</h3><p>{f.d}</p></li>)}
+    </ul>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="time-h">
+  <div class="wrap split">
+    <SecHead id="time-h" title={t.timeH} lede={t.timeLede}>
+      <a class="link" href={routes.seasons[locale]}>{t.seasonLink}<Arrow /></a>
+    </SecHead>
+    <ol class="timeline">
+      {milestones.map((m) => (
+        <li><span class="timeline__when">{m.when}</span><div><h3>{m[locale][0]}</h3><p>{m[locale][1]}</p></div></li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="school-h">
+  <div class="wrap feature feature--flip">
+    <figure class="feature__photo board">
+      <Img src="seasons/biobuzz/team-photo.webp" width={1600} height={1066} alt={t.schoolAlt} zoom />
+    </figure>
+    <div class="feature__text">
+      <h2 id="school-h" class="h-lg" data-reveal>{t.schoolH}</h2>
+      <p class="lead">{t.schoolP}</p>
+      <a class="btn btn--ghost" href={routes.team[locale]}>{t.teamCta}<Arrow /></a>
+    </div>
+  </div>
+</section>

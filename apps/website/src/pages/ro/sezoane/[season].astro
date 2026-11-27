@@ -1,0 +1,16 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Season from '../../../components/pages/Season.astro';
+import { seasons, type Season as S } from '../../../lib/seasons';
+import { routes } from '../../../lib/site';
+export function getStaticPaths() {
+  return seasons.map((season) => ({ params: { season: season.slug }, props: { season } }));
+}
+const { season } = Astro.props as { season: S };
+const paths = { en: `${routes.seasons.en}${season.slug}/`, ro: `${routes.seasons.ro}${season.slug}/` };
+const title = { en: `${season.name} ${season.years} · Seasons · BrickBot`, ro: `${season.name} ${season.years} · Sezoane · BrickBot` }.ro;
+const description = { en: `BrickBot in ${season.name} (${season.years}): events, results and awards.`, ro: `BrickBot în ${season.name} (${season.years}): competiții, rezultate și premii.` }.ro;
+---
+<Base locale="ro" route="seasons" paths={paths} title={title} description={description}>
+  <Season locale="ro" season={season} />
+</Base>

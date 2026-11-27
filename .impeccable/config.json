@@ -1,0 +1,28 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "gradient-text",
+        "value": "*",
+        "files": [
+          "apps/website/public/assets/moments/giant-type-pass/moment.css"
+        ],
+        "createdAt": "2026-11-26T13:11:00.938Z",
+        "reason": "agent decision: unchanged copy of the design-taste kit's dealt giant-type-pass moment; background-clip:text shows a photograph through the letters, not a decorative gradient, and kit files must not be edited (gate kit-edited check)"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "anek latin",
+        "createdAt": "2026-11-26T16:43:12.992Z",
+        "reason": "user confirmed: owner asked to use Anek Latin (2026-11-26); DESIGN.md predates the Arena Lights replacement and is rewritten at finish"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "anek latin fallback",
+        "createdAt": "2026-11-26T20:13:33.479Z"
+      }
+    ]
+  }
+}

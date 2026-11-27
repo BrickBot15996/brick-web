@@ -1,0 +1,15 @@
+---
+import { routes, type Locale } from '../lib/site';
+import { topicById, projectById, type Post } from '../lib/blog';
+import { seasonBySlug } from '../lib/seasons';
+interface Props { locale: Locale; post: Post }
+const { locale, post } = Astro.props;
+const base = routes.blog[locale];
+const season = post.season ? seasonBySlug(post.season) : undefined;
+const label = { en: 'Tags', ro: 'Etichete' }[locale];
+---
+<ul class="ptags" aria-label={label}>
+  {season && <li><a class="ptag ptag--season" href={`${base}?season=${season.slug}`}>{season.name}</a></li>}
+  {post.topics.map((id) => { const x = topicById(id); return x && <li><a class="ptag" href={`${base}?topic=${id}`}>{x.label[locale]}</a></li>; })}
+  {(post.projects ?? []).map((id) => { const x = projectById(id); return x && <li><a class="ptag ptag--project" href={`${base}?project=${id}`}>{x.label[locale]}</a></li>; })}
+</ul>

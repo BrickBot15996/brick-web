@@ -1,0 +1,54 @@
+---
+import PageHead from '../PageHead.astro';
+import Arrow from '../Arrow.astro';
+import { routes, type Locale } from '../../lib/site';
+import { sponsors } from '../../lib/sponsors';
+import { cdn } from '../../lib/cdn';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = {
+  en: {
+    title: 'Our sponsors.',
+    lede: `${sponsors.length} companies and institutions backed our 2025⁠–⁠26 season, the one that took us to the FIRST Championship. Thank you.`,
+    visit: 'visit website',
+    nextH: 'Want your logo here next season?',
+    nextP: 'Packages start at €200, and every one is a contract with Asociația BrickBot.',
+    nextCta: 'Partner with us',
+  },
+  ro: {
+    title: 'Sponsorii noștri.',
+    lede: `${sponsors.length} de companii și instituții ne-au susținut în sezonul 2025⁠–⁠26, cel care ne-a dus la Campionatul Mondial FIRST. Vă mulțumim.`,
+    visit: 'vezi site-ul',
+    nextH: 'Vrei logo-ul tău aici sezonul viitor?',
+    nextP: 'Pachetele pornesc de la 200 € și fiecare are la bază un contract cu Asociația BrickBot.',
+    nextCta: 'Devino partener',
+  },
+}[locale];
+---
+<PageHead locale={locale} title={t.title} lede={t.lede} compact />
+
+<section class="sec sec--tight" aria-label={t.title}>
+  <div class="wrap">
+    <ul class="logos">
+      {sponsors.map((s) => (
+        <li class="logos__item board">
+          {s.href
+            ? <a href={s.href} rel="noopener" target="_blank"><img src={cdn(s.logo)} alt="" loading="lazy" decoding="async" /><span class="logos__name">{s.name}<span class="sr-only"> ({t.visit})</span></span></a>
+            : <div><img src={cdn(s.logo)} alt="" loading="lazy" decoding="async" /><span class="logos__name">{s.name}</span></div>}
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="next-h">
+  <div class="wrap">
+    <div class="note board">
+      <div>
+        <h2 id="next-h" class="h-md">{t.nextH}</h2>
+        <p>{t.nextP}</p>
+      </div>
+      <a class="btn btn--primary" href={routes.partners[locale]}>{t.nextCta}<Arrow /></a>
+    </div>
+  </div>
+</section>

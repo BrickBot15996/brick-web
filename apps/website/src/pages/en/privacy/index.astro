@@ -1,0 +1,9 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Legal from '../../../components/pages/Legal.astro';
+import { meta } from '../../../lib/meta';
+const m = meta.privacy!.en;
+---
+<Base locale="en" route="privacy" title={m.title} description={m.description}>
+  <Legal locale="en" doc="privacy" />
+</Base>

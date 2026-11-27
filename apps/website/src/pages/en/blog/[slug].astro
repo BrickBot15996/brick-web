@@ -1,0 +1,14 @@
+---
+import Base from '../../../layouts/Base.astro';
+import PostPage from '../../../components/pages/Post.astro';
+import { posts, type Post } from '../../../lib/blog';
+import { routes } from '../../../lib/site';
+export function getStaticPaths() {
+  return posts.map((post) => ({ params: { slug: post.slug.en }, props: { post } }));
+}
+const { post } = Astro.props as { post: Post };
+const paths = { en: `${routes.blog.en}${post.slug.en}/`, ro: `${routes.blog.ro}${post.slug.ro}/` };
+---
+<Base locale="en" route="blog" paths={paths} title={`${post.title.en} · BrickLog`} description={post.excerpt.en} image={post.cover?.key} noindex={post.sample}>
+  <PostPage locale="en" post={post} />
+</Base>

@@ -1,0 +1,103 @@
+---
+import PageHead from '../PageHead.astro';
+import SecHead from '../SecHead.astro';
+import Img from '../Img.astro';
+import Arrow from '../Arrow.astro';
+import Icon from '../Icon.astro';
+import { site, type Locale } from '../../lib/site';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const whyIcons = ['cube', 'plane', 'users'] as const;
+const deptIcons = ['cube', 'code', 'calendar', 'share', 'pen', 'camera', 'coin'] as const;
+const t = {
+  en: {
+    title: 'Join BrickBot.',
+    lede: 'Build a robot that competes at the world championship, and learn more in one season than in a year of classes. No experience needed.',
+    apply: 'Apply now',
+    photoAlt: 'BrickBot members cheering in front of the SparkHope Robotics Cup stage',
+    whyH: 'Why join',
+    why: [
+      { t: 'You build real things', d: 'Parts you designed, on a robot you helped build, playing in front of judges and a full hall.' },
+      { t: 'You travel', d: 'League meets across Romania, the national championship in Bucharest, and in 2026, the FIRST Championship in Houston.' },
+      { t: 'You learn from people your age', d: 'Older members teach newer ones. You start as a recruit and get brought up to speed in your department.' },
+    ],
+    deptH: 'Pick your department',
+    deptLede: 'Most members end up helping in more than one.',
+    depts: [
+      { t: 'Assembly & 3D design', d: 'Design the robot in CAD, then cut, print and bolt it together. If you like taking things apart, start here.' },
+      { t: 'Programming', d: 'Write the code that drives the robot, from the driver controls to the autonomous period.' },
+      { t: 'Events', d: 'Plan our stands, school visits and meetups, and make them run on the day.' },
+      { t: 'Social media', d: 'Tell the team’s story on Instagram, TikTok, Facebook and LinkedIn.' },
+      { t: 'Graphic design', d: 'Shirts, posters, the engineering portfolio, the robot’s livery: if it has our logo on it, design touched it.' },
+      { t: 'Photo & video', d: 'Shoot competitions, edit reels and the season’s videos.' },
+      { t: 'Fundraising', d: 'Find sponsors, pitch the team and manage the partnerships that pay for the season.' },
+    ],
+    reqH: 'Who can apply',
+    req: ['You study at “Unirea” National College in Focșani.', 'You’re at least 13 years old.', 'That’s it. No prior experience needed: you start as a recruit and we teach you the rest.'],
+    applyH: 'Ready?',
+    applyP: 'Fill in the form and we’ll get back to you about the next recruitment round.',
+  },
+  ro: {
+    title: 'Alătură-te BrickBot.',
+    lede: 'Construiește un robot care concurează la Campionatul Mondial și învață într-un sezon mai mult decât într-un an de ore. Nu ai nevoie de experiență.',
+    apply: 'Aplică acum',
+    photoAlt: 'Membri BrickBot aclamând în fața scenei SparkHope Robotics Cup',
+    whyH: 'De ce să intri',
+    why: [
+      { t: 'Construiești lucruri reale', d: 'Piese proiectate de tine, pe un robot la care ai lucrat, jucând în fața jurizării și a unei săli pline.' },
+      { t: 'Călătorești', d: 'Etape de ligă prin toată țara, Campionatul Național de la București și, în 2026, Campionatul Mondial FIRST din Houston.' },
+      { t: 'Înveți de la colegi de vârsta ta', d: 'Cei mai vechi îi învață pe cei noi. Începi ca recrut și ești adus la zi în departamentul tău.' },
+    ],
+    deptH: 'Alege-ți departamentul',
+    deptLede: 'Cei mai mulți membri ajung să ajute în mai multe.',
+    depts: [
+      { t: 'Asamblare și proiectare 3D', d: 'Proiectezi robotul în CAD, apoi îl tai, îl printezi și îl înșurubezi. Dacă îți place să desfaci lucruri, începe de aici.' },
+      { t: 'Programare', d: 'Scrii codul care conduce robotul, de la controlul pilotului la perioada autonomă.' },
+      { t: 'Evenimente', d: 'Plănuiești standurile, vizitele în școli și întâlnirile și le faci să meargă în ziua respectivă.' },
+      { t: 'Social media', d: 'Spui povestea echipei pe Instagram, TikTok, Facebook și LinkedIn.' },
+      { t: 'Design grafic', d: 'Tricouri, afișe, portofoliul de inginerie, grafica robotului: dacă are logo-ul nostru, a trecut pe la design.' },
+      { t: 'Foto și video', d: 'Fotografiezi competițiile, montezi reel-uri și videoclipurile sezonului.' },
+      { t: 'Fundraising', d: 'Găsești sponsori, prezinți echipa și te ocupi de parteneriatele care plătesc sezonul.' },
+    ],
+    reqH: 'Cine poate aplica',
+    req: ['Înveți la Colegiul Național „Unirea” din Focșani.', 'Ai cel puțin 13 ani.', 'Atât. Nu ai nevoie de experiență: începi ca recrut și te învățăm noi restul.'],
+    applyH: 'Gata?',
+    applyP: 'Completează formularul și revenim cu detalii despre următoarea rundă de recrutare.',
+  },
+}[locale];
+---
+<PageHead locale={locale} title={t.title} lede={t.lede}
+          photo={{ key: 'site/join/sparkhope-2025.webp', width: 1280, height: 851, alt: t.photoAlt, position: '50% 40%' }}>
+  <Fragment slot="actions"><a class="btn btn--primary" href={site.links.apply} rel="noopener" target="_blank">{t.apply}<Arrow /></a></Fragment>
+</PageHead>
+
+<section class="sec" aria-labelledby="why-h">
+  <div class="wrap split">
+    <SecHead id="why-h" title={t.whyH} />
+    <ul class="rows rows--icons">{t.why.map((w, i) => <li><span class="tile"><Icon name={whyIcons[i]} /></span><h3>{w.t}</h3><p>{w.d}</p></li>)}</ul>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="dept-h">
+  <div class="wrap">
+    <SecHead id="dept-h" title={t.deptH} lede={t.deptLede} />
+    <ul class="rows rows--two rows--icons depts">
+      {t.depts.map((d, i) => <li><span class="tile"><Icon name={deptIcons[i]} /></span><h3>{d.t}</h3><p>{d.d}</p></li>)}
+    </ul>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="req-h">
+  <div class="wrap feature">
+    <figure class="feature__photo board">
+      <Img src="gallery/decode/worlds-practice-field.webp" width={1600} height={1069} alt="" zoom />
+    </figure>
+    <div class="feature__text">
+      <h2 id="req-h" class="h-lg" data-reveal>{t.reqH}</h2>
+      <ul class="checks">{t.req.map((r) => <li>{r}</li>)}</ul>
+      <h3 class="h-md feature__sub">{t.applyH}</h3>
+      <p>{t.applyP}</p>
+      <a class="btn btn--primary" href={site.links.apply} rel="noopener" target="_blank">{t.apply}<Arrow /></a>
+    </div>
+  </div>
+</section>

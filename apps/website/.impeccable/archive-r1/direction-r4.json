@@ -1,0 +1,87 @@
+{
+  "title": "Choose the visual world for brickbot.ro (round 4)",
+  "question": "Back to the people: every card is built on photographs of the students, with this season's results as facts beside them, never as a boast. The roll assigned On Tour.",
+  "options": [
+    {
+      "id": "assigned",
+      "kind": "assigned",
+      "label": "On Tour",
+      "kicker": "THE ROLL",
+      "lineage": "band tour photobooks, tour-shirt date lists and backstage laminates",
+      "thesis": "The season as a tour: candid photos of the students on the road, the stops listed like a tour shirt's dates, and partners get the all-access pass.",
+      "palette": ["#0A0A0A", "#FFEC17", "#7A1027", "#F4F4F2"],
+      "materials": ["white-bordered photobook prints, stacked with real depth", "tour-shirt date list", "yellow laminate pass on a burgundy lanyard"],
+      "viewport": "Left: 'On tour with BrickBot 2025–26' and the stops as a plain date list (East League, Nationals, FIRST Championship, Twin Cup, schools in Focșani every week). Right: three big candid prints overlap — the celebration, the drive team, a classroom — and a yellow 'All access' laminate hangs in, its link going to partnering.",
+      "risk": "Band-tour styling can look like music merch; the photos must carry it, with the props kept few and real.",
+      "raised": [
+        {"from": "challenger-forge", "raise": "Each stop's result sits in measured tabular figures in its row, stated plainly as fact."},
+        {"from": "challenger-onebit", "raise": "Photos open from where they sit: a print grows into the lightbox from its own position."},
+        {"from": "challenger-flap", "raise": "The stops form a real, semantic table underneath the styling."},
+        {"from": "challenger-fight", "raise": "Display type fills its column edge to edge, at full scale."}
+      ],
+      "html": ".impeccable/sketch/tour.html"
+    },
+    {
+      "id": "model-pick",
+      "kind": "pick",
+      "label": "Contact Sheet",
+      "kicker": "IMPECCABLE’S PICK",
+      "lineage": "photojournalists' contact sheets, grease pencil and loupe",
+      "thesis": "The season as a photographer's contact sheet: dozens of real frames of the students, with the keepers circled in brand-yellow grease pencil and a loupe that enlarges them.",
+      "palette": ["#0A0A0A", "#FFEC17", "#151515", "#F4F4F2"],
+      "materials": ["contact-sheet grid with frame numbers", "yellow grease-pencil circles", "a loupe magnifier", "darkroom black"],
+      "viewport": "'Thirty teenagers. One robot. A season worth keeping.' beside a sheet of twelve frames from the season; the keeper is circled in yellow and enlarged under a loupe.",
+      "risk": "Familiar: contact sheets are a well-known editorial device, and the small frames hurt on phones unless the loupe does the work."
+    },
+    {
+      "id": "challenger-mook",
+      "kind": "challenger",
+      "catalogId": "pop-culture-shelf-gothic-lolita-mook",
+      "verdict": "competitive",
+      "label": "Annotated Spread",
+      "lineage": "Japanese fashion-mook spreads with hand-drawn annotation ribbons",
+      "thesis": "Shingled photos of the students, each annotated by hand with what they actually do: first season in CAD, drive coach, Nationals in March.",
+      "palette": ["#0A0A0A", "#FFEC17", "#7A1027", "#F4F4F2"],
+      "materials": ["shingled white-bordered photos", "hand-drawn yellow annotation lines", "a fold-out sheet"],
+      "viewport": "Four overlapping photos fill the screen with yellow ribbon annotations curling out to roles and moments; below them, 'Who they were in September. Who they are now.'",
+      "case": "The strongest card on impact on young people: it shows the roles and the growth. Weaker for sponsors, who need the performance more visible.",
+      "risk": "Handwriting can get cute; the notes must be few, true, and written in the team's voice.",
+      "board": "https://impeccable.style/worlds/cards/pop-culture-shelf-gothic-lolita-mook.webp",
+      "html": ".impeccable/sketch/annotated.html"
+    },
+    {
+      "id": "challenger-hall",
+      "kind": "challenger",
+      "catalogId": "light-shadow-caustics-indoor-weather-sun",
+      "verdict": "competitive",
+      "label": "Yellow Hall",
+      "lineage": "an indoor sun installation: one light, a hall full of people",
+      "thesis": "The brand yellow as one great light, with the whole team and the kids they reach gathered in it.",
+      "palette": ["#FFEC17", "#000000", "#FFF8A0", "#7A1027"],
+      "materials": ["yellow haze ground", "half-sun disc", "photographs set in black against the light"],
+      "viewport": "A yellow screen with a half sun; the celebration photo spans the lower half in black ink against the light; a short headline and one quiet action sit above it.",
+      "case": "Bold and warm, with people at the centre. Faces flatten in the duotone, which costs individual students their detail.",
+      "risk": "Drenched yellow is intense, and the duotone can lose faces.",
+      "board": "https://impeccable.style/worlds/cards/light-shadow-caustics-indoor-weather-sun.webp",
+      "html": ".impeccable/sketch/hall.html"
+    },
+    {"id": "challenger-fight", "kind": "challenger", "catalogId": "posters-covers-sleeves-fight-poster", "verdict": "declined", "label": "Fight Poster", "lineage": "boxing bills", "thesis": "Two names colliding at a versus mark.", "palette": ["#EFE6D2", "#000000", "#C9A227"], "materials": ["slab caps", "newsprint"], "viewport": "BrickBot vs the world.", "case": "Declined: 'versus' is rivalry, which goes against FIRST's values, and it's close to the bill you passed on.", "risk": "Combative.", "kept": "Type that fills its column edge to edge."},
+    {"id": "challenger-forge", "kind": "challenger", "catalogId": "metal-forging-patina-blacksmith-scale-shower", "verdict": "declined", "label": "Forge", "lineage": "power-hammer forging", "thesis": "Every blow lengthens the bar.", "palette": ["#111111", "#FF7A1A", "#888888"], "materials": ["white-hot steel", "scale"], "viewport": "A glowing bar under the hammer.", "case": "Declined: grit without faces.", "risk": "No people.", "kept": "Results in measured tabular figures."},
+    {"id": "challenger-onebit", "kind": "challenger", "catalogId": "medium-native-one-bit-desktop", "verdict": "declined", "label": "One-bit Desktop", "lineage": "early 1-bit desktops", "thesis": "Dithered windows on one desktop.", "palette": ["#FFFFFF", "#000000"], "materials": ["dither", "window chrome"], "viewport": "Overlapping windows of photos.", "case": "Declined: a retro-computing costume that turns photos into dither.", "risk": "Costume.", "kept": "Photos open from where they sit."},
+    {"id": "challenger-flap", "kind": "challenger", "catalogId": "signals-instruments-split-flap-concourse", "verdict": "declined", "label": "Split-flap Board", "lineage": "station departure boards", "thesis": "Results clacking onto a board.", "palette": ["#111111", "#FFFFFF", "#FFB000"], "materials": ["flaps", "steel"], "viewport": "A departure board of events.", "case": "Declined: too close to the Destination Blind, and there are no people in it.", "risk": "Repeats a rejected idea.", "kept": "A real semantic table underneath."}
+  ],
+  "reroll": { "registers": ["safer", "bolder"] },
+  "buildPath": { "value": "code" },
+  "canon": true,
+  "canonCard": {
+    "kind": "canon",
+    "label": "The category standard",
+    "thesis": "A dark team site with a yellow accent, built to the level of team254.com and citruscircuits.org.",
+    "palette": ["#000000", "#FFEC17", "#FFFFFF"],
+    "materials": ["full-bleed photo hero", "season results", "sponsor logo strip"],
+    "viewport": "The team photo with a headline and two buttons, then the season, posts and sponsors.",
+    "risk": "Close to the removed first attempt; it looks like every other strong team's site.",
+    "html": ".impeccable/sketch/canon.html"
+  },
+  "steer": true
+}

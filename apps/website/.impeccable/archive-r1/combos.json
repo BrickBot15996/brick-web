@@ -1,0 +1,119 @@
+{
+ "title": "Main Event Bill, Season Documentary, Media Day: developed and combined",
+ "question": "Each of the three developed on its own, then four combinations. Copy follows your notes: the wordmark wherever BrickBot appears, the motto, one plain line that we qualified for the FIRST Championship 2026, no boasting. Pick one, or use Steer to mix parts.",
+ "options": [
+  {
+   "id": "bill2",
+   "label": "Main Event Bill, developed",
+   "lineage": "developed / combined",
+   "thesis": "The motto as the headline act: BrickBot presents \"We build our future / BRICK BY BRICK\" in towering condensed type, a yellow duotone of the Nationals crowd full height on the right, one burgundy billing line: Qualified · FIRST Championship 2026.",
+   "palette": [
+    "#070707",
+    "#FFEC17",
+    "#8E1230",
+    "#FFFFFF"
+   ],
+   "materials": [],
+   "viewport": "The motto as the headline act: BrickBot presents \"We build our future / BRICK BY BRICK\" in towering condensed type, a yellow duotone of the Nationals crowd full height on the right, one burgundy billing line: Qualified · FIRST Championship 2026.",
+   "risk": "Poster type at this scale needs a strong condensed face that also has Romanian diacritics.",
+   "html": ".impeccable/sketch/bill2.html"
+  },
+  {
+   "id": "doc2",
+   "label": "Season Documentary, developed",
+   "lineage": "developed / combined",
+   "thesis": "A series title card: \"A season with\" over the wordmark across a full-bleed, darkened photo; the motto and one plain line below; a chapter strip runs through the season (Nationals, FIRST Championship, Twin Cup, BioBuzz now).",
+   "palette": [
+    "#070707",
+    "#FFEC17",
+    "#8E1230",
+    "#FFFFFF"
+   ],
+   "materials": [],
+   "viewport": "A series title card: \"A season with\" over the wordmark across a full-bleed, darkened photo; the motto and one plain line below; a chapter strip runs through the season (Nationals, FIRST Championship, Twin Cup, BioBuzz now).",
+   "risk": "Rests on the photos; the chapter strip must link somewhere real (season page, posts).",
+   "html": ".impeccable/sketch/doc2.html"
+  },
+  {
+   "id": "media2",
+   "label": "Media Day, developed",
+   "lineage": "developed / combined",
+   "thesis": "A brand-yellow seamless sweep with a floor falloff; the black wordmark, the motto, a plain line and two actions; three big prints of the students casting soft floor shadows.",
+   "palette": [
+    "#070707",
+    "#FFEC17",
+    "#8E1230",
+    "#FFFFFF"
+   ],
+   "materials": [],
+   "viewport": "A brand-yellow seamless sweep with a floor falloff; the black wordmark, the motto, a plain line and two actions; three big prints of the students casting soft floor shadows.",
+   "risk": "A yellow-drenched hero on a dark-first brand; dark sections follow. Best with a real media-day shoot.",
+   "html": ".impeccable/sketch/media2.html"
+  },
+  {
+   "id": "combo_docbill",
+   "label": "Documentary × Bill",
+   "lineage": "developed / combined",
+   "thesis": "Full-bleed documentary photo, the motto set as a towering poster across it (white then yellow), a burgundy billing line, and the chapter strip.",
+   "palette": [
+    "#070707",
+    "#FFEC17",
+    "#8E1230",
+    "#FFFFFF"
+   ],
+   "materials": [],
+   "viewport": "Full-bleed documentary photo, the motto set as a towering poster across it (white then yellow), a burgundy billing line, and the chapter strip.",
+   "risk": "Big type over a busy photo needs the darkening to hold contrast at every width.",
+   "html": ".impeccable/sketch/combo_docbill.html"
+  },
+  {
+   "id": "combo_mediabill",
+   "label": "Media Day × Bill",
+   "lineage": "developed / combined",
+   "thesis": "\"BRICK BY BRICK\" in giant black type on the yellow sweep, with student prints standing in front of the letters for real depth; the wordmark presents \"We build our future\".",
+   "palette": [
+    "#070707",
+    "#FFEC17",
+    "#8E1230",
+    "#FFFFFF"
+   ],
+   "materials": [],
+   "viewport": "\"BRICK BY BRICK\" in giant black type on the yellow sweep, with student prints standing in front of the letters for real depth; the wordmark presents \"We build our future\".",
+   "risk": "The prints must never hide enough letters to break the motto.",
+   "html": ".impeccable/sketch/combo_mediabill.html"
+  },
+  {
+   "id": "combo_docmedia",
+   "label": "Documentary × Media Day",
+   "lineage": "developed / combined",
+   "thesis": "The title card over the full-bleed photo on top, falling onto a yellow sweep below where the motto sits and student prints stand on the floor.",
+   "palette": [
+    "#070707",
+    "#FFEC17",
+    "#8E1230",
+    "#FFFFFF"
+   ],
+   "materials": [],
+   "viewport": "The title card over the full-bleed photo on top, falling onto a yellow sweep below where the motto sits and student prints stand on the floor.",
+   "risk": "Two grounds in one screen; the seam between them must feel like a stage edge, not a section break.",
+   "html": ".impeccable/sketch/combo_docmedia.html"
+  },
+  {
+   "id": "combo_all",
+   "label": "All three",
+   "lineage": "developed / combined",
+   "thesis": "A slanted yellow sweep panel carries the wordmark and the towering motto; the documentary photo fills the rest with \"A season with BrickBot\" and \"Qualified for the FIRST Championship 2026\" as its title card and chapter strip.",
+   "palette": [
+    "#070707",
+    "#FFEC17",
+    "#8E1230",
+    "#FFFFFF"
+   ],
+   "materials": [],
+   "viewport": "A slanted yellow sweep panel carries the wordmark and the towering motto; the documentary photo fills the rest with \"A season with BrickBot\" and \"Qualified for the FIRST Championship 2026\" as its title card and chapter strip.",
+   "risk": "The densest option; on phones the panel stacks above the photo.",
+   "html": ".impeccable/sketch/combo_all.html"
+  }
+ ],
+ "steer": true
+}

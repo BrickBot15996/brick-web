@@ -1,0 +1,50 @@
+---
+import PageHead from '../PageHead.astro';
+import Arrow from '../Arrow.astro';
+import { cdn } from '../../lib/cdn';
+import { routes, type Locale } from '../../lib/site';
+import { projects, projectLogo } from '../../lib/projects';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = {
+  en: {
+    title: 'Our projects.',
+    lede: 'What we run beyond the competition season: events, school programmes and resources for other teams.',
+    open: 'Explore', ext: 'Opens in a new tab',
+  },
+  ro: {
+    title: 'Proiectele noastre.',
+    lede: 'Ce facem dincolo de sezonul competițional: evenimente, programe în școli și resurse pentru alte echipe.',
+    open: 'Descoperă', ext: 'Se deschide într-o filă nouă',
+  },
+}[locale];
+---
+<PageHead locale={locale} title={t.title} lede={t.lede} compact />
+
+<section class="sec sec--tight" aria-label={t.title}>
+  <div class="wrap">
+    <ul class="projs">
+      {projects.map((p) => {
+        const href = p.external ?? `${routes.projects[locale]}${p.slug}/`;
+        return (
+          <li>
+            <a class="proj board" href={href} {...(p.external ? { rel: 'noopener', target: '_blank' } : {})}>
+              <span class="proj__stage"><img class="proj__logo" src={cdn(projectLogo(p))} alt="" loading="lazy" /></span>
+              <span class="proj__body">
+                <h2 class="proj__name">{p.name[locale]}</h2>
+                <p>{p.summary[locale]}</p>
+                <span class="proj__go">
+                  {p.external ? new URL(p.external).host : t.open}
+                  {p.external
+                    ? <svg class="arr arr--out" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6" /></svg>
+                    : <Arrow />}
+                  {p.external && <span class="sr-only">({t.ext})</span>}
+                </span>
+              </span>
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+</section>

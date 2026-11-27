@@ -1,0 +1,13 @@
+{
+  "name": "brick-web",
+  "private": true,
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "share:website": "node scripts/share.mjs website",
+    "share:links": "node scripts/share.mjs links"
+  },
+  "devDependencies": {
+    "turbo": "^2.5.0"
+  }
+}

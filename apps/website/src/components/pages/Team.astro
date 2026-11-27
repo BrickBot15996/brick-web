@@ -1,0 +1,150 @@
+---
+import PageHead from '../PageHead.astro';
+import SecHead from '../SecHead.astro';
+import Img from '../Img.astro';
+import Arrow from '../Arrow.astro';
+import Icon from '../Icon.astro';
+import { routes, type Locale } from '../../lib/site';
+import { seasons, totalAwards } from '../../lib/seasons';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const valueIcons = ['megaphone', 'bulb', 'trophy', 'users'] as const;
+const doIcons = ['cube', 'code', 'gamepad', 'document', 'camera', 'graduation'] as const;
+const withAwards = seasons.filter((s) => s.awards.length || s.extraEvents?.length);
+const withPhotos = seasons.filter((s) => s.teamPhoto);
+const t = {
+  en: {
+    title: 'The team.',
+    lede: 'High-school students from Focșani who build a competition robot every year, and everything around it, with nobody doing it for them.',
+    photoAlt: 'The 2026⁠–⁠27 BrickBot team in yellow shirts on the steps of “Unirea” National College',
+    driveH: 'What drives us',
+    driveLede: 'Our goal is simple: build a robot that can compete with anyone, and use it to get more young people in Vrancea into science and engineering. Four things keep us going.',
+    values: [
+      { t: 'Outreach', d: 'A robot is the best excuse to get kids curious. We take ours into schools and public events every year.' },
+      { t: 'Creativity', d: 'Every game is new, so every robot starts from a blank page. The weird ideas are usually the good ones.' },
+      { t: 'Ambition', d: 'We aim for the world stage, and in 2026 we got there.' },
+      { t: 'Team spirit', d: 'Older members teach newer ones, and nobody wins or loses alone.' },
+    ],
+    doH: 'What our students actually do',
+    doLede: 'Nobody here is just “on the team”. In a season, our members:',
+    does: [
+      'design parts in CAD, then machine, print and assemble them',
+      'write the code that drives the robot, autonomous routines included',
+      'drive it under pressure, in front of a full hall',
+      'write and design an engineering portfolio judged against teams from all over the world',
+      'run our social media, shoot photo and video, and design everything you see from us',
+      'organise events, teach robotics to primary-school kids and pitch to sponsors',
+    ],
+    awardsH: 'Every award, every season',
+    awardsLede: `${totalAwards} awards and results on record, from 2018⁠–⁠19 onward. Filter by season.`,
+    all: 'All seasons', season: 'Season', event: 'Event', award: 'Award or result',
+    photosH: 'Season by season',
+    photoOf: (y: string) => `The BrickBot team in ${y}`,
+    joinH: 'A student at “Unirea” National College?',
+    joinCta: 'Join BrickBot',
+  },
+  ro: {
+    title: 'Echipa.',
+    lede: 'Liceeni din Focșani care construiesc în fiecare an un robot de competiție, și tot ce ține de el, fără ca altcineva să o facă în locul lor.',
+    photoAlt: 'Echipa BrickBot 2026⁠–⁠27, în tricouri galbene, pe treptele Colegiului Național „Unirea”',
+    driveH: 'Ce ne motivează',
+    driveLede: 'Scopul nostru e simplu: un robot care să se poată bate cu oricine și, prin el, mai mulți tineri din Vrancea atrași de știință și inginerie. Patru lucruri ne țin în priză.',
+    values: [
+      { t: 'Outreach', d: 'Un robot e cea mai bună scuză ca să-i faci pe copii curioși. Îl ducem în școli și la evenimente publice în fiecare an.' },
+      { t: 'Creativitate', d: 'Fiecare joc e nou, deci fiecare robot pornește de la o foaie albă. Ideile ciudate sunt de obicei cele bune.' },
+      { t: 'Ambiție', d: 'Țintim scena mondială, iar în 2026 am ajuns acolo.' },
+      { t: 'Spirit de echipă', d: 'Cei mai vechi îi învață pe cei noi și nimeni nu câștigă sau pierde singur.' },
+    ],
+    doH: 'Ce fac efectiv membrii noștri',
+    doLede: 'Nimeni nu e aici doar „în echipă”. Într-un sezon, membrii noștri:',
+    does: [
+      'proiectează piese în CAD, apoi le prelucrează, le printează și le asamblează',
+      'scriu codul care conduce robotul, inclusiv rutinele autonome',
+      'îl pilotează sub presiune, în fața unei săli pline',
+      'scriu și designează un portofoliu de inginerie jurizat alături de echipe din toată lumea',
+      'se ocupă de social media, fac foto și video și designează tot ce vezi de la noi',
+      'organizează evenimente, predau robotică copiilor de la primară și prezintă echipa sponsorilor',
+    ],
+    awardsH: 'Fiecare premiu, din fiecare sezon',
+    awardsLede: `${totalAwards} premii și rezultate înregistrate, din 2018⁠–⁠19 încoace. Filtrează după sezon.`,
+    all: 'Toate sezoanele', season: 'Sezon', event: 'Competiție', award: 'Premiu sau rezultat',
+    photosH: 'Sezon cu sezon',
+    photoOf: (y: string) => `Echipa BrickBot în ${y}`,
+    joinH: 'Ești elev la Colegiul Național „Unirea”?',
+    joinCta: 'Alătură-te BrickBot',
+  },
+}[locale];
+---
+<PageHead locale={locale} title={t.title} lede={t.lede}
+          photo={{ key: 'seasons/biobuzz/team-photo.webp', width: 1600, height: 1066, alt: t.photoAlt, position: '50% 28%' }} />
+
+<section class="sec" aria-labelledby="drive-h">
+  <div class="wrap split">
+    <SecHead id="drive-h" title={t.driveH} lede={t.driveLede} />
+    <ul class="rows rows--two rows--icons">
+      {t.values.map((v, i) => <li><span class="tile"><Icon name={valueIcons[i]} /></span><h3>{v.t}</h3><p>{v.d}</p></li>)}
+    </ul>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="do-h">
+  <div class="wrap split">
+    <SecHead id="do-h" title={t.doH} lede={t.doLede} />
+    <ul class="does does--icons">
+      {t.does.map((d, i) => <li><span class="tile"><Icon name={doIcons[i]} /></span><span>{d}</span></li>)}
+    </ul>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="awards-h" data-filter-scope>
+  <div class="wrap">
+    <SecHead id="awards-h" title={t.awardsH} lede={t.awardsLede} />
+    <div class="chips" role="group" aria-label={t.season}>
+      <button class="chip" type="button" aria-pressed="true" data-filter="">{t.all}</button>
+      {withAwards.map((s) => <button class="chip" type="button" aria-pressed="false" data-filter={s.slug}>{s.years}</button>)}
+    </div>
+    <div class="board scoretable">
+      <table class="stable">
+        <caption class="sr-only">{t.awardsH}</caption>
+        <thead><tr><th scope="col">{t.season}</th><th scope="col">{t.event}</th><th scope="col">{t.award}</th></tr></thead>
+        <tbody>
+          {withAwards.flatMap((s) => [
+            ...s.awards.map((a) => ({ s, event: a.event[locale], award: a.award[locale] })),
+            ...(s.extraEvents ?? []).map((x) => ({ s, event: x.name[locale], award: x.result[locale] })),
+          ].map((a) => (
+            <tr data-item={a.s.slug}>
+              <td class="stable__season"><a href={`${routes.seasons[locale]}${a.s.slug}/`}>{a.s.name} <span>{a.s.years}</span></a></td>
+              <th scope="row">{a.event}</th>
+              <td class="stable__res">{a.award}</td>
+            </tr>
+          )))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="photos-h">
+  <div class="wrap">
+    <SecHead id="photos-h" title={t.photosH} />
+    <ul class="groups" data-lightbox-group>
+      {withPhotos.map((s) => (
+        <li>
+          <figure class="board">
+            <Img src={s.teamPhoto!.key} width={s.teamPhoto!.width} height={s.teamPhoto!.height} alt={t.photoOf(s.years)} zoom />
+          </figure>
+          <p class="groups__cap"><a href={`${routes.seasons[locale]}${s.slug}/`}>{s.name}</a> {s.years}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="join-h">
+  <div class="wrap">
+    <div class="note board">
+      <h2 id="join-h" class="h-md">{t.joinH}</h2>
+      <a class="btn btn--ghost" href={routes.join[locale]}>{t.joinCta}<Arrow /></a>
+    </div>
+  </div>
+</section>

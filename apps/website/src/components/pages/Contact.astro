@@ -1,0 +1,91 @@
+---
+import PageHead from '../PageHead.astro';
+import Arrow from '../Arrow.astro';
+import { routes, site, type Locale } from '../../lib/site';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const endpoint = import.meta.env.PUBLIC_SUPABASE_URL ? `${String(import.meta.env.PUBLIC_SUPABASE_URL).replace(/\/$/, '')}/functions/v1/contact` : '';
+const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
+const ad = site.address;
+const t = {
+  en: {
+    title: 'Get in touch.',
+    lede: 'Sponsorship, a school visit, a press question or just an idea: write to us and the right people on the team will get it.',
+    name: 'Your name', email: 'Your email', dept: 'What’s it about?', subject: 'Subject', message: 'Message',
+    depts: { general: 'General', pr: 'PR, events or social media', design: 'Design', engineering: 'Engineering', programming: 'Programming', sponsorships: 'Sponsorships or fundraising' },
+    send: 'Send message', sending: 'Sending…',
+    ok: 'Thanks, your message is on its way. We usually reply within a few days.',
+    err: 'Something went wrong and your message wasn’t sent. Try again, or email us directly at',
+    off: 'The form isn’t connected yet. Please email us directly at',
+    invalid: 'Please fill in every field with a valid email address.',
+    privacy: 'We email your message to the team and don’t store it. See our',
+    privacyLink: 'privacy policy',
+    directH: 'Or reach us directly',
+    emailK: 'Email', socialK: 'Social', addressK: 'Address',
+    addr: `${ad.street}, ${ad.city}, ${ad.county}, ${ad.country}`,
+    mapTitle: 'Map showing BrickBot’s address in Focșani',
+    assocK: 'Association',
+  },
+  ro: {
+    title: 'Scrie-ne.',
+    lede: 'Sponsorizare, o vizită la școală, o întrebare de presă sau doar o idee: scrie-ne și mesajul ajunge la oamenii potriviți din echipă.',
+    name: 'Numele tău', email: 'E-mailul tău', dept: 'Despre ce e vorba?', subject: 'Subiect', message: 'Mesaj',
+    depts: { general: 'General', pr: 'PR, evenimente sau social media', design: 'Design', engineering: 'Inginerie', programming: 'Programare', sponsorships: 'Sponsorizări sau fundraising' },
+    send: 'Trimite mesajul', sending: 'Se trimite…',
+    ok: 'Mulțumim, mesajul tău e pe drum. De obicei răspundem în câteva zile.',
+    err: 'Ceva n-a mers și mesajul nu s-a trimis. Încearcă din nou sau scrie-ne direct la',
+    off: 'Formularul nu e conectat încă. Te rugăm să ne scrii direct la',
+    invalid: 'Completează toate câmpurile, cu o adresă de e-mail validă.',
+    privacy: 'Trimitem mesajul tău prin e-mail echipei și nu îl stocăm. Vezi',
+    privacyLink: 'politica de confidențialitate',
+    directH: 'Sau găsește-ne direct',
+    emailK: 'E-mail', socialK: 'Social', addressK: 'Adresă',
+    addr: `${ad.streetRo}, ${ad.city}, ${ad.county}, ${ad.countryRo}`,
+    mapTitle: 'Hartă cu adresa BrickBot din Focșani',
+    assocK: 'Asociație',
+  },
+}[locale];
+---
+<PageHead locale={locale} title={t.title} lede={t.lede} compact />
+
+<section class="sec sec--tight" aria-label={t.title}>
+  <div class="wrap contact">
+    <form class="cform board" data-contact data-endpoint={endpoint} novalidate
+          data-msg-sending={t.sending} data-msg-ok={t.ok} data-msg-err={t.err} data-msg-off={t.off} data-msg-invalid={t.invalid} data-email={site.email}>
+      <div class="cform__row">
+        <label class="field"><span>{t.name}</span><input name="name" type="text" autocomplete="name" required maxlength="120" /></label>
+        <label class="field"><span>{t.email}</span><input name="email" type="email" autocomplete="email" required maxlength="200" /></label>
+      </div>
+      <label class="field"><span>{t.dept}</span>
+        <select name="department" data-dept>
+          {Object.entries(t.depts).map(([v, l]) => <option value={v}>{l}</option>)}
+        </select>
+      </label>
+      <label class="field"><span>{t.subject}</span><input name="subject" type="text" required maxlength="160" /></label>
+      <label class="field"><span>{t.message}</span><textarea name="message" rows="7" required maxlength="5000"></textarea></label>
+      <div class="cf-turnstile" data-sitekey={siteKey} data-theme="dark" data-language={locale}></div>
+      <div class="cform__foot">
+        <button class="btn btn--primary" type="submit">{t.send}<Arrow /></button>
+        <p class="cform__fine">{t.privacy} <a href={routes.privacy[locale]}>{t.privacyLink}</a>.</p>
+      </div>
+      <p class="cform__status" role="status" aria-live="polite" data-status></p>
+    </form>
+
+    <aside class="direct" aria-labelledby="direct-h">
+      <h2 id="direct-h" class="h-md">{t.directH}</h2>
+      <dl class="direct__list">
+        <div><dt>{t.emailK}</dt><dd><a class="link" href={`mailto:${site.email}`}>{site.email}</a></dd></div>
+        <div><dt>{t.socialK}</dt><dd class="direct__social">
+          <a href={site.links.instagram} rel="me noopener" target="_blank">Instagram</a>
+          <a href={site.links.linkedin} rel="me noopener" target="_blank">LinkedIn</a>
+        </dd></div>
+        <div><dt>{t.addressK}</dt><dd>{t.addr}</dd></div>
+        <div><dt>{t.assocK}</dt><dd>{site.association.name} · CIF {site.association.cif}</dd></div>
+      </dl>
+      <figure class="map board">
+        <iframe src={site.maps.embed.includes('output=embed') ? `${site.maps.embed}&hl=${locale}` : site.maps.embed.replaceAll('!1sro!2sro', `!1s${locale}!2sro`)} title={t.mapTitle} loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </figure>
+    </aside>
+  </div>
+</section>
+<script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>

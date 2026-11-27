@@ -1,0 +1,49 @@
+{
+  "title": "Choose the visual world for brickbot.ro (round 8)",
+  "question": "The motto leads every hero, followed by a plain line: we qualified for the FIRST Championship 2026. Sketches are richer this time but still rough; depth and motion arrive in the build. The deal put Live Rail first.",
+  "options": [
+    {
+      "id": "assigned",
+      "kind": "assigned",
+      "catalogId": "rw-centre-rail-reference-setting",
+      "label": "Live Rail",
+      "kicker": "THE ROLL",
+      "lineage": "reference-edition pages: twin columns around a fixed centre rail of keys",
+      "thesis": "Two columns, the students and this season, twinned around a live yellow rail down the middle of every page; the rail's keys are the navigation.",
+      "palette": ["#070707", "#FFEC17", "#F2F2F0", "#9A9A9A"],
+      "materials": ["a segmented yellow bus rail", "square key detents", "large photos with deep shadow", "white-bordered prints overlapping the edges"],
+      "viewport": "The wordmark at left and 'We build our future brick by brick.' at right, split by the rail. Below: The students (drive team photo, what they run) and The 2025–26 season (Nationals photo, 'We qualified for the FIRST Championship 2026'). Rail keys: Team · 2026 · Partner · Join.",
+      "risk": "Symmetry is calm; it gets its energy from the rail and the photos, so they must be big and the current must move.",
+      "raised": [
+        {"from": "challenger-market", "raise": "Each part of the team speaks in its own sign voice where it appears."},
+        {"from": "challenger-pattern", "raise": "The chosen state is drawn solid and the others stay dashed: one committed line, never a toggle chip."},
+        {"from": "challenger-terminal", "raise": "States print themselves as text (e.g. 'next event: …') rather than appearing as badges."}
+      ],
+      "html": ".impeccable/sketch/rail.html"
+    },
+    {
+      "id": "challenger-market",
+      "kind": "challenger",
+      "catalogId": "wayfinding-cartography-signage-night-market-sign-river",
+      "verdict": "competitive",
+      "label": "Event Night",
+      "lineage": "night-market lantern streets, recast as a competition hall after dark",
+      "thesis": "A string of yellow lights over the wordmark and motto, and below them a row of stalls: drive team, workshop, schools, Worlds 2026, each under its own painted sign.",
+      "palette": ["#070707", "#FFEC17", "#B5173A", "#FFFFFF"],
+      "materials": ["a lit string of bulbs", "painted stall signs", "warm-lit photos with deep shadow"],
+      "viewport": "Bulbs swing above the centred wordmark and motto, with a plain line underneath; four signed photo stalls fill the lower half.",
+      "case": "Warm, crowded and human, with real energy. Less electric-engineered, and the glow sits close to neon.",
+      "risk": "Can feel like a festival rather than an engineering team.",
+      "html": ".impeccable/sketch/market.html"
+    },
+    {"id": "challenger-pattern", "kind": "challenger", "catalogId": "fashion-folded-worlds-sewing-pattern-envelope", "verdict": "declined", "label": "Pattern Envelope", "lineage": "sewing patterns", "thesis": "Robot parts as tissue pattern pieces.", "palette": ["#E8D9B5", "#000000", "#C0262D"], "materials": ["tissue", "dashed cut lines"], "viewport": "A cutting layout of parts.", "case": "Declined: off-brand manila and no people.", "risk": "Craft costume.", "kept": "Chosen state solid, the rest dashed."},
+    {"id": "challenger-versailles", "kind": "challenger", "catalogId": "architecture-inhabitable-space-versailles-bosquet-vistas", "verdict": "declined", "label": "Garden Vistas", "lineage": "formal gardens", "thesis": "Axial vistas and parterres.", "palette": ["#4E6B3A", "#D9C9A3", "#C9A227"], "materials": ["hedges", "gravel"], "viewport": "A symmetrical garden plan.", "case": "Declined: aristocratic and off-subject.", "risk": "Irrelevant.", "kept": "One clear axis."},
+    {"id": "challenger-risoweb", "kind": "challenger", "catalogId": "risograph-web-system", "verdict": "declined", "label": "Riso System", "lineage": "risograph web", "thesis": "Spot inks out of register.", "palette": ["#F3EBDD", "#FF48B0", "#0078BF"], "materials": ["spot inks"], "viewport": "Misregistered layers.", "case": "Declined: near-duplicate of the Two-Ink Issue you passed on.", "risk": "Repeat.", "kept": "Subtle layer offsets on hover."},
+    {"id": "challenger-terminal", "kind": "challenger", "catalogId": "signals-instruments-phosphor-terminal-midnight", "verdict": "declined", "label": "Phosphor Terminal", "lineage": "green terminals", "thesis": "A live transcript on glass.", "palette": ["#020a02", "#39FF14"], "materials": ["phosphor"], "viewport": "A blinking cursor.", "case": "Declined: hacker neon, the cliché you ruled out.", "risk": "Neon.", "kept": "States print themselves."}
+  ],
+  "reroll": { "registers": ["safer", "bolder"] },
+  "buildPath": { "value": "code" },
+  "canon": true,
+  "canonCard": {"kind": "canon", "label": "The category standard", "thesis": "A dark team site with the wordmark, the motto and a yellow accent, built to the level of team254.com.", "palette": ["#000000", "#FFEC17", "#FFFFFF"], "materials": ["full-bleed photo hero", "season results", "sponsor logo strip"], "viewport": "The team photo with the wordmark, the motto and two buttons.", "risk": "Looks like every other strong team's site.", "html": ".impeccable/sketch/canon.html"},
+  "steer": true
+}

@@ -1,0 +1,19 @@
+---
+import Arrow from '../Arrow.astro';
+import { routes, site, type Locale } from '../../lib/site';
+import { copy } from '../../lib/copy';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = copy[locale].close;
+---
+<div class="close">
+  <div class="wrap">
+    <div class="close__board board">
+      <h2 class="close__h" data-reveal>{t.heading}</h2>
+      <div class="close__actions">
+        <a class="btn btn--dark" href={routes.contact[locale]}>{t.cta}<Arrow /></a>
+        <a class="close__mail" href={`mailto:${site.email}`}>{site.email}</a>
+      </div>
+    </div>
+  </div>
+</div>

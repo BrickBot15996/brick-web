@@ -1,0 +1,10 @@
+{
+  // Workers with static assets (CLAUDE.md §2). Workers Builds root: apps/links, build: pnpm build, deploy: pnpm exec wrangler deploy.
+  // The custom domain links.brickbot.ro is attached in the dashboard (SETUP.md "Workers Builds").
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "brickbot-links",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./dist"
+  }
+}

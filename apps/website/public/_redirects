@@ -1,0 +1,30 @@
+# Legacy URLs (CLAUDE.md §3.12), permanent
+/donate              /en/donate/                       301
+/doneaza             /ro/doneaza/                      301
+/en/our-team         /en/team/                         301
+/en/our-team/        /en/team/                         301
+/ro/despre-noi       /ro/echipa/                       301
+/ro/despre-noi/      /ro/echipa/                       301
+/en/support-us       /en/partners/                     301
+/en/support-us/      /en/partners/                     301
+/ro/sustine-ne       /ro/parteneri/                    301
+/ro/sustine-ne/      /ro/parteneri/                    301
+/en/privacy-policy   /en/privacy/                      301
+/en/privacy-policy/  /en/privacy/                      301
+/projects            /en/projects/                     301
+/projects/*          /en/projects/                     301
+/ro/projects/*       /ro/proiecte/                     301
+
+# BrickDocs has no page of its own (lib/projects.ts `external`)
+/en/projects/brickdocs   https://docs.brickbot.ro      302
+/en/projects/brickdocs/  https://docs.brickbot.ro      302
+/ro/proiecte/brickdocs   https://docs.brickbot.ro      302
+/ro/proiecte/brickdocs/  https://docs.brickbot.ro      302
+
+# Short URLs: seed set. After launch this block is generated from the CMS at build time.
+/apply               https://forms.gle/kr4LBrLzFzvTW4S18             302
+/academy             https://forms.gle/16HcqxaW3yd2SXBd7             302
+/submit-portfolio    https://forms.gle/YGcVdcwkANbtqKNs5             302
+/formular230         https://formular230.ro/asociatia-brickbot       302
+/stripe              https://donate.stripe.com/00w6oI2wK5wBfQT0Sw5J602   302
+/docs                https://docs.brickbot.ro                        302

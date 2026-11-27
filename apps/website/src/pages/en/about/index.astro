@@ -1,0 +1,9 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Page from '../../../components/pages/About.astro';
+import { meta } from '../../../lib/meta';
+const m = meta.about!.en;
+---
+<Base locale="en" route="about" title={m.title} description={m.description}>
+  <Page locale="en" />
+</Base>

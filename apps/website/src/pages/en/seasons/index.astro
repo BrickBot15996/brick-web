@@ -1,0 +1,10 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Season from '../../../components/pages/Season.astro';
+import { meta } from '../../../lib/meta';
+import { currentSeason } from '../../../lib/seasons';
+const m = meta.seasons!.en;
+---
+<Base locale="en" route="seasons" title={m.title} description={m.description}>
+  <Season locale="en" season={currentSeason} />
+</Base>

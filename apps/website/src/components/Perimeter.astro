@@ -1,0 +1,27 @@
+---
+/** The perimeter board: every current sponsor's logo scrolling on an LED band. Draggable, see site.ts. */
+import Arc from './Arc.astro';
+import { sponsors } from '../lib/sponsors';
+import { cdn } from '../lib/cdn';
+import type { Locale } from '../lib/site';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+---
+<div class="perimeter__board">
+  <Arc class="perimeter__arc" at={22} />
+  <div class="perimeter__band" data-marquee>
+  <div class="perimeter__view"><div class="perimeter__run" data-marquee-run>
+    <ul class="perimeter__track">
+      {sponsors.map((s) => (
+        <li>{s.href
+          ? <a href={s.href} rel="noopener" target="_blank"><img src={cdn(s.logo)} alt={s.name} loading="lazy" decoding="async" /></a>
+          : <img src={cdn(s.logo)} alt={s.name} loading="lazy" decoding="async" />}</li>
+      ))}
+    </ul>
+    <ul class="perimeter__track" aria-hidden="true">
+      {sponsors.map((s) => <li><img src={cdn(s.logo)} alt="" loading="lazy" decoding="async" /></li>)}
+    </ul>
+  </div>
+  </div></div>
+  </div>
+</div>

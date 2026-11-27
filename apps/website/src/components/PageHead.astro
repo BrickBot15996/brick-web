@@ -1,0 +1,41 @@
+---
+/**
+ * Inner-page header: a large Expanded heading with its lede beside it, an optional people-first photo board below,
+ * and an optional LED strip of facts under an arc. Actions go in the "actions" slot.
+ */
+import Img from './Img.astro';
+import Led from './Led.astro';
+import Arc from './Arc.astro';
+import type { Locale } from '../lib/site';
+interface Photo { key: string; width: number; height: number; alt: string; position?: string }
+interface Props {
+  locale: Locale; title: string; lede?: string; photo?: Photo;
+  strip?: { hi?: string; text: string }[]; stripPlain?: string; compact?: boolean;
+}
+const { locale, title, lede, photo, strip, stripPlain, compact } = Astro.props;
+---
+<header class:list={['phead', compact && 'phead--compact', photo && 'phead--photo']}>
+  <div class="wrap phead__grid">
+    <h1 class="h-xl phead__h">{title}</h1>
+    {(lede || Astro.slots.has('actions')) && (
+      <div class="phead__side">
+        {lede && <p class="lead">{lede}</p>}
+        {Astro.slots.has('actions') && <div class="phead__actions"><slot name="actions" /></div>}
+      </div>
+    )}
+  </div>
+  {photo && (
+    <div class="wrap">
+      <figure class="phead__photo board">
+        <Img src={photo.key} width={photo.width} height={photo.height} alt={photo.alt} zoom loading="eager" fetchpriority="high"
+             style={photo.position ? `object-position:${photo.position}` : undefined} />
+      </figure>
+    </div>
+  )}
+  {strip && (
+    <div class="phead__strip">
+      <Arc class="phead__arc" at={78} />
+      <Led items={strip} plain={stripPlain ?? strip.map((s) => `${s.hi ?? ''} ${s.text}`).join('. ')} />
+    </div>
+  )}
+</header>

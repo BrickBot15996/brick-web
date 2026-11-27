@@ -1,0 +1,63 @@
+{
+  "title": "Choose the visual world for brickbot.ro (round 7)",
+  "question": "Copy rewritten in a plain, modest first person: who we are, what we do, and that this season we reached the FIRST Championship (no more than that). The deal put Rain Garden first; Event Display beats it on both counts.",
+  "options": [
+    {
+      "id": "assigned",
+      "kind": "assigned",
+      "catalogId": "dream-surreal-impossible-worlds-gravity-rain-garden",
+      "label": "Rain Garden",
+      "kicker": "THE ROLL",
+      "lineage": "a surreal garden where rain falls toward whatever its cloud is drawn to",
+      "thesis": "A dark cloud of charge rains yellow down onto the students' photos: the team's energy falling on the people it reaches.",
+      "palette": ["#050505", "#FFEC17", "#1B1B1B", "#7A1027"],
+      "materials": ["yellow rain streaks", "a dark charge cloud", "photos as the ground the rain falls on"],
+      "viewport": "The wordmark, a plain intro and 'Partner with us' on the left; on the right a dark cloud rains yellow streaks down onto three student photos.",
+      "risk": "Dreamy and a little sad (rain); it says energy weakly and could read as decoration.",
+      "raised": [
+        {"from": "challenger-tensegrity", "raise": "Labels pinned to their subjects on leader lines, never floating captions."},
+        {"from": "challenger-app", "raise": "The yellow appears only where something can actually be done."}
+      ],
+      "html": ".impeccable/sketch/rain.html"
+    },
+    {
+      "id": "challenger-detector",
+      "kind": "challenger",
+      "catalogId": "scientific-notation-particle-detector-event-display",
+      "verdict": "wins",
+      "label": "Event Display",
+      "lineage": "particle-collider event displays: tracks curving out of one collision",
+      "thesis": "BrickBot as one collision of energy: yellow tracks curve out from the centre through detector rings to the students and the places this season reached.",
+      "palette": ["#050505", "#FFEC17", "#2C3A4A", "#B5173A"],
+      "materials": ["concentric detector rings", "curved yellow tracks with faint secondary tracks", "burgundy energy bars", "photos framed where tracks land"],
+      "viewport": "The wordmark, 'FTC team #15996, from \"Unirea\" National College in Focșani', two plain sentences and 'Partner with us' on the left. On the right, one bright centre with yellow tracks curving out to five photos (Nationals, drive team, Worlds, workshop, schools).",
+      "case": "Beats the leader on both counts: electric energy is the structure, it shows impact spreading outward to real people and places, and it makes no claims.",
+      "risk": "Scientific diagrams can feel cold; the photos must stay big, and the tracks stay flat with no glow.",
+      "board": "https://impeccable.style/worlds/cards/scientific-notation-particle-detector-event-display.webp",
+      "html": ".impeccable/sketch/detector.html"
+    },
+    {
+      "id": "challenger-ligne",
+      "kind": "challenger",
+      "catalogId": "pop-culture-shelf-ligne-claire-album",
+      "verdict": "competitive",
+      "label": "Album Page",
+      "lineage": "European clear-line comic albums: strict panel grid, yellow narration boxes",
+      "thesis": "The season told as an album page: student photos as panels in a strict grid, each with a short factual yellow caption box.",
+      "palette": ["#050505", "#FFEC17", "#FFFFFF", "#7A1027"],
+      "materials": ["photo panels with white gutters", "yellow narration boxes", "one even line weight"],
+      "viewport": "Intro and wordmark on the left; four photo panels on the right, each captioned in a yellow box ('March 2026, Romania National Championship', 'The drive team, minutes before a match').",
+      "case": "Warm and human, and the captions keep it factual. Less electric, and comics risk the childish look.",
+      "risk": "Comic framing can read young.",
+      "html": ".impeccable/sketch/comic.html"
+    },
+    {"id": "challenger-tensegrity", "kind": "challenger", "catalogId": "kinetic-sculpture-automata-tensegrity-breathing-column", "verdict": "declined", "label": "Tensegrity", "lineage": "tensegrity sculpture", "thesis": "Opposing forces holding a column rigid.", "palette": ["#E8E6E1", "#111111", "#C0262D"], "materials": ["carbon rods", "red cord"], "viewport": "A breathing strut column.", "case": "Declined: engineering metaphor without the people.", "risk": "Cold.", "kept": "Labels pinned on leader lines."},
+    {"id": "challenger-app", "kind": "challenger", "catalogId": "digital-design-canon-warm-consumer-app-surface", "verdict": "declined", "label": "Warm App", "lineage": "consumer app surfaces", "thesis": "Soft cards on a warm ground.", "palette": ["#F6EFE6", "#FFFFFF", "#FF5A36"], "materials": ["rounded cards"], "viewport": "Friendly cards.", "case": "Declined: generic and off-brand (light and warm).", "risk": "Generic.", "kept": "Yellow only where you can act."},
+    {"id": "challenger-algorave", "kind": "challenger", "catalogId": "medium-native-algorave-source-floor", "verdict": "declined", "label": "Algorave", "lineage": "live-coded club nights", "thesis": "Projected code driving the music.", "palette": ["#000000", "#39FF14", "#FF00C8"], "materials": ["terminal type"], "viewport": "Code on a dance floor.", "case": "Declined: the neon look you ruled out.", "risk": "Neon cliché.", "kept": "Upcoming changes visible before they happen."}
+  ],
+  "reroll": { "registers": ["safer", "bolder"] },
+  "buildPath": { "value": "code" },
+  "canon": true,
+  "canonCard": {"kind": "canon", "label": "The category standard", "thesis": "A dark team site with the wordmark and a yellow accent, built to the level of team254.com and citruscircuits.org.", "palette": ["#000000", "#FFEC17", "#FFFFFF"], "materials": ["full-bleed photo hero", "season results", "sponsor logo strip"], "viewport": "The team photo with the wordmark, a headline and two buttons, then the season, posts and sponsors.", "risk": "Looks like every other strong team's site.", "html": ".impeccable/sketch/canon.html"},
+  "steer": true
+}

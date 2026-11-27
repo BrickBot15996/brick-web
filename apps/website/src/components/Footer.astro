@@ -1,0 +1,47 @@
+---
+import Brand from './Brand.astro';
+import Socials from './Socials.astro';
+import { routes, site, type Locale, type RouteId } from '../lib/site';
+import { copy } from '../lib/copy';
+import { cdn } from '../lib/cdn';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = copy[locale];
+const n = t.nav;
+const f = t.footer;
+const r = (id: RouteId) => routes[id][locale];
+const year = new Date().getFullYear();
+---
+<footer class="footer">
+  <div class="wrap footer__grid">
+    <div class="footer__about">
+      <Brand href={r('home')} label={locale === 'en' ? 'BrickBot home' : 'Acasă BrickBot'} class="brand--lg" />
+      <p>{f.lede.split('\n').map((line, i) => (<Fragment>{i > 0 && <br />}{line}</Fragment>))}</p>
+      <Socials />
+    </div>
+    <nav class="footer__cols" aria-label="Footer">
+      <div><h2>{f.cols.about}</h2><ul>
+        <li><a href={r('about')}>{n.story}</a></li><li><a href={r('team')}>{n.team}</a></li><li><a href={r('gallery')}>{n.gallery}</a></li></ul></div>
+      <div><h2>{f.cols.team}</h2><ul>
+        <li><a href={r('seasons')}>{n.seasons}</a></li><li><a href={r('projects')}>{n.projects}</a></li><li><a href={r('blog')}>{n.blog}</a></li><li><a href={r('join')}>{n.join}</a></li></ul></div>
+      <div><h2>{f.cols.support}</h2><ul>
+        <li><a href={r('partners')}>{n.partners}</a></li><li><a href={r('donate')}>{n.donate}</a></li><li><a href={r('sponsors')}>{n.sponsors}</a></li><li><a href={r('press')}>{n.press}</a></li></ul></div>
+      <div><h2>{f.cols.contact}</h2><ul>
+        <li><a href={`mailto:${site.email}`}>{site.email}</a></li><li><a href={r('contact')}>{f.form}</a></li></ul></div>
+    </nav>
+  </div>
+  <div class="wrap footer__marks">
+    <a class="footer__natie" href="https://natieprineducatie.ro" rel="noopener" target="_blank">
+      <img src={cdn('external/natie-prin-educatie.svg')} alt={f.natie} width="642" height="51" loading="lazy" />
+    </a>
+    <div class="footer__anpc">
+      <a href="https://anpc.ro/ce-este-sal/" rel="noopener nofollow" target="_blank"><img src={cdn('external/anpc-sal.webp')} alt={f.sal} width="204" height="51" loading="lazy" /></a>
+      <a href="https://ec.europa.eu/consumers/odr" rel="noopener nofollow" target="_blank"><img src={cdn('external/anpc-sol.webp')} alt={f.sol} width="204" height="51" loading="lazy" /></a>
+    </div>
+  </div>
+  <div class="wrap footer__legal">
+    <span>BrickBot © {year}</span>
+    <a href={r('terms')}>{f.terms}</a>
+    <a href={r('privacy')}>{f.privacy}</a>
+  </div>
+</footer>

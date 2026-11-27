@@ -1,0 +1,12 @@
+---
+/**
+ * Logo mark + wordmark. The legacy SVGs are filled #ff0, so they are drawn as CSS masks over the
+ * brand token (#FFEC17 exactly, CLAUDE.md §12). The mask URLs are set on <body> in Base.astro.
+ */
+interface Props { href: string; label: string; class?: string }
+const { href, label, class: cls } = Astro.props;
+---
+<a class:list={['brand', cls]} href={href} aria-label={label}>
+  <span class="brand__mark" aria-hidden="true"></span>
+  <span class="brand__word" aria-hidden="true"></span>
+</a>

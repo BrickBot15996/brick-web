@@ -1,2 +1,20 @@
 *.env*
 !.env.example
+node_modules/
+
+# Build outputs & framework caches
+dist/
+.astro/
+.turbo/
+.wrangler/
+
+# OS & log files
+.DS_Store
+*.log
+pnpm-debug.log*
+
+# Local tool & scratch files
+.impeccable/config.local.json
+.impeccable/hook.cache.json
+apps/website/.taste-skill
+apps/website/shots/

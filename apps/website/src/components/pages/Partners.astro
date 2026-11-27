@@ -1,0 +1,192 @@
+---
+import PageHead from '../PageHead.astro';
+import SecHead from '../SecHead.astro';
+import Img from '../Img.astro';
+import Arrow from '../Arrow.astro';
+import Icon from '../Icon.astro';
+import Perimeter from '../Perimeter.astro';
+import { sponsors } from '../../lib/sponsors';
+import { routes, site, type Locale } from '../../lib/site';
+import { cdn } from '../../lib/cdn';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const whyIcons = ['globe', 'graduation', 'shield'] as const;
+const contact = (dept: string) => `${routes.contact[locale]}?dept=${dept}`;
+const euro = (n: number) => (locale === 'en' ? `€${n.toLocaleString('en-GB')}` : `${n.toLocaleString('ro-RO')} €`);
+
+const benefits = {
+  en: ['Post on our social media', 'Logo in our engineering portfolio', 'Logo on our website', 'Logo on our roll-up banner', 'Logo on the robot', 'Logo on our team shirts', 'Merch with your logo'],
+  ro: ['Postare pe rețelele noastre', 'Logo în portofoliul de inginerie', 'Logo pe site-ul nostru', 'Logo pe roll-up-ul echipei', 'Logo pe robot', 'Logo pe tricourile echipei', 'Merch cu logo-ul tău'],
+}[locale];
+const tiers = [
+  { name: { en: 'Bronze', ro: 'Bronz' }, from: 200, n: 2 },
+  { name: { en: 'Silver', ro: 'Argint' }, from: 500, n: 3 },
+  { name: { en: 'Gold', ro: 'Aur' }, from: 1000, n: 4 },
+  { name: { en: 'Diamond', ro: 'Diamant' }, from: 2000, n: 5 },
+  { name: { en: 'Ultimate', ro: 'Ultimate' }, from: 3000, n: 7 },
+];
+
+const t = {
+  en: {
+    title: 'Partner with us.',
+    lede: 'Back a team of teenagers that finished the 2025⁠–⁠26 season in the world’s top 10, and put your name in front of everyone who follows them.',
+    primary: 'Talk sponsorship', deck: 'Download the sponsor deck',
+    photoAlt: 'The BrickBot team with their robot and a Romanian flag in front of the FIRST Tech Challenge stage at the 2026 FIRST Championship',
+    strip: [{ hi: 'Top 10 in the world', text: 'in the 2025⁠–⁠26 season' }, { text: 'FIRST Championship division finalists' }, { text: 'Contracts with Asociația BrickBot' }],
+    whyH: 'Why put your name on this team?',
+    why: [
+      { t: 'Your logo travels with us', d: 'We compete across Romania and abroad: the FIRST Championship in Houston, the Italy Championship, offseason cups in Bucharest. Depending on your package, your brand shows up in our posts, the portfolio, the website, the roll-up, on the robot and on the team shirts.' },
+      { t: 'You fund real engineering education', d: 'Students design, build and program a competition robot from scratch every season, then teach robotics to younger kids in Focșani schools. Your money turns into parts, tools and travel, not overhead.' },
+      { t: 'It’s done properly', d: 'Every sponsorship is a written contract with Asociația BrickBot, a registered NGO (CIF 50846996). Payments go to the association’s bank account, and we’ll show you how each season’s money was spent.' },
+    ],
+    pkgH: 'Sponsorship packages',
+    pkgLede: 'Benefits stack up: every package includes everything in the ones before it. Products and services count too, so tell us what you have in mind.',
+    from: 'from', benefit: 'Benefit', included: 'Included', notIncluded: 'Not included',
+    howH: 'How a sponsorship works',
+    how: [
+      { t: 'Get in touch', d: 'Tell us which package you’re thinking of, or what you’d like to offer instead.' },
+      { t: 'We send the contract', d: 'A sponsorship contract between your company and Asociația BrickBot, with the benefits written in.' },
+      { t: 'Sign and transfer', d: 'Payment goes to the association’s account at Banca Transilvania. No middlemen.' },
+      { t: 'We deliver, all season', d: 'Your logo goes on everything your package covers, and we keep you posted from every competition.' },
+    ],
+    sample: 'Download a sponsorship contract',
+    budgetH: 'Where last season’s money went',
+    budgetEmpty: 'We’re closing the 2025⁠–⁠26 accounts. The full breakdown, in euros and by category, goes up here as soon as it’s done.',
+    budgetLed: 'Coming soon',
+    budgetAsk: 'Want last season’s spending, category by category? Ask us',
+    boardH: `${sponsors.length} partners are already on the board.`, boardLink: 'Meet our sponsors',
+    reachH: 'Not here to fund us?',
+    reachP: 'Partner with us on outreach instead. We bring the robot and the team to schools, fairs and company events, and we’re always looking for workshops, mentors and venues.',
+    reachCta: 'Plan something with us',
+    reachAlt: 'Children trying out BrickBot’s robots at the team’s outdoor stand during a public event in Focșani',
+  },
+  ro: {
+    title: 'Devino partenerul nostru.',
+    lede: 'Susține o echipă de adolescenți care a încheiat sezonul 2025⁠–⁠26 în top 10 mondial și pune-ți numele în fața tuturor celor care o urmăresc.',
+    primary: 'Hai să vorbim', deck: 'Descarcă prezentarea pentru sponsori',
+    photoAlt: 'Echipa BrickBot cu robotul și un steag al României în fața scenei FIRST Tech Challenge, la Campionatul Mondial FIRST 2026',
+    strip: [{ hi: 'Top 10 mondial', text: 'în sezonul 2025⁠–⁠26' }, { text: 'Finaliști de divizie la Campionatul Mondial FIRST' }, { text: 'Contracte cu Asociația BrickBot' }],
+    whyH: 'De ce să-ți pui numele pe echipa asta?',
+    why: [
+      { t: 'Logo-ul tău călătorește cu noi', d: 'Concurăm în toată țara și în străinătate: Campionatul Mondial FIRST din Houston, Campionatul Italiei, cupe offseason la București. În funcție de pachet, brandul tău apare în postările noastre, în portofoliu, pe site, pe roll-up, pe robot și pe tricourile echipei.' },
+      { t: 'Finanțezi educație reală în inginerie', d: 'Elevii proiectează, construiesc și programează de la zero un robot de competiție în fiecare sezon, apoi predau robotică celor mici în școlile din Focșani. Banii tăi devin piese, scule și drumuri, nu cheltuieli administrative.' },
+      { t: 'Totul e făcut ca la carte', d: 'Fiecare sponsorizare are la bază un contract scris cu Asociația BrickBot, un ONG înregistrat (CIF 50846996). Plățile ajung în contul asociației, iar noi îți arătăm cum am cheltuit banii în fiecare sezon.' },
+    ],
+    pkgH: 'Pachete de sponsorizare',
+    pkgLede: 'Beneficiile se adună: fiecare pachet le include pe toate cele dinaintea lui. Contează și produsele sau serviciile, așa că spune-ne ce ai în minte.',
+    from: 'de la', benefit: 'Beneficiu', included: 'Inclus', notIncluded: 'Neinclus',
+    howH: 'Cum funcționează o sponsorizare',
+    how: [
+      { t: 'Ne scrii', d: 'Spune-ne la ce pachet te gândești sau ce ai vrea să oferi în schimb.' },
+      { t: 'Îți trimitem contractul', d: 'Un contract de sponsorizare între firma ta și Asociația BrickBot, cu beneficiile trecute în el.' },
+      { t: 'Semnezi și faci transferul', d: 'Plata ajunge în contul asociației de la Banca Transilvania. Fără intermediari.' },
+      { t: 'Livrăm tot sezonul', d: 'Logo-ul tău apare peste tot unde prevede pachetul, iar noi te ținem la curent de la fiecare competiție.' },
+    ],
+    sample: 'Descarcă un contract de sponsorizare',
+    budgetH: 'Pe ce s-au dus banii sezonul trecut',
+    budgetEmpty: 'Închidem acum socotelile pentru 2025⁠–⁠26. Defalcarea completă, în euro și pe categorii, apare aici imediat ce e gata.',
+    budgetLed: 'În curând',
+    budgetAsk: 'Vrei cheltuielile sezonului trecut, pe categorii? Întreabă-ne',
+    boardH: `${sponsors.length} de parteneri sunt deja pe tabelă.`, boardLink: 'Vezi sponsorii noștri',
+    reachH: 'Nu vrei să ne finanțezi?',
+    reachP: 'Fii partenerul nostru în proiectele de outreach. Venim cu robotul și echipa în școli, la târguri și la evenimente de firmă și căutăm mereu ateliere, mentori și spații.',
+    reachCta: 'Hai să plănuim ceva',
+    reachAlt: 'Copii încercând roboții BrickBot la standul echipei, în aer liber, la un eveniment public din Focșani',
+  },
+}[locale];
+const tick = '<svg viewBox="0 0 16 16" class="tick" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5"/></svg>';
+---
+<PageHead locale={locale} title={t.title} lede={t.lede} strip={t.strip}
+          photo={{ key: 'seasons/decode/team-photo.webp', width: 960, height: 640, alt: t.photoAlt, position: '50% 62%' }}>
+  <Fragment slot="actions">
+    <a class="btn btn--primary" href={contact('sponsorships')}>{t.primary}<Arrow /></a>
+    {/* Download buttons appear only once the file is uploaded (site.documents, CMS). Until then they are
+        hidden, and the page layout stays as it is. */}
+    {site.documents.deck && <a class="btn btn--ghost" href={cdn(site.documents.deck)}>{t.deck}<Arrow /></a>}
+  </Fragment>
+</PageHead>
+
+<section class="sec" aria-labelledby="why-h">
+  <div class="wrap split">
+    <SecHead id="why-h" title={t.whyH} />
+    <div>
+      <ul class="rows rows--icons">
+        {t.why.map((w, i) => <li><span class="tile"><Icon name={whyIcons[i]} /></span><h3>{w.t}</h3><p>{w.d}</p></li>)}
+      </ul>
+      <a class="link rows__after" href={contact('sponsorships')}>{t.budgetAsk}<Arrow /></a>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="pkg-h">
+  <div class="wrap">
+    <SecHead id="pkg-h" title={t.pkgH} lede={t.pkgLede} />
+    <div class="tiers board">
+      <table class="tiers__table">
+        <caption class="sr-only">{t.pkgH}</caption>
+        <thead>
+          <tr>
+            <th scope="col"><span class="sr-only">{t.benefit}</span></th>
+            {tiers.map((tier) => (
+              <th scope="col"><span class="tiers__name">{tier.name[locale]}</span><span class="tiers__price"><small>{t.from}</small> {euro(tier.from)}</span></th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {benefits.map((b, i) => (
+            <tr>
+              <th scope="row">{b}</th>
+              {tiers.map((tier) => (
+                <td>{i < tier.n
+                  ? <><Fragment set:html={tick} /><span class="sr-only">{t.included}</span></>
+                  : <span class="tiers__no" aria-label={t.notIncluded}></span>}</td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <ul class="tiers__list">
+        {tiers.map((tier) => (
+          <li class="tiers__card">
+            <p class="tiers__cardhead"><span class="tiers__name">{tier.name[locale]}</span><span class="tiers__price"><small>{t.from}</small> {euro(tier.from)}</span></p>
+            <ul>{benefits.slice(0, tier.n).map((b) => <li><Fragment set:html={tick} />{b}</li>)}</ul>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="board-h">
+  <div class="wrap perimeter__head">
+    <h2 id="board-h" class="h-md">{t.boardH}</h2>
+    <a class="link" href={routes.sponsors[locale]}>{t.boardLink}<Arrow /></a>
+  </div>
+  <Perimeter locale={locale} />
+</section>
+
+<section class="sec" aria-labelledby="how-h">
+  <div class="wrap split">
+    <SecHead id="how-h" title={t.howH}>
+      {/* Hidden until the sample contract is uploaded (site.documents.contract). */}
+      {site.documents.contract && <a class="btn btn--ghost" href={cdn(site.documents.contract)}>{t.sample}<Arrow /></a>}
+    </SecHead>
+    <ol class="steps">
+      {t.how.map((s) => <li><h3>{s.t}</h3><p>{s.d}</p></li>)}
+    </ol>
+  </div>
+</section>
+
+
+<section class="sec" aria-labelledby="reach-h">
+  <div class="wrap feature">
+    <figure class="feature__photo board">
+      <Img src="site/home/joy-in-motion.webp" width={1680} height={1120} alt={t.reachAlt} zoom />
+    </figure>
+    <div class="feature__text">
+      <h2 id="reach-h" class="h-lg" data-reveal>{t.reachH}</h2>
+      <p class="lead">{t.reachP}</p>
+      <a class="btn btn--ghost" href={contact('pr')}>{t.reachCta}<Arrow /></a>
+    </div>
+  </div>
+</section>

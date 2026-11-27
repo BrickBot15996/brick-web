@@ -1,0 +1,15 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Project from '../../../components/pages/Project.astro';
+import { projectPages, type Project as P } from '../../../lib/projects';
+import { routes } from '../../../lib/site';
+export function getStaticPaths() {
+  return projectPages.map((project) => ({ params: { project: project.slug }, props: { project } }));
+}
+const { project } = Astro.props as { project: P };
+const paths = { en: `${routes.projects.en}${project.slug}/`, ro: `${routes.projects.ro}${project.slug}/` };
+const title = `${project.name.ro} · Proiecte · BrickBot`;
+---
+<Base locale="ro" route="projects" paths={paths} title={title} description={project.summary.ro}>
+  <Project locale="ro" project={project} />
+</Base>

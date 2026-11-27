@@ -1,0 +1,106 @@
+---
+import PageHead from '../PageHead.astro';
+import Arrow from '../Arrow.astro';
+import { routes, site, form230Open, type Locale } from '../../lib/site';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const open230 = form230Open();
+const as = site.association;
+const t = {
+  en: {
+    title: 'Donate to BrickBot.',
+    lede: 'Every euro goes into the season: robot parts, field elements, registration fees and travel. Here are two ways to give, and our bank details if you’d rather transfer.',
+    photoAlt: 'BrickBot members presenting the robot to a class of young pupils',
+    f230H: 'Redirect 3.5% of your income tax',
+    f230P: 'If you pay income tax in Romania, you can send 3.5% of it to Asociația BrickBot through Form 230. It costs you nothing: the money would go to the state anyway.',
+    f230Open: `Open until 25 May ${new Date().getFullYear()}`,
+    f230Closed: 'Reopens in January',
+    f230Cta: 'Fill in Form 230',
+    stripeH: 'Secure online donation',
+    stripeP: 'A one-off donation through Stripe, from anywhere, by card. We never see or store your card details.',
+    stripeCta: 'Donate with Stripe',
+    bankH: 'Bank transfer',
+    bankP: 'Prefer a transfer? Use the association’s account below and add “Sponsorship” as the reference.',
+    k: { name: 'Association', cif: 'Tax ID (CIF)', bank: 'Bank', iban: 'IBAN' },
+    copy: 'Copy IBAN', copied: 'IBAN copied',
+    companyH: 'Donating as a company?',
+    companyP: 'A sponsorship contract may suit you better: it comes with visibility for your brand.',
+    companyCta: 'See sponsorship packages',
+    terms: 'Donations are covered by our Terms, including the refund policy.',
+  },
+  ro: {
+    title: 'Donează pentru BrickBot.',
+    lede: 'Fiecare euro merge în sezon: piese pentru robot, elemente de teren, taxe de înscriere și drumuri. Iată două moduri de a dona, plus datele bancare dacă preferi un transfer.',
+    photoAlt: 'Membri BrickBot prezentând robotul unei clase de elevi mici',
+    f230H: 'Redirecționează 3,5% din impozitul pe venit',
+    f230P: 'Dacă plătești impozit pe venit în România, poți trimite 3,5% din el către Asociația BrickBot prin Formularul 230. Nu te costă nimic: banii ar ajunge oricum la stat.',
+    f230Open: `Deschis până pe 25 mai ${new Date().getFullYear()}`,
+    f230Closed: 'Se redeschide în ianuarie',
+    f230Cta: 'Completează Formularul 230',
+    stripeH: 'Donație online securizată',
+    stripeP: 'O donație unică prin Stripe, de oriunde, cu cardul. Nu vedem și nu stocăm datele cardului tău.',
+    stripeCta: 'Donează prin Stripe',
+    bankH: 'Transfer bancar',
+    bankP: 'Preferi un transfer? Folosește contul asociației de mai jos și scrie „Sponsorizare” la detalii.',
+    k: { name: 'Asociație', cif: 'CIF', bank: 'Bancă', iban: 'IBAN' },
+    copy: 'Copiază IBAN-ul', copied: 'IBAN copiat',
+    companyH: 'Donezi ca firmă?',
+    companyP: 'Un contract de sponsorizare s-ar putea potrivi mai bine: vine cu vizibilitate pentru brandul tău.',
+    companyCta: 'Vezi pachetele de sponsorizare',
+    terms: 'Donațiile sunt acoperite de Termenii noștri, inclusiv politica de returnare.',
+  },
+}[locale];
+const ibanSpaced = as.iban.replace(/(.{4})/g, '$1 ').trim();
+---
+<PageHead locale={locale} title={t.title} lede={t.lede} compact />
+
+<section class="sec sec--tight" aria-label={t.title}>
+  <div class="wrap give">
+    <article class:list={['give__card give__card--230 board', !open230 && 'is-closed']}>
+      <h2 class="give__h">{t.f230H}</h2>
+      <p>{t.f230P}</p>
+      <p class="give__status"><span class="dot" aria-hidden="true"></span>{open230 ? t.f230Open : t.f230Closed}</p>
+      {open230 && <a class="btn btn--primary" href={site.links.form230} rel="noopener" target="_blank">{t.f230Cta}<Arrow /></a>}
+    </article>
+    <article class="give__card give__card--stripe board" id="give-online">
+      <h2 class="give__h">{t.stripeH}</h2>
+      <p>{t.stripeP}</p>
+      <a class:list={['btn', open230 ? 'btn--ghost' : 'btn--primary']} href={site.links.stripe} rel="noopener" target="_blank">{t.stripeCta}<Arrow /></a>
+      <p class="give__fine"><a href={routes.terms[locale]}>{t.terms}</a></p>
+    </article>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="bank-h">
+  <div class="wrap split">
+    <div class="sechead">
+      <h2 id="bank-h" class="h-lg sechead__h" data-reveal>{t.bankH}</h2>
+      <p class="lead sechead__lede">{t.bankP}</p>
+    </div>
+    <div class="bank board">
+      <dl class="bank__list">
+        <div><dt>{t.k.name}</dt><dd>{as.name}</dd></div>
+        <div><dt>{t.k.cif}</dt><dd>{as.cif}</dd></div>
+        <div><dt>{t.k.bank}</dt><dd>{as.bank}, {as.branch[locale]}</dd></div>
+        <div class="bank__iban"><dt>{t.k.iban}</dt>
+          <dd><span class="bank__num">{ibanSpaced}</span>
+            <button class="btn btn--sm btn--ghost" type="button" data-copy={as.iban} data-copied={t.copied}>{t.copy}</button>
+            <span class="sr-only" aria-live="polite" data-copy-status></span>
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="co-h">
+  <div class="wrap">
+    <div class="note board">
+      <div>
+        <h2 id="co-h" class="h-md">{t.companyH}</h2>
+        <p>{t.companyP}</p>
+      </div>
+      <a class="btn btn--ghost" href={routes.partners[locale]}>{t.companyCta}<Arrow /></a>
+    </div>
+  </div>
+</section>

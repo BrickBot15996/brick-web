@@ -1,0 +1,259 @@
+---
+/**
+ * One season (CLAUDE.md §3.5). /seasons/ renders the current season; /seasons/[season]/ is each season's permalink.
+ * Official events come from FTCScout at build time (2020+); awards and media are manual.
+ */
+import Img from '../Img.astro';
+import Arrow from '../Arrow.astro';
+import Led from '../Led.astro';
+import Arc from '../Arc.astro';
+import { routes, site, type Locale } from '../../lib/site';
+import { seasons, type Season } from '../../lib/seasons';
+import { gallery } from '../../lib/gallery';
+import { posts } from '../../lib/blog';
+import { teamEvents, type ScoutEvent } from '../../lib/ftcscout';
+import { cdn } from '../../lib/cdn';
+interface Props { locale: Locale; season: Season }
+const { locale, season } = Astro.props;
+const base = routes.seasons[locale];
+const events: ScoutEvent[] = season.ftc ? await teamEvents(season.ftc) : [];
+const today = new Date().toISOString().slice(0, 10);
+const matched = (code: string) => season.awards.filter((a) => a.at === code);
+// Past events where we were never ranked and played no matches (registered, then withdrew or cancelled) stay out of the table,
+// unless we hold an award or an alliance result for them. Upcoming events always stay.
+const shown = events.filter((e) => e.end >= today || e.rank || e.played || e.alliance || matched(e.code).length);
+const next = season.current ? shown.find((e) => e.end >= today) : undefined;
+const photos = gallery.filter((g) => g.season === season.slug && g.key !== season.teamPhoto?.key);
+const related = posts.filter((p) => p.season === season.slug);
+
+const fmt = (iso: string, opts: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short', year: 'numeric' }) =>
+  new Date(iso + 'T12:00:00').toLocaleDateString(locale === 'en' ? 'en-GB' : 'ro-RO', opts);
+const ordinal = (n: number) => {
+  const m100 = n % 100, m10 = n % 10;
+  return n + (m100 >= 11 && m100 <= 13 ? 'th' : m10 === 1 ? 'st' : m10 === 2 ? 'nd' : m10 === 3 ? 'rd' : 'th');
+};
+// An award that is itself a final placing ("8th place", "Locul 8") replaces the qualification rank instead of sitting beside it.
+const placing = /^(\d+(st|nd|rd|th) place|Locul \d+)$/;
+const t = {
+  en: {
+    current: 'Current season', seasonsNav: 'Seasons',
+    teamAlt: `The BrickBot team in ${season.years}`,
+    robotAlt: `The BrickBot robot for ${season.name}`, onshape: 'Open the CAD in Onshape', portfolio: 'Read the portfolio',
+    robotH: 'The robot', robotP: `Our ${season.name} robot. The full CAD model is public on Onshape: open it, spin it, take it apart.`,
+    portfolioH: 'Engineering portfolio', portfolioP: `How we designed, built and programmed our ${season.name} robot, in the portfolio we presented to the judges.`, pdf: 'PDF, opens in a new tab',
+    nextH: 'Next event', nextIn: (d: number) => (d === 0 ? 'today' : d === 1 ? 'tomorrow' : `in ${d} days`),
+    eventsH: 'Events',
+    date: 'Date', event: 'Event', where: 'Where', result: 'Result',
+    rank: (n: number) => `${ordinal(n)} place`, remote: 'Remote',
+    alliance: { winner: 'Winning alliance', finalist: 'Finalist alliance', 'division-winner': 'Division winners', 'division-finalist': 'Division finalists' },
+    upcoming: 'Upcoming', took: 'Took part',
+    noEvents: 'No official events for this season yet.',
+    preReg: 'Romanian teams weren’t registered with FIRST’s results system before 2020, so this season’s events aren’t online. The awards below are from our own record.',
+    awardsH: 'Awards', noAwards: season.current ? 'The season has just started. Awards show up here as we win them.' : 'No awards on record for this season.',
+    photosH: 'Gallery', postsH: 'From the BrickLog',
+    supportH: season.current ? 'Help us build this season’s robot.' : null,
+    support: 'Support us',
+  },
+  ro: {
+    current: 'Sezonul curent', seasonsNav: 'Sezoane',
+    teamAlt: `Echipa BrickBot în ${season.years}`,
+    robotAlt: `Robotul BrickBot pentru ${season.name}`, onshape: 'Deschide proiectul CAD în Onshape', portfolio: 'Citește portofoliul',
+    robotH: 'Robotul', robotP: `Robotul nostru din ${season.name}. Modelul CAD complet e public pe Onshape: deschide-l, rotește-l, desfă-l în bucăți.`,
+    portfolioH: 'Portofoliul de inginerie', portfolioP: `Cum am proiectat, construit și programat robotul din ${season.name}, în portofoliul prezentat jurizării.`, pdf: 'PDF, se deschide într-o filă nouă',
+    nextH: 'Următoarea competiție', nextIn: (d: number) => (d === 0 ? 'azi' : d === 1 ? 'mâine' : `peste ${d} zile`),
+    eventsH: 'Competiții',
+    date: 'Data', event: 'Competiție', where: 'Unde', result: 'Rezultat',
+    rank: (n: number) => `Locul ${n}`, remote: 'Online',
+    alliance: { winner: 'Alianța câștigătoare', finalist: 'Alianța finalistă', 'division-winner': 'Câștigătorii diviziei', 'division-finalist': 'Finaliști de divizie' },
+    upcoming: 'Urmează', took: 'Participare',
+    noEvents: 'Încă nu există competiții oficiale în acest sezon.',
+    preReg: 'Echipele din România nu erau înregistrate în sistemul de rezultate FIRST înainte de 2020, așa că acest sezon nu are competițiile online. Premiile de mai jos sunt din evidența noastră.',
+    awardsH: 'Premii', noAwards: season.current ? 'Sezonul abia a început. Premiile apar aici pe măsură ce le câștigăm.' : 'Nu avem premii înregistrate pentru acest sezon.',
+    photosH: 'Galerie', postsH: 'Din BrickLog',
+    supportH: season.current ? 'Ajută-ne să construim robotul din acest sezon.' : null,
+    support: 'Susține-ne',
+  },
+}[locale];
+// An award line that is an alliance result ("Winning alliance", "Division finalist alliance", "Alianța finalistă").
+const allianceAward = /alliance|alianț/i;
+// Awards from our record lead; FTCScout's alliance result is added when our record has no alliance line for that event.
+// The qualification rank is dropped once the event has a final result: an alliance result (Winner, Finalist, division
+// placings) or an award that is itself a placing.
+const result = (e: ScoutEvent) => {
+  const aw = matched(e.code).map((a) => a.award[locale]);
+  const fromScout = e.alliance && !aw.some((x) => allianceAward.test(x)) ? [t.alliance[e.alliance]] : [];
+  const final = !!e.alliance || aw.some((x) => allianceAward.test(x) || placing.test(x));
+  return [...fromScout, ...aw, !final && e.rank && t.rank(e.rank)].filter(Boolean).join(' · ');
+};
+// Official events and the season's custom extra events (offseason cups etc.), merged by date.
+const rows = [
+  ...shown.map((e) => ({ date: e.start, e })),
+  ...(season.extraEvents ?? []).map((x) => ({ date: x.date, x })),
+].sort((p, q) => p.date.localeCompare(q.date));
+const fmtLoose = (d: string) => (d.length === 10 ? fmt(d) : fmt(d.length === 7 ? d + '-15' : d + '-06-15', d.length === 7 ? { month: 'short', year: 'numeric' } : { year: 'numeric' }));
+const nextDays = next ? Math.max(0, Math.round((new Date(next.start + 'T00:00:00').getTime() - Date.now()) / 86400000)) : 0;
+---
+<header class="shead">
+  <div class="wrap">
+    <nav class="seasonnav" aria-label={t.seasonsNav}>
+      <ul>
+        {seasons.map((s) => (
+          <li><a href={`${base}${s.slug}/`} aria-current={s.slug === season.slug ? 'page' : undefined}>
+            <span class="seasonnav__name">{s.name}</span><span class="seasonnav__yrs">{s.years}</span>
+          </a></li>
+        ))}
+      </ul>
+    </nav>
+    <script is:inline>
+      // Keep the season switcher where the reader left it: restore the saved scroll, otherwise centre the current season.
+      // Inline and right after the strip on purpose: it runs while the page is parsed, before the first paint, so the
+      // strip never shows at the start and then jumps (a bundled module script runs only after the page has painted).
+      (() => {
+        const nav = document.currentScript.previousElementSibling;
+        const KEY = 'seasonnav-x';
+        let saved = null;
+        try { saved = sessionStorage.getItem(KEY); } catch { /* storage blocked */ }
+        if (saved !== null) nav.scrollLeft = Number(saved) || 0;
+        const cur = nav.querySelector('[aria-current="page"]');
+        if (cur) {
+          const nr = nav.getBoundingClientRect(), cr = cur.getBoundingClientRect();
+          if (cr.left < nr.left || cr.right > nr.right) nav.scrollLeft += cr.left - nr.left - (nr.width - cr.width) / 2;
+        }
+        nav.addEventListener('click', () => { try { sessionStorage.setItem(KEY, String(nav.scrollLeft)); } catch { /* ignore */ } });
+      })();
+    </script>
+    <div class="shead__grid">
+      <div class="shead__title">
+        <h1 class="h-xl shead__h">{season.name} <span class="shead__yrs">{season.years}</span></h1>
+      </div>
+      {season.teamPhoto && (
+        <figure class="shead__photo board">
+          <Img src={season.teamPhoto.key} width={season.teamPhoto.width} height={season.teamPhoto.height} alt={t.teamAlt} zoom loading="eager" fetchpriority="high" />
+        </figure>
+      )}
+    </div>
+  </div>
+  {next && (
+    <div class="phead__strip">
+      <Arc class="phead__arc" at={30} />
+      <Led items={[{ hi: t.nextH, text: `${fmt(next.start)} · ${next.name} · ${next.place}` }, { hi: '', text: t.nextIn(nextDays) }]}
+           plain={`${t.nextH}: ${next.name}, ${fmt(next.start)}, ${next.place}`} repeat={2} />
+    </div>
+  )}
+</header>
+
+
+{season.ftc && <section class="sec" aria-labelledby="ev-h">
+  <div class="wrap">
+    <div class="sechead">
+      <h2 id="ev-h" class="h-lg sechead__h">{t.eventsH}</h2>
+    </div>
+    {rows.length ? (
+      <div class="board scoretable">
+        <table class="stable stable--events">
+          <caption class="sr-only">{t.eventsH} {season.years}</caption>
+          <thead><tr><th scope="col">{t.date}</th><th scope="col">{t.event}</th><th scope="col">{t.where}</th><th scope="col">{t.result}</th></tr></thead>
+          <tbody>
+            {rows.map((r) => r.e ? (
+              <tr class:list={[r.e.alliance && 'is-hi', r.e.end >= today && 'is-next']}>
+                <td class="stable__date"><time datetime={r.e.start}>{fmt(r.e.start)}</time></td>
+                <th scope="row"><a href={r.e.url} rel="noopener" target="_blank">{r.e.name}</a><span class="stable__sub">{r.e.remote ? t.remote : r.e.place}</span></th>
+                <td class="stable__where">{r.e.remote ? t.remote : <>{r.e.venue && <span class="stable__venue">{r.e.venue}</span>}{r.e.place}</>}</td>
+                <td class="stable__res">{r.e.end >= today
+                  ? <>{t.upcoming} · <span data-countdown={r.e.start} data-locale={locale}>{t.nextIn(Math.max(0, Math.round((new Date(r.e.start + 'T00:00:00').getTime() - Date.now()) / 86400000)))}</span></>
+                  : (result(r.e) || <span class="stable__none">{t.took}</span>)}</td>
+              </tr>
+            ) : (
+              <tr class="is-hi">
+                <td class="stable__date"><time datetime={r.x.date}>{fmtLoose(r.x.date)}</time></td>
+                <th scope="row">{r.x.name[locale]}<span class="stable__sub">{r.x.place[locale]}</span></th>
+                <td class="stable__where">{r.x.place[locale]}</td>
+                <td class="stable__res">{r.x.result[locale]}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    ) : <p class="muted">{t.noEvents}</p>}
+  </div>
+</section>}
+
+{!season.ftc && <section class="sec" aria-labelledby="aw-h">
+  <div class="wrap">
+    <div class="sechead"><h2 id="aw-h" class="h-lg sechead__h">{t.awardsH}</h2>{season.start < 2020 && <p class="lead sechead__lede">{t.preReg}</p>}</div>
+    {season.awards.length ? (
+      <ul class="awards">
+        {season.awards.map((a) => <li><span class="awards__what">{a.award[locale]}</span><span class="awards__where">{a.event[locale]}</span></li>)}
+      </ul>
+    ) : <p class="muted">{t.noAwards}</p>}
+  </div>
+</section>}
+
+{(season.robot || season.portfolio) && (
+  <section class="sec" aria-label={[season.robot && t.robotH, season.portfolio && t.portfolioH].filter(Boolean).join(' · ')}>
+    <div class:list={['wrap sbuild', season.robot && season.portfolio ? 'sbuild--two' : 'sbuild--one']}>
+      {season.robot && (
+        <article class="sbuild__card board">
+          {season.onshape
+            ? <a class:list={['sbuild__media', season.robot.placeholder && 'sbuild__media--led']} href={season.onshape} rel="noopener" target="_blank" tabindex="-1" aria-hidden="true">
+                <Img src={season.robot.key} width={season.robot.width} height={season.robot.height} alt="" /></a>
+            : <div class:list={['sbuild__media', season.robot.placeholder && 'sbuild__media--led']}>
+                <Img src={season.robot.key} width={season.robot.width} height={season.robot.height} alt={t.robotAlt} /></div>}
+          <div class="sbuild__body">
+            <h2 class="h-md">{t.robotH}</h2>
+            {season.onshape && <p>{t.robotP}</p>}
+            {season.onshape && <a class="btn btn--ghost" href={season.onshape} rel="noopener" target="_blank">{t.onshape}<svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6" /></svg></a>}
+          </div>
+        </article>
+      )}
+      {season.portfolio && (
+        <article class="sbuild__card board">
+          {season.portfolio.cover && (
+            <a class="sbuild__media sbuild__media--doc" style={`--ar:${season.portfolio.cover.width} / ${season.portfolio.cover.height}`} href={cdn(season.portfolio.pdf)} rel="noopener" target="_blank" tabindex="-1" aria-hidden="true">
+              <Img src={season.portfolio.cover.key} width={season.portfolio.cover.width} height={season.portfolio.cover.height} alt="" sizes="(max-width: 760px) 100vw, 40vw" />
+            </a>
+          )}
+          <div class="sbuild__body">
+            <h2 class="h-md">{t.portfolioH}</h2>
+            <p>{t.portfolioP}</p>
+            <a class="btn btn--primary" href={cdn(season.portfolio.pdf)} rel="noopener" target="_blank">{t.portfolio}<Arrow /><span class="sr-only"> ({t.pdf})</span></a>
+          </div>
+        </article>
+      )}
+    </div>
+  </section>
+)}
+
+{photos.length > 0 && (
+  <section class="sec" aria-labelledby="ph-h">
+    <div class="wrap">
+      <div class="sechead"><h2 id="ph-h" class="h-lg sechead__h">{t.photosH}</h2></div>
+      <ul class="groups" data-lightbox-group>
+        {photos.map((p) => (
+          <li><figure class="board"><Img src={p.key} width={p.width} height={p.height} alt={p.alt[locale]} zoom /></figure>
+            {p.caption && <p class="groups__cap">{p.caption[locale]}</p>}</li>
+        ))}
+      </ul>
+    </div>
+  </section>
+)}
+
+{related.length > 0 && (
+  <section class="sec" aria-labelledby="po-h">
+    <div class="wrap">
+      <div class="sechead"><h2 id="po-h" class="h-lg sechead__h">{t.postsH}</h2></div>
+      <ul class="rows">{related.map((p) => <li><h3><a href={`${routes.blog[locale]}${p.slug[locale]}/`}>{p.title[locale]}</a></h3><p>{p.excerpt[locale]}</p></li>)}</ul>
+    </div>
+  </section>
+)}
+
+{t.supportH && (
+  <section class="sec" aria-labelledby="sup-h">
+    <div class="wrap">
+      <div class="note board">
+        <h2 id="sup-h" class="h-md">{t.supportH}</h2>
+        <a class="btn btn--primary" href={routes.partners[locale]}>{t.support}<Arrow /></a>
+      </div>
+    </div>
+  </section>
+)}

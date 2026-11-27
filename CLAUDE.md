@@ -82,7 +82,7 @@ docs/
 - **EN and RO**, always prefixed: `/en/...`, `/ro/...`, with **translated slugs**.
 - `/` redirects by `Accept-Language`, defaulting to `/en`. A static site can't do this, so a tiny Worker handles `/` only.
 - **All content is bilingual**, blog posts included. The CMS requires both languages before publishing.
-- Every page needs `hreflang` alternates, a correct per-locale canonical URL, a sitemap, OG images, and an RSS feed per locale for the blog.
+- Every page needs `hreflang` alternates, a correct per-locale canonical URL, a sitemap and OG images. (No RSS feed: dropped by the owner.)
 
 ### Design leeway (read this, design agent)
 The page contents below describe **what is available and what matters, not a fixed layout**. The design agent may reorder, merge, shorten or drop sections, and may sacrifice some content decisions for the sake of a better-looking, more coherent site. Anything marked **mandatory** must still appear somewhere.
@@ -90,14 +90,16 @@ The page contents below describe **what is available and what matters, not a fix
 ### Navigation
 
 ```
-About ▾         Seasons    BrickLog    Join    Support ▾           Contact    EN/RO
-├ Our Story                                    ├ Partner with Us
-├ The Team                                     ├ Donate
-└ Gallery                                      ├ Our Sponsors
-                                               └ Press Kit
+About ▾         Seasons    Projects ▾                 BrickLog    Join    Support ▾           Contact    EN/RO
+├ Our Story                ├ every project, with its logo                   ├ Partner with Us
+├ The Team                 │  (two columns; Projects itself                ├ Donate
+└ Gallery                  │  opens the projects page)                     ├ Our Sponsors
+                                                                            └ Press Kit
 ```
 
-The design agent picks the primary call to action. Projects are **not** in the navigation yet (see §3.10).
+On mobile the burger menu lists the top-level items; About, Projects and Support Us open their own sub-panel with a Back button.
+
+The design agent picks the primary call to action.
 
 ### Sitemap and content
 
@@ -108,6 +110,7 @@ The design agent picks the primary call to action. Projects are **not** in the n
 | The Team | `/en/team` | `/ro/echipa` |
 | Gallery | `/en/gallery` | `/ro/galerie` |
 | Seasons | `/en/seasons`, `/en/seasons/[season]` | `/ro/sezoane`, `/ro/sezoane/[season]` |
+| Projects | `/en/projects`, `/en/projects/[project]` | `/ro/proiecte`, `/ro/proiecte/[project]` |
 | BrickLog | `/en/blog`, `/en/blog/[slug]` | `/ro/blog`, `/ro/blog/[slug]` |
 | Join | `/en/join` | `/ro/alatura-te` |
 | Partner with Us | `/en/partners` | `/ro/parteneri` |
@@ -167,14 +170,19 @@ Photos and videos showing the **fun, human side** of the team and of competition
   - **Next event**, current season only: name, date, venue as **text + hyperlink (no map)**, optional countdown.
   - **Related BrickLog posts** and gallery items for that season.
 - **Data source:**
-  - Official events, results and upcoming events are imported from the **FTCScout public API** at build time (data from 2019+).
+  - Official events, results and upcoming events are imported from FIRST's **FTC Events API** (`ftc-api.firstinspires.org`, username + key in the root `.env`) at build time (data from 2019+). Each event links to its page on ftc-events.firstinspires.org, and the table credits FTC Events as FIRST asks.
+  - **League Meets** are the exception: FTC Events only publishes the league's running standing for them, so each meet's own rank comes from the **FTCScout public API**. League Tournaments keep FTC Events' official ranking, which counts the league meets (FTCScout ranks only the tournament's own matches).
   - Offseason events (e.g. Bucharest Twin Cup, SparkHope) and pre-2019 data are **entered manually in the CMS**.
   - Manual entries override or supplement imported ones.
   - **Awards are always managed in the CMS** because they need translations.
+  - **Imported events with no ranking and no matches played are hidden for past events** (upcoming ones stay, and so do events with an award in our record).
+  - The CMS Seasons module must let editors **add a custom ranking/result to an event** and **add custom extra events** (events with unofficial formats not scored on FTC Events, but with a relevant result, e.g. offseason cups). These are merged by date with imported ones, and `apps/website` models them as `Season.extraEvents`.
+  - Seasons without FTC Events data (before 2020) have no events table, only an Awards list.
 
 #### 3.6 BrickLog (blog)
-- **List page:** filters by category and season, pagination, RSS per locale.
-- **Categories** (CMS-managed, starting set): Competition recaps · Engineering · Outreach · Team life · Announcements.
+- **List page:** filters by season, topic and project (AND across facets, OR within one; state in the URL query). Until the first post is published the page shows an "under construction" state. The project facet appears only once a post has a project tag.
+- **Tags:** a post carries multiple tags (one or more topics, optional projects, other tag lists the CMS may add) and **exactly one season tag at most**. The CMS manages the topic and project lists.
+- **Topics** (CMS-managed, starting set): Competition recaps · Engineering · Programming · Design · Outreach · Sponsors · Media · Team life · Announcements.
 - **Post page:** cover image, date, category, season, reading time, body, related posts.
 - **No author name is shown publicly.** The CMS records the uploading account (and the last editor) for accountability.
 - **Every post is bilingual.**
@@ -223,16 +231,28 @@ Photos and videos showing the **fun, human side** of the team and of competition
   - Show **Google Maps**, using the team's existing **Google Business Profile** (embed iframe + "Open in Google Maps" link).
   - No OpenStreetMap.
 
-#### 3.10 Projects (deferred)
-Projects are being restructured after an intra-team discussion. **Do not build project pages yet**, and do not put them in navigation. Keep the architecture open for a future `/projects` section with CMS-managed projects. Legacy projects for reference:
-- The Vault: FTC portfolio library
-- Checkpoint: outreach events
-- Sparks: meetups with other FTC teams
-- BrickDocs: `docs.brickbot.ro`
-- BrickBot Academy: global mentorship program, currently only a Google Form
-- SimplicityFTC: **discontinued**
+#### 3.10 Projects
+- **Projects page:** a grid of every project, each with its logo, name and one-sentence summary.
+- **Project page** (`/[project]`, same slug in both languages), top to bottom; every section after the header is optional and hidden when empty:
+  - name and one-sentence summary
+  - a scoreboard: the logo on an LED board beside up to 4 impact numbers (people reached, editions, schools…)
+  - about: the longer description beside an "at a glance" list (started, how often, who it's for, where)
+  - photos (mosaic, opens in the lightbox, optional captions)
+  - partners who make the project possible (logos), with a link to Partner with us
+  - related BrickLog posts (posts tagged with the project), the other projects and a contact CTA
+  - In development only, a project with no content shows marked sample content so the layout can be reviewed.
+- A project can be **external**: it has no page and its card links straight out (BrickDocs → `https://docs.brickbot.ro`; `/en/projects/brickdocs` and `/ro/proiecte/brickdocs` redirect there).
+- Projects are the BrickLog **project tags** (§3.6): one list, one id per project.
+- Data lives in `apps/website/src/lib/projects.ts` until the CMS manages it. Current projects:
+  - Focșani Tech Challenge: a league meet we organise each year to bring the teams from our area to our town
+  - Brick By Brick School: our structured preparation programme for recruits
+  - BrickBot Caravan: visits and presentations in the schools of our town
+  - FIRST Steps Into STEAM: technical and non-technical workshops introducing secondary school students from rural areas to STEAM
+  - FTC Sparks: online meetups with teams from all over the world, sharing experiences and perspectives
+  - BrickDocs: our documentation platform (external, `docs.brickbot.ro`)
+- Legacy projects (The Vault, Checkpoint, Sparks, BrickBot Academy, SimplicityFTC) are not on the site; BrickBot Academy stays a short URL (`/academy`) and a linktree card.
 
-#### 3.11 Footer and legal
+### 3.11 Footer and legal
 - **Footer:** wordmark, social icons, links to all sections, Terms, Privacy, **ANPC SAL and ODR badges** (mandatory for Romanian online payments), **Nație prin Educație logo bar**, "BrickBot © {year}".
 - **Terms and Privacy** are stored as Markdown in the repo (rarely change, legally sensitive). Start from the legacy text in `docs/legacy-content/*.json` and update it:
   - email → `contact@brickbot.ro`
@@ -261,7 +281,7 @@ Starting set (seed):
 - `/en/our-team` → `/en/team`, `/ro/despre-noi` → `/ro/echipa`
 - `/en/support-us` → `/en/partners`, `/ro/sustine-ne` → `/ro/parteneri`
 - `/en/privacy-policy` → `/en/privacy`
-- old `/projects/*` paths → home, until projects return
+- old `/projects/*` paths → `/en/projects/`
 
 ---
 
@@ -297,10 +317,11 @@ Modules, each gated by a permission. The sidebar shows only the modules the user
 
 | Module | Permission | Manages |
 |---|---|---|
-| Blog | `cms.website` | Posts (EN + RO Tiptap bodies, cover, category, season, status, scheduled date, SEO overrides), categories |
-| Seasons | `cms.website` | Seasons (game name/logo/years, current flag, FTCScout season code, team photo, robot image, Onshape URL, portfolio PDF), manual events and result overrides, awards |
+| Blog | `cms.website` | Posts (EN + RO Tiptap bodies, cover, topics (multiple), projects (multiple), one season, status, scheduled date, SEO overrides), the topic and project tag lists |
+| Seasons | `cms.website` | Seasons (game name/logo/years, current flag, FTC season code, team photo, robot image, Onshape URL, portfolio PDF), manual events and result overrides, awards |
 | Team & story | `cms.website` | Timeline milestones, mission text, impact numbers, team photo, Join page content (departments, photos) |
 | Gallery | `cms.website` | Photos, video clips, YouTube embeds, captions, season, featured |
+| Projects | `cms.website` | Projects (name, slug, summary, logo, optional external URL, impact numbers, longer copy, at-a-glance facts, photos, partners, order); they double as the BrickLog project tags |
 | Support | `cms.website` | Sponsors (logo, link, season, tier: internal only), tiers and benefits, sponsor deck, sample contract, budget (categories + amounts in EUR + remaining) |
 | Home & FAQ | `cms.website` | Hero media, FAQ items, Form 230 callout dates |
 | Press kit | `cms.website` | Assets and descriptions |
@@ -331,7 +352,7 @@ User and permission management lives in the CMS (§5, Admin modules).
 
 ## 7. Scheduled jobs (`apps/scheduler`)
 One Cloudflare Worker with a Cron Trigger (free). It runs **daily, plus every few hours during competition months**, and:
-1. Triggers a website rebuild. This publishes scheduled posts and refreshes FTCScout results and upcoming events.
+1. Triggers a website rebuild. This publishes scheduled posts and refreshes the FTC Events results and upcoming events.
 2. Pings Supabase. **Free projects pause after 7 days of inactivity**, and the static site doesn't query Supabase on visits.
 
 ---
@@ -462,6 +483,9 @@ press/
   photos/{name}.webp                    approved press photos
                                         (logos on the Press Kit page link to brand/)
 
+projects/{project}/logo.svg|png         project logos (Projects grid and project pages)
+projects/{project}/{name}.webp          project photos, if a project page needs them
+
 links/icons/{name}.svg                  linktree card icons (e.g. form-230.svg)
 
 external/                               third-party marks
@@ -487,4 +511,5 @@ Agents may add new folders when a need isn't covered, as long as they follow the
 - **Theme: electric / cyber.** Lightning bolts, electricity and energy are an important part of the brand.
 - The site is **dark-first**.
 - Everything else is the design agent's decision: typography, layout, motion, imagery, extra neutrals and tints, and the components. This includes trading some content decisions in §3 for a better result (see "Design leeway").
+- **Wordmark alignment (every app).** The wordmark SVG's box reaches up and right (the bolt over the I, the arm of the T) while its letters sit low and left, so drawn as-is it looks off-centre. Wherever it is rendered (mask or image), nudge the box optically: `translate: 0 -13.8%` beside the logo mark (website nav and footer), and `translate: 2.5% -13.8%` when it is centred under the mark (links header). Never place it unadjusted.
 - Legacy brand assets (logo, wordmark, the "We build our future Brick by Brick!" banner) exist and will be re-uploaded under `brand/`. Ask for them in `docs/cdn-manifest.md`.

@@ -1,0 +1,9 @@
+---
+import Base from '../../layouts/Base.astro';
+import Home from '../../components/home/Home.astro';
+import Close from '../../components/home/Close.astro';
+---
+<Base locale="ro" route="home">
+  <Home locale="ro" />
+  <Close locale="ro" slot="close" />
+</Base>

@@ -1,0 +1,9 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Page from '../../../components/pages/Donate.astro';
+import { meta } from '../../../lib/meta';
+const m = meta.donate!.ro;
+---
+<Base locale="ro" route="donate" title={m.title} description={m.description}>
+  <Page locale="ro" />
+</Base>

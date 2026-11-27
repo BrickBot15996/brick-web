@@ -1,0 +1,39 @@
+---
+import PageHead from '../PageHead.astro';
+import Img from '../Img.astro';
+import { type Locale } from '../../lib/site';
+import { gallery } from '../../lib/gallery';
+import { seasons } from '../../lib/seasons';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const used = seasons.filter((s) => gallery.some((g) => g.season === s.slug));
+const hasGeneral = gallery.some((g) => !g.season);
+const items = [...gallery].sort((a, b) => Number(!!b.featured) - Number(!!a.featured) || (b.date ?? '').localeCompare(a.date ?? ''));
+const t = {
+  en: { title: 'Gallery.', lede: 'Competitions, classrooms and the moments in between.', season: 'Season', all: 'All', general: 'Other', open: 'Open photo' },
+  ro: { title: 'Galerie.', lede: 'Competiții, săli de clasă și momentele dintre ele.', season: 'Sezon', all: 'Toate', general: 'Altele', open: 'Deschide fotografia' },
+}[locale];
+---
+<PageHead locale={locale} title={t.title} lede={t.lede} compact />
+
+<section class="sec sec--tight" aria-label={t.title} data-filter-scope>
+  <div class="wrap">
+    <div class="chips" role="group" aria-label={t.season}>
+      <button class="chip" type="button" aria-pressed="true" data-filter="">{t.all}</button>
+      {used.map((s) => <button class="chip" type="button" aria-pressed="false" data-filter={s.slug}>{s.name} {s.years}</button>)}
+      {hasGeneral && <button class="chip" type="button" aria-pressed="false" data-filter="general">{t.general}</button>}
+    </div>
+    <ul class="masonry" data-lightbox-group>
+      {items.map((g) => (
+        <li data-item={g.season ?? 'general'}>
+          <figure>
+            <button class="masonry__btn board" type="button" data-lightbox aria-label={`${t.open}: ${g.alt[locale]}`}>
+              <Img src={g.key} width={g.width} height={g.height} alt={g.alt[locale]} />
+            </button>
+            {g.caption && <figcaption>{g.caption[locale]}</figcaption>}
+          </figure>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

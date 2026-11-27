@@ -1,0 +1,37 @@
+{
+  "title": "Choose the visual world for brickbot.ro (round 9)",
+  "question": "Note: the catalog ran out of bold challengers for this seed, so this hand is built from my own new directions. The roll assigned Media Day.",
+  "options": [
+    {
+      "id": "assigned",
+      "kind": "assigned",
+      "label": "Media Day",
+      "kicker": "THE ROLL",
+      "lineage": "pro-sports media days: each player shot on a seamless coloured backdrop under studio light",
+      "thesis": "The students treated like a pro squad on media day: shot against a brand-yellow seamless backdrop, big prints with hard studio shadows; the robot is part of the squad.",
+      "palette": ["#FFEC17", "#000000", "#CDB800", "#FFFFFF"],
+      "materials": ["yellow seamless paper sweep with a floor falloff", "large prints with hard offset studio shadows", "black wordmark"],
+      "viewport": "Yellow sweep: the black wordmark, 'We build our future brick by brick.', one plain line (students of CNU Focșani; in 2026 we qualified for the FIRST Championship), 'Partner with us'. On the right, three big prints of the students cast hard shadows on the sweep.",
+      "risk": "Built to be dark-first, the brand gets a yellow-drenched hero here (dark sections below). It reaches full power only with a real media-day shoot of the team; today's candids stand in until then.",
+      "html": ".impeccable/sketch/mediaday.html"
+    },
+    {
+      "id": "model-pick",
+      "kind": "pick",
+      "label": "Flash",
+      "kicker": "IMPECCABLE’S PICK",
+      "lineage": "flash-lit candid event photography: hard light, deep black, the moment caught",
+      "thesis": "Electricity as the camera flash: the page is black, and the students' moments burst out of it in hard flash light, with the bolt as the flash.",
+      "palette": ["#070707", "#FFEC17", "#FFFFFF", "#7A1027"],
+      "materials": ["flash-lit, high-contrast prints with white edges", "hard black offset shadows", "the bolt as the flash mark", "a faint yellow spill of light"],
+      "viewport": "The wordmark, the motto, a plain line and 'Partner with us' on the left; three flash-lit prints of the students burst out of the dark on the right, with a yellow bolt where the flash fired.",
+      "risk": "Familiar: dark-with-photos is close to the category look; the flash treatment and the motion (prints flashing in once) carry the difference.",
+      "html": ".impeccable/sketch/flash.html"
+    }
+  ],
+  "reroll": true,
+  "buildPath": { "value": "code" },
+  "canon": true,
+  "canonCard": {"kind": "canon", "label": "The category standard", "thesis": "A dark team site with the wordmark, the motto and a yellow accent, built to the level of team254.com.", "palette": ["#000000", "#FFEC17", "#FFFFFF"], "materials": ["full-bleed photo hero", "season results", "sponsor logo strip"], "viewport": "The team photo with the wordmark, the motto and two buttons.", "risk": "Looks like every other strong team's site.", "html": ".impeccable/sketch/canon.html"},
+  "steer": true
+}
