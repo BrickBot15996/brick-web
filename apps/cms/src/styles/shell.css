@@ -1,0 +1,178 @@
+@layer components {
+  .skip { position: fixed; left: 12px; top: -80px; z-index: 100; padding: 12px 18px; background: var(--color-yellow); color: var(--color-black); font-weight: 700; border-radius: var(--r-sm); text-decoration: none; }
+  .skip:focus { top: 12px; }
+
+  .app { display: grid; grid-template-columns: var(--rail) minmax(0, 1fr); min-height: 100svh; transition: grid-template-columns 0.2s var(--ease); }
+  .app[data-rail='open'] { --rail: var(--rail-open); }
+  .main { position: relative; min-width: 0; outline: none; }
+
+  /* ───────── rail: icons only, or icons with labels (the toggle at its foot; the choice is remembered) ───────── */
+  .rail { position: sticky; top: 0; z-index: 50; height: 100svh; min-width: 0; display: flex; flex-direction: column; padding: 18px 12px 16px; border-right: 1px solid var(--rule); }
+  .rail__brand { display: flex; align-items: center; gap: 12px; flex: none; margin-bottom: 18px; padding-left: 3px; overflow: hidden; }
+  .rail__brand:focus-visible, .topbar__mark:focus-visible { outline-offset: 6px; }
+  .rail__mark { display: block; width: 38px; flex: none; }
+  /* the wordmark's box reaches up and right while its letters sit low and left, so it is nudged optically (CLAUDE.md §12) */
+  .rail__word { display: block; width: 118px; flex: none; translate: 0 -13.8%; }
+  .rail__nav, .rail__admin { display: flex; flex-direction: column; gap: 2px; }
+  .rail__nav { flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; margin-inline: -4px; padding: 4px; scrollbar-width: none; mask-image: linear-gradient(#000 calc(100% - 20px), transparent); }
+  .rail__nav::-webkit-scrollbar { display: none; }
+  .rail__bot { margin-top: auto; display: flex; flex-direction: column; gap: 2px; flex: none; }
+  .sep { width: 24px; height: 1px; background: var(--rule); margin: 7px auto; flex: none; }
+  .rail__cap { padding: 12px 12px 4px; white-space: nowrap; }
+  .rail:not([data-open]) .rail__cap, .rail[data-open] .sep { display: none; }
+
+  .ri { position: relative; display: flex; align-items: center; gap: 12px; width: 100%; height: 38px; flex: none; padding: 0 12px; border: 0; background: none; font: inherit; text-align: left; border-radius: var(--r-sm); color: var(--color-ink-3); text-decoration: none; white-space: nowrap; overflow: hidden; cursor: pointer; transition: color 0.2s, background-color 0.2s; }
+  .ri__label { font-weight: 700; font-stretch: 104%; font-size: 1rem; color: var(--color-ink-2); transition: color 0.2s; }
+  .ri:hover { color: var(--color-ink); background: var(--color-surface); }
+  .ri:hover .ri__label { color: var(--color-ink); }
+  .ri[aria-current='page'] { background: var(--color-surface-2); color: var(--color-yellow); }
+  .ri[aria-current='page'] .ri__label { color: var(--color-ink); }
+  .ri:focus-visible { outline-offset: 1px; }
+  .ri--toggle { margin-top: 6px; }
+  .rail[data-open] .ri { height: 34px; }
+  /* open, the captions add height: tighten a little so Media library, last in the list, still fits a 900px window */
+  .rail[data-open] { padding-top: 14px; }
+  .rail[data-open] .rail__brand { margin-bottom: 12px; }
+  .rail[data-open] .rail__cap { padding-top: 9px; }
+
+  /* the tooltip sits to the right of the icon, board-styled; positioned from the icon's box so the rail can scroll */
+  .tip { position: fixed; left: calc(var(--rail) + 4px); translate: 0 -50%; z-index: 60; pointer-events: none; padding: 7px 12px; border-radius: var(--r-sm); background: var(--color-surface-2); border: 1px solid var(--line); color: var(--color-ink);
+    font-weight: 700; font-size: 0.82rem; font-stretch: 80%; letter-spacing: 0.12em; text-transform: uppercase; white-space: nowrap; animation: rise 0.14s var(--ease) both; }
+
+  .tile { width: 36px; height: 36px; flex: none; display: grid; place-items: center; border-radius: var(--r-tile); background: var(--color-surface-2); color: var(--color-yellow); font-weight: 800; font-stretch: 112%; font-size: 0.84rem; border: 0; font-family: inherit; transition: background-color 0.2s, color 0.2s; }
+  .tile--me { width: 38px; height: 38px; font-size: 0.86rem; }
+
+  .acct { position: relative; margin-top: 7px; }
+  /* collapsed: the button is just the initials tile; open: a row (tile + email) with its own hover fill, and the tile nests in it */
+  .acct__btn { display: flex; align-items: center; gap: 10px; width: 100%; height: 44px; padding: 0 0 0 3px; border: 0; border-radius: 0; background: none; color: var(--color-ink-2); font: inherit; text-align: left; cursor: pointer; overflow: hidden; transition: background-color 0.2s; }
+  .acct__mail { flex: 1; min-width: 0; padding-right: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 0.95rem; }
+  .acct__btn:hover .tile, .acct__btn[aria-expanded='true'] .tile { background: var(--color-yellow); color: var(--color-black); }
+  .rail[data-open] .acct__btn { --ro: var(--r-row); --pad: 3px; border-radius: var(--ro); }
+  .rail[data-open] .acct__btn .tile { border-radius: var(--ri); }
+  .rail[data-open] .acct__btn:hover, .rail[data-open] .acct__btn[aria-expanded='true'] { background: var(--color-surface); color: var(--color-ink); }
+
+  /* popovers: the container sets --ro and --pad (padding + border); the rows and the button inside take --ri */
+  .pop { position: absolute; z-index: 50; min-width: 240px; padding: 6px; --ro: var(--r-pop); --pad: 7px; border-radius: var(--ro); background: var(--color-surface); border: 1px solid var(--line); box-shadow: 0 24px 60px -20px rgb(0 0 0 / 0.85); animation: rise 0.18s var(--ease) both; }
+  .pop__opt, .acct__item, .pop .btn { border-radius: var(--ri); }
+  .acct__menu { left: calc(100% + 24px); bottom: 0; width: 272px; }
+  .acct__email { padding: 8px 10px 10px; color: var(--color-ink-2); font-size: 0.95rem; overflow-wrap: anywhere; border-bottom: 1px solid var(--rule); margin-bottom: 4px; }
+  .acct__item { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 40px; padding: 0 10px; border: 0; background: none; color: var(--color-ink); font: inherit; font-size: 0.98rem; text-align: left; text-decoration: none; cursor: pointer; }
+  .acct__item .i { color: var(--color-ink-3); width: 18px; height: 18px; }
+  .acct__item:hover { background: var(--color-surface-2); }
+  .acct__item:hover .i { color: var(--color-yellow); }
+
+  /* ───────── publish ───────── */
+  /* the page header row: module name + sub line at left, the page's actions, then publish status and button (desktop) */
+  .phead { container: phead / inline-size; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; min-height: var(--phead-h); padding: 16px 40px; }
+  .phead__id { flex: 1 1 200px; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+  .phead__title { font-size: 1.7rem; font-weight: 800; font-stretch: 116%; line-height: 1; letter-spacing: -0.01em; overflow-wrap: anywhere; }
+  .phead__sub { color: var(--color-ink-3); font-size: 0.95rem; line-height: 1.3; min-height: 1.3em; }
+  .phead__sub b { color: var(--color-ink-2); font-weight: 700; overflow-wrap: anywhere; }
+  .phead__sub:empty { display: none; }
+  .phead__actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 8px; }
+  .phead__actions:empty { display: none; }
+  /* Publish is the one solid yellow in the header row: the page's own actions (New, Invite, Upload) read as secondary */
+  .phead__actions .btn.btn--primary { background: none; color: var(--color-ink); border: 1.5px solid rgb(244 241 232 / 0.62); box-shadow: none; }
+  .phead__actions .btn.btn--primary:hover:not(:disabled) { color: var(--color-yellow); border-color: var(--color-yellow); box-shadow: none; }
+  .phead__actions .btn.btn--primary:disabled { background: none; color: var(--color-ink-3); border-color: var(--rule); }
+  .phead__pub { display: flex; align-items: center; gap: 16px; }
+  /* a narrow main area (rail expanded, 1100–1280px): the status keeps its word, the time is left to the popover */
+  @container phead (max-width: 920px) { .phead__pub .pstat__when { display: none; } }
+  .phead__actions + .phead__pub { padding-left: 24px; border-left: 1px solid var(--rule); }
+  .phead__actions:empty + .phead__pub { padding-left: 0; border-left: 0; }
+  .pubctl { position: relative; }
+  .pstat { display: inline-flex; align-items: center; gap: 8px; font-size: 0.92rem; color: var(--color-ink-2); min-height: 44px; }
+  .pstat b { color: var(--color-ink); font-weight: 700; }
+  .pstat .i { width: 18px; height: 18px; }
+  .pstat--failed, .pstat--failed b, .pstat--failed .i { color: var(--color-alarm); }
+  .pstat--failed .link { color: var(--color-yellow); margin-left: 4px; }
+  .led { width: 8px; height: 8px; flex: none; border-radius: 50%; background: var(--color-yellow); box-shadow: 0 0 6px var(--color-yellow); }
+  .led--busy { animation: pulse 1s ease-in-out infinite; }
+  /* lit solid = live; yellow ring = changes waiting; ink-3 solid = saved and idle. Doubled class so these beat .led whatever the file order. */
+  .led.led--dirty { background: none; box-shadow: inset 0 0 0 2px var(--color-yellow); }
+  .led.led--idle { background: var(--color-ink-3); box-shadow: none; }
+  .pubctl > .btn { height: 44px; padding: 0 20px; border-radius: var(--r-md); }
+  .pubctl .btn .i { width: 20px; height: 20px; }
+  .pop .pop__title, .pop__title { padding: 6px 10px 4px; font-weight: 700; font-stretch: 108%; font-size: 1rem; }
+  .pubctl .pop { right: 0; top: calc(100% + 10px); width: 320px; }
+  .pop__opt { display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 10px; cursor: pointer; color: var(--color-ink-2); }
+  .pop__opt:hover { background: var(--color-surface-2); }
+  .pop__opt input { width: 18px; height: 18px; flex: none; }
+  .pop__opt b { color: var(--color-ink); font-weight: 700; }
+  .pop__txt { flex: 1; min-width: 0; }
+  .pop__count { color: var(--color-ink-3); font-size: 0.88rem; white-space: nowrap; }
+  .pop__opt:has(input:checked) .pop__count { color: var(--color-ink-2); }
+  .pop__site { color: var(--color-ink-3); font-size: 0.9rem; margin-left: 4px; }
+  .pop__note { padding: 6px 10px 10px; color: var(--color-ink-3); font-size: 0.92rem; }
+  .pop__go { width: 100%; }
+  .pop__err { display: flex; align-items: flex-start; gap: 8px; padding: 2px 10px 10px; color: var(--color-alarm); font-size: 0.92rem; line-height: 1.4; }
+  .pop__err .i { width: 18px; height: 18px; flex: none; margin-top: 1px; }
+  .pop__go .spin { margin-right: 8px; }
+
+  /* the quiet state while publishing can't run yet: a lamp, the status and an info note, no yellow button */
+  .pstat--off .pstat__when { color: var(--color-ink-3); }
+  .pubinfo { position: relative; display: inline-flex; margin-left: 2px; }
+  .pubinfo__btn { position: relative; width: 28px; height: 28px; display: grid; place-items: center; padding: 0; border: 1.5px solid var(--line); border-radius: 50%; background: none; color: var(--color-ink-2); cursor: pointer; transition: color 0.2s, border-color 0.2s; }
+  .pubinfo__btn::after { content: ''; position: absolute; inset: -8px; }
+  .pubinfo__btn:hover, .pubinfo__btn[aria-expanded='true'] { color: var(--color-yellow); border-color: var(--color-yellow); }
+  .pubinfo__btn .i { width: 18px; height: 18px; }
+  .pubinfo .pop { right: 0; top: calc(100% + 12px); width: 320px; }
+  .pubinfo .pop__note { padding-bottom: 8px; }
+
+  /* ───────── page column ───────── */
+  .col { width: min(880px, 100%); margin: 0 auto; padding: 36px 0 72px; }
+  .h1 { font-size: 2.7rem; font-weight: 800; font-stretch: 116%; line-height: 1; letter-spacing: -0.012em; }
+  .holder { margin-top: 28px; max-width: 560px; padding: 22px 24px 24px; border-radius: var(--r-sm); background: var(--color-surface); color: var(--color-ink-2); display: flex; flex-direction: column; gap: 6px; }
+  .holder__lead { color: var(--color-ink); font-size: 1.15rem; font-weight: 700; font-stretch: 106%; }
+  .holder__back { margin-top: 14px; align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; }
+  .holder__arr { transform: scaleX(-1); }
+
+  .rl { padding: 12px 40px 56px; }
+  .rl__bars { display: flex; flex-direction: column; gap: 14px; max-width: 760px; }
+  .boot { min-height: 100svh; display: grid; place-content: center; justify-items: center; gap: 18px; text-align: center; padding: 24px; color: var(--color-ink-2); }
+  .boot__mark { width: 64px; }
+
+  /* ───────── phones ───────── */
+  .topbar { position: sticky; top: 0; z-index: 40; display: flex; align-items: center; gap: 8px; height: 60px; padding: 0 12px 0 16px; background: var(--color-black); border-bottom: 1px solid var(--rule); }
+  .topbar__mark { display: block; width: 36px; flex: none; }
+  .topbar__mark .mark { display: block; }
+  .topbar__space { flex: 1; }
+  .topbar .pubctl > .btn { height: 40px; padding: 0 14px; font-size: 1rem; }
+  .topbar .pubctl .pop { position: fixed; right: 16px; left: 16px; top: 68px; width: auto; }
+  .iconbtn { width: 44px; height: 44px; flex: none; display: grid; place-items: center; border: 0; border-radius: var(--r-sm); background: none; color: var(--color-ink-2); cursor: pointer; }
+  .iconbtn:hover { color: var(--color-yellow); background: var(--color-surface); }
+  .pubstrip, .sheet__status { position: relative; }
+  .pubstrip .pubinfo, .sheet__status .pubinfo { position: static; }
+  .pubstrip .pubinfo .pop { left: 16px; right: 16px; width: auto; top: calc(100% + 4px); }
+  .sheet__status .pubinfo .pop { left: 0; right: 0; width: auto; top: calc(100% + 4px); }
+  .pubstrip { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 2px 12px; padding: 6px 16px 0; }
+  .sample { display: inline-flex; flex: none; margin-left: auto; }
+  .pubstrip .pstat { min-width: 0; flex: 0 1 auto; flex-wrap: wrap; row-gap: 0; }
+  .pubstrip .pstat { min-height: 32px; font-size: 0.88rem; }
+
+  .sheet { position: fixed; inset: 0; z-index: 80; background: var(--color-black); display: flex; flex-direction: column; animation: rise 0.18s var(--ease) both; }
+  .sheet__head { display: flex; align-items: center; justify-content: space-between; height: 60px; padding: 0 12px 0 16px; border-bottom: 1px solid var(--rule); flex: none; }
+  .sheet__mark { width: 36px; }
+  .sheet__body { flex: 1; overflow-y: auto; padding: 8px 16px 28px; display: flex; flex-direction: column; }
+  .sheet__group { margin: 18px 0 4px; }
+  .sheet__link { display: flex; align-items: center; gap: 14px; width: 100%; min-height: 48px; padding: 0 12px; margin: 0 -12px; width: calc(100% + 24px); border-radius: var(--r-sm); border: 0; background: none; color: var(--color-ink-2); font: inherit; font-size: 1.05rem; text-decoration: none; text-align: left; cursor: pointer; }
+  .sheet__link .i { color: var(--color-ink-3); }
+  .sheet__link:hover { background: var(--color-surface); }
+  .sheet__link[aria-current='page'] { background: var(--color-surface-2); color: var(--color-ink); }
+  .sheet__link[aria-current='page'] .i { color: var(--color-yellow); }
+  .sheet__status { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--rule); }
+  .sheet__acct { margin-top: auto; padding-top: 14px; border-top: 1px solid var(--rule); }
+  .sheet__me { display: flex; align-items: center; gap: 12px; padding: 4px 0 8px; min-width: 0; }
+  .sheet__email { color: var(--color-ink); overflow-wrap: anywhere; min-width: 0; }
+}
+
+@media (max-width: 899px) {
+  .app { display: block; }
+  .col { width: auto; margin: 0; padding: 22px 16px 56px; }
+  .rl { padding: 12px 16px 56px; }
+  .phead { min-height: 0; padding: 12px 16px 0; gap: 10px 16px; }
+  .phead__title { font-size: 1.5rem; }
+  .phead__id { flex-basis: 140px; }
+  .phead[data-bare] { display: none; }
+  .h1 { font-size: 2.1rem; }
+}

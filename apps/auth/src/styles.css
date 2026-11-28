@@ -1,0 +1,187 @@
+@import "tailwindcss";
+
+/* BrickBot auth · Arena Lights (apps/website/DESIGN.md), the Floodlit Split layout. Fonts: same files and metric-matched fallback as apps/website. */
+@font-face { font-family: 'Anek Latin'; src: url('/fonts/anek-latin-latin.woff2') format('woff2'); font-weight: 100 800; font-stretch: 75% 125%; font-display: optional;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Anek Latin'; src: url('/fonts/anek-latin-latin-ext.woff2') format('woff2'); font-weight: 100 800; font-stretch: 75% 125%; font-display: optional;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+/* Metric-matched stand-in, same as apps/website: with font-display: optional a slow first visit keeps it for that view, with no swap. */
+@font-face { font-family: 'Anek Latin Fallback'; src: local('Arial'), local('ArialMT'), local('Liberation Sans'), local('Arimo'); font-weight: 400; font-stretch: 75% 79%; size-adjust: 65.0%; ascent-override: 138.5%; descent-override: 30.8%; line-gap-override: 0%; }
+@font-face { font-family: 'Anek Latin Fallback'; src: local('Arial Bold'), local('Arial-BoldMT'), local('Liberation Sans Bold'), local('Arimo Bold'); font-weight: 700; font-stretch: 75% 79%; size-adjust: 70.0%; ascent-override: 128.6%; descent-override: 28.6%; line-gap-override: 0%; }
+@font-face { font-family: 'Anek Latin Fallback'; src: local('Arial'), local('ArialMT'), local('Liberation Sans'), local('Arimo'); font-weight: 400; font-stretch: 79% 90%; size-adjust: 68.0%; ascent-override: 132.4%; descent-override: 29.4%; line-gap-override: 0%; }
+@font-face { font-family: 'Anek Latin Fallback'; src: local('Arial Bold'), local('Arial-BoldMT'), local('Liberation Sans Bold'), local('Arimo Bold'); font-weight: 700; font-stretch: 79% 90%; size-adjust: 73.0%; ascent-override: 123.3%; descent-override: 27.4%; line-gap-override: 0%; }
+@font-face { font-family: 'Anek Latin Fallback'; src: local('Arial'), local('ArialMT'), local('Liberation Sans'), local('Arimo'); font-weight: 400; font-stretch: 90% 103%; size-adjust: 93.0%; ascent-override: 96.8%; descent-override: 21.5%; line-gap-override: 0%; }
+@font-face { font-family: 'Anek Latin Fallback'; src: local('Arial Bold'), local('Arial-BoldMT'), local('Liberation Sans Bold'), local('Arimo Bold'); font-weight: 700; font-stretch: 90% 103%; size-adjust: 91.5%; ascent-override: 98.4%; descent-override: 21.9%; line-gap-override: 0%; }
+@font-face { font-family: 'Anek Latin Fallback'; src: local('Arial'), local('ArialMT'), local('Liberation Sans'), local('Arimo'); font-weight: 400; font-stretch: 103% 108%; size-adjust: 100.0%; ascent-override: 90.0%; descent-override: 20.0%; line-gap-override: 0%; }
+@font-face { font-family: 'Anek Latin Fallback'; src: local('Arial Bold'), local('Arial-BoldMT'), local('Liberation Sans Bold'), local('Arimo Bold'); font-weight: 700; font-stretch: 103% 108%; size-adjust: 97.0%; ascent-override: 92.8%; descent-override: 20.6%; line-gap-override: 0%; }
+@font-face { font-family: 'Anek Latin Fallback'; src: local('Arial'), local('ArialMT'), local('Liberation Sans'), local('Arimo'); font-weight: 400; font-stretch: 108% 112%; size-adjust: 104.5%; ascent-override: 86.1%; descent-override: 19.1%; line-gap-override: 0%; }
+@font-face { font-family: 'Anek Latin Fallback'; src: local('Arial Bold'), local('Arial-BoldMT'), local('Liberation Sans Bold'), local('Arimo Bold'); font-weight: 700; font-stretch: 108% 112%; size-adjust: 101.0%; ascent-override: 89.1%; descent-override: 19.8%; line-gap-override: 0%; }
+@font-face { font-family: 'Anek Latin Fallback'; src: local('Arial'), local('ArialMT'), local('Liberation Sans'), local('Arimo'); font-weight: 400; font-stretch: 112% 116%; size-adjust: 110.0%; ascent-override: 81.8%; descent-override: 18.2%; line-gap-override: 0%; }
+@font-face { font-family: 'Anek Latin Fallback'; src: local('Arial Bold'), local('Arial-BoldMT'), local('Liberation Sans Bold'), local('Arimo Bold'); font-weight: 700; font-stretch: 112% 116%; size-adjust: 105.5%; ascent-override: 85.3%; descent-override: 19.0%; line-gap-override: 0%; }
+@font-face { font-family: 'Anek Latin Fallback'; src: local('Arial'), local('ArialMT'), local('Liberation Sans'), local('Arimo'); font-weight: 400; font-stretch: 116% 117%; size-adjust: 113.5%; ascent-override: 79.3%; descent-override: 17.6%; line-gap-override: 0%; }
+@font-face { font-family: 'Anek Latin Fallback'; src: local('Arial'), local('ArialMT'), local('Liberation Sans'), local('Arimo'); font-weight: 400; font-stretch: 117% 125%; size-adjust: 116.0%; ascent-override: 77.6%; descent-override: 17.2%; line-gap-override: 0%; }
+@font-face { font-family: 'Anek Latin Fallback'; src: local('Arial Bold'), local('Arial-BoldMT'), local('Liberation Sans Bold'), local('Arimo Bold'); font-weight: 700; font-stretch: 116% 117%; size-adjust: 108.5%; ascent-override: 82.9%; descent-override: 18.4%; line-gap-override: 0%; }
+@font-face { font-family: 'Anek Latin Fallback'; src: local('Arial Bold'), local('Arial-BoldMT'), local('Liberation Sans Bold'), local('Arimo Bold'); font-weight: 700; font-stretch: 117% 125%; size-adjust: 110.5%; ascent-override: 81.4%; descent-override: 18.1%; line-gap-override: 0%; }
+
+
+@theme {
+  --color-black: #000;
+  --color-diode: #050505;
+  --color-surface: #121210;
+  --color-surface-2: #1c1b18;
+  --color-unlit: #1b1a17;
+  --color-ink: #f4f1e8;
+  --color-ink-2: #bdb9ad;
+  --color-ink-3: #8e8b81;
+  --color-yellow: #ffec17;
+  --color-spark: #fffbd6;
+  --color-alarm: #ff7b8e;
+  --font-sans: 'Anek Latin', 'Anek Latin Fallback', system-ui, sans-serif;
+}
+
+:root {
+  --rule: rgb(244 241 232 / 0.14);
+  --line: rgb(244 241 232 / 0.24);
+  --r-btn: 12px; --r-sm: 10px; --k: 1;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --side-pad: clamp(16px, 5vw, 72px);
+}
+@supports (corner-shape: squircle) {
+  :root { --r-btn: 22px; --r-sm: 18px; --k: 2; }
+  .btn, .input, .pw__toggle, .code__cell, .notice { corner-shape: squircle; }
+}
+
+@layer base {
+  html { background: var(--color-black); color-scheme: dark; scrollbar-color: #3a3933 var(--color-black); -webkit-text-size-adjust: 100%; }
+  body { min-height: 100svh; background: var(--color-black); color: var(--color-ink); font-family: var(--font-sans); font-size: 1.125rem; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  ::selection { background: var(--color-yellow); color: var(--color-black); }
+  :focus-visible { outline: 2px solid var(--color-yellow); outline-offset: 3px; border-radius: 4px; }
+  h1 { font-weight: 800; text-wrap: balance; }
+  p { text-wrap: pretty; }
+  input { caret-color: var(--color-yellow); }
+}
+
+@layer components {
+  /* ───────── the split: floodlit photo | desk ───────── */
+  .split { min-height: 100svh; display: grid; grid-template-columns: minmax(0, 800fr) minmax(0, 640fr); }
+  .arena { position: sticky; top: 0; height: 100svh; overflow: hidden; isolation: isolate; display: flex; flex-direction: column; }
+  .arena__photo { position: relative; flex: 1; overflow: hidden; }
+  .arena__photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 68% 50%; z-index: -2; }
+  /* the scrim sits only where the type is: lower left, plus a thin top fade for the mark */
+  .arena__photo::after { content: ''; position: absolute; inset: 0; z-index: -1;
+    background: radial-gradient(120% 80% at 0% 100%, rgb(0 0 0 / 0.88), rgb(0 0 0 / 0.55) 38%, transparent 66%), linear-gradient(rgb(0 0 0 / 0.55), transparent 18%); }
+  .arena__mark { position: absolute; left: 48px; top: 40px; width: 44px; }
+  .arena__cap { position: absolute; left: 48px; right: 48px; bottom: 48px; }
+  .arena__word { display: block; width: clamp(240px, 30vw, 440px); translate: 0 -13.8%; }
+  .arena__line { margin-top: 6px; font-weight: 800; font-stretch: 116%; font-size: clamp(1.6rem, 2.65vw, 2.4rem); line-height: 1.02; letter-spacing: -0.012em; }
+  .arena__line em { font-style: normal; color: var(--color-yellow); }
+
+  .mark { aspect-ratio: 325.6 / 231.89; background: var(--color-yellow); -webkit-mask: var(--logomark) center / contain no-repeat; mask: var(--logomark) center / contain no-repeat; }
+  .word { aspect-ratio: 1114.99 / 217.14; background: var(--color-yellow); -webkit-mask: var(--wordmark) center / contain no-repeat; mask: var(--wordmark) center / contain no-repeat; }
+
+  .desk { min-height: 100svh; padding: 48px var(--side-pad) 32px; display: flex; flex-direction: column; }
+  .desk__main { flex: 1; display: flex; flex-direction: column; justify-content: center; width: 100%; max-width: 460px; padding-block: 32px; }
+  .desk__foot { max-width: 460px; display: flex; flex-direction: column; gap: 6px; color: var(--color-ink-3); font-size: 1rem; }
+  .desk__foot a { color: var(--color-ink-2); text-decoration: underline; text-underline-offset: 0.25em; }
+  .desk__foot a:hover { color: var(--color-yellow); }
+  .preview-note { color: var(--color-ink-3); font-size: 0.9rem; }
+  .preview-note b { color: var(--color-ink-2); font-weight: 700; }
+
+  /* step change: the desk swaps its contents with a short cross-fade */
+  .step { animation: step-in 0.5s var(--ease) both; }
+
+  /* ───────── type ───────── */
+  .title { font-size: clamp(2.4rem, 3.6vw, 3.25rem); line-height: 1; font-stretch: 114%; letter-spacing: -0.012em; }
+  .sub { margin-top: 12px; color: var(--color-ink-2); }
+  .sub strong { color: var(--color-ink); font-weight: 700; overflow-wrap: anywhere; }
+  .fine { color: var(--color-ink-3); font-size: 1rem; }
+  .link { color: var(--color-yellow); font-weight: 700; font-stretch: 110%; font-size: 1.05rem; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 0.32em; background: none; border: 0; padding: 0; cursor: pointer; font-family: inherit; }
+  .link:disabled { color: var(--color-ink-3); text-decoration: none; cursor: default; font-weight: 400; font-stretch: 100%; }
+  .back { display: inline-flex; align-items: center; gap: 8px; color: var(--color-ink-2); font-size: 1.05rem; text-decoration: none; }
+  .back:hover { color: var(--color-yellow); }
+  .back:hover .arr { transform: translateX(4px); }
+  .back--left:hover .arr { transform: translateX(-4px); }
+
+  /* ───────── form ───────── */
+  .form { margin-top: 36px; display: flex; flex-direction: column; gap: 20px; }
+  .field { display: flex; flex-direction: column; gap: 8px; }
+  .field__label { font-weight: 700; font-size: 0.86rem; font-stretch: 78%; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-ink-2); }
+  .field__hint { color: var(--color-ink-3); font-size: 0.95rem; }
+  .field__error { color: var(--color-alarm); font-size: 0.98rem; }
+  .input { width: 100%; height: 56px; padding: 0 18px; border-radius: var(--r-sm); border: 1.5px solid var(--line); background: var(--color-black); color: var(--color-ink); font: inherit; font-size: 1.125rem; transition: border-color 0.2s, box-shadow 0.2s; }
+  .input::placeholder { color: var(--color-ink-3); }
+  .input:hover { border-color: var(--color-ink-3); }
+  .input:focus-visible { outline: none; border-color: var(--color-yellow); box-shadow: 0 0 0 1px var(--color-yellow); }
+  .input[aria-invalid='true'] { border-color: var(--color-alarm); }
+  .input[aria-invalid='true']:focus-visible { box-shadow: 0 0 0 1px var(--color-alarm); }
+  .input:-webkit-autofill { -webkit-text-fill-color: var(--color-ink); -webkit-box-shadow: 0 0 0 100px var(--color-black) inset; caret-color: var(--color-yellow); }
+  .pw { position: relative; }
+  .pw .input { padding-right: 60px; }
+  .pw__toggle { position: absolute; right: 6px; top: 6px; width: 44px; height: 44px; display: grid; place-items: center; border: 0; border-radius: calc(var(--r-sm) - 4px); background: none; color: var(--color-ink-2); cursor: pointer; }
+  .pw__toggle:hover { color: var(--color-yellow); background: var(--color-surface); }
+  .pw__toggle svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 16px; }
+  .row--end { justify-content: flex-end; margin-top: -4px; }
+
+  /* the code: one real input over six cells, so paste and one-time-code autofill just work */
+  .code { position: relative; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; }
+  .code__cell { height: 68px; display: grid; place-items: center; border-radius: var(--r-sm); border: 1.5px solid var(--line); background: var(--color-black);
+    font-weight: 800; font-stretch: 112%; font-size: 2rem; font-variant-numeric: tabular-nums; transition: border-color 0.2s, box-shadow 0.2s; }
+  .code__cell[data-on] { border-color: var(--color-yellow); box-shadow: 0 0 0 1px var(--color-yellow); }
+  .code__cell[data-on]:empty::after { content: ''; width: 2px; height: 30px; background: var(--color-yellow); animation: caret 1s steps(1) infinite; }
+  .code[data-invalid] .code__cell { border-color: var(--color-alarm); }
+  .code__input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; font-size: 16px; border: 0; cursor: text; }
+
+  .btn { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 0.6em; width: 100%; min-height: 56px; padding: 0 28px;
+    font-family: inherit; font-weight: 700; font-size: 1.15rem; font-stretch: 112%; line-height: 1; border-radius: var(--r-btn); border: 0; cursor: pointer; text-decoration: none;
+    transition: background-color 0.25s, color 0.25s, box-shadow 0.25s, transform 0.25s var(--ease); }
+  .btn:active { transform: translateY(1px); }
+  .btn:focus-visible { outline-offset: 4px; }
+  /* Floodlight glow: the one primary action is lit at rest, brighter on hover */
+  .btn--primary { background: var(--color-yellow); color: var(--color-black); box-shadow: 0 10px 30px -12px rgb(255 236 23 / 0.6); }
+  .btn--primary:hover { box-shadow: 0 12px 34px -10px rgb(255 236 23 / 0.75); }
+  .btn--ghost { background: none; color: var(--color-ink); border: 1.5px solid rgb(244 241 232 / 0.62); }
+  .btn--ghost:hover { color: var(--color-yellow); border-color: var(--color-yellow); }
+  .btn:hover .arr { transform: translateX(4px); }
+  .btn[aria-busy='true'] { cursor: progress; }
+  .btn[aria-busy='true'] .arr { display: none; }
+  .spin { width: 20px; height: 20px; border-radius: 50%; border: 2.5px solid currentColor; border-right-color: transparent; animation: spin 0.7s linear infinite; }
+  .arr { width: 20px; height: 20px; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.3s var(--ease); }
+
+  .notice { padding: 13px 16px; border-radius: var(--r-sm); background: var(--color-surface-2); border: 1.5px solid var(--color-alarm); font-size: 1rem; line-height: 1.45; }
+  .notice--ok { border-color: var(--color-yellow); }
+  .notice a, .notice button { color: var(--color-yellow); font: inherit; font-weight: 700; background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 0.32em; }
+}
+
+@keyframes step-in { from { opacity: 0; transform: translateY(10px); } }
+@keyframes settle { from { transform: scale(1.06); } to { transform: none; } }
+@keyframes caret { 50% { opacity: 0; } }
+@keyframes spin { to { transform: rotate(1turn); } }
+
+@media (prefers-reduced-motion: no-preference) {
+  .arena__photo img { animation: settle 1.8s var(--ease) both; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+}
+
+/* ───────── phones and narrow tablets: the photo becomes a band over the desk ───────── */
+@media (max-width: 899px) {
+  .split { display: block; }
+  .arena { position: relative; height: auto; }
+  .arena__photo { flex: none; height: clamp(200px, 32svh, 300px); }
+  .arena__photo img { object-position: 70% 40%; }
+  .arena__mark { left: 16px; top: 16px; width: 38px; }
+  .arena__cap { left: 16px; right: 16px; bottom: 18px; }
+  .arena__word { width: clamp(180px, 52vw, 260px); }
+  .arena__line { display: none; }
+  .desk { min-height: 0; padding: 20px 16px 28px; }
+  .desk__main { max-width: 520px; padding-block: 12px 40px; }
+  .code { gap: 8px; }
+  .code__cell { height: 60px; font-size: 1.75rem; }
+}
+@media (min-width: 900px) and (max-width: 1199px) {
+  .split { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .arena__mark, .arena__cap { left: 36px; }
+}

@@ -1,0 +1,8 @@
+@layer components {
+  .hf-status { display: flex; align-items: center; gap: 10px; margin: 0; }
+  .hf-status__dot { inline-size: 10px; block-size: 10px; border-radius: 999px; corner-shape: round; background: var(--color-ink-3); flex: none; }
+  .hf-status--on .hf-status__dot { background: var(--color-yellow); }
+}
+@layer components {
+  .hf-num { display: grid; place-items: center; inline-size: 44px; block-size: 44px; border-radius: var(--ri, 8px); background: var(--color-surface-2); color: var(--color-ink-2); font-weight: 700; flex: none; }
+}

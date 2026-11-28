@@ -339,10 +339,12 @@ Translatable fields are stored as `jsonb` in the form `{ "en": "...", "ro": "...
 ---
 
 ## 6. Auth (auth.brickbot.ro)
-- login (email + password, magic link)
+English only. No registration anywhere (owner, 2026-11-27).
+- login (email + password). **No magic link.**
+- **2FA:** a 6-digit code emailed to the member the first time a browser signs in; the browser is then trusted for 30 days. Supabase MFA has no email factor, so this is custom (Edge Function + trusted-device record).
 - accept invite / set password
 - forgot / reset password
-- account settings (display name, avatar, password)
+- **No account settings** (no display name, avatar or change-password screen); members use "Forgot password".
 - **app launcher** showing only the apps the user has permission for (currently just the CMS; it exists so future team apps can be added)
 - **Auth emails** (invite, reset, magic link) use Resend SMTP, branded for BrickBot.
 

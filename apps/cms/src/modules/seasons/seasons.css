@@ -1,0 +1,38 @@
+/* Seasons module: tags, the events table cells, the next-event card and the small dialog forms. Shared styles live in styles/edit.css. */
+@layer components {
+
+  .sea-pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; align-items: start; }
+  .sea-cur { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 16px; padding: 12px 14px; --ro: var(--r-md); --pad: 14px; border-radius: var(--ro); background: var(--color-surface); border: 1px solid var(--line); }
+  .sea-cur .btn { border-radius: var(--ri); }
+  .sea-cur__t { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; color: var(--color-ink-2); }
+
+  .sea-next { display: flex; flex-direction: column; gap: 4px; padding: 16px 18px; --ro: var(--r-md); --pad: 18px; border-radius: var(--ro); background: var(--color-surface); border: 1px solid var(--line); }
+  .sea-next__name { color: var(--color-ink); font-weight: 800; font-stretch: 112%; font-size: 1.25rem; line-height: 1.15; overflow-wrap: anywhere; }
+  .sea-next__meta { color: var(--color-ink-2); }
+  .sea-next__src { color: var(--color-ink-3); font-size: 0.9rem; }
+
+  .sea-evtools { display: flex; justify-content: flex-end; margin-bottom: 4px; }
+  .sea-ev { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .sea-ev__name { color: var(--color-ink); font-weight: 700; font-stretch: 106%; overflow-wrap: anywhere; }
+  .sea-ev__sub { color: var(--color-ink-3); font-size: 0.95rem; overflow-wrap: anywhere; }
+  .sea-ev__tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .sea-ev__tags:empty { display: none; }
+  .sea-ev__why { max-width: 46ch; color: var(--color-ink-3); font-size: 0.92rem; }
+  .sea-dim { opacity: 0.62; }
+  .sea-res { display: flex; flex-direction: column; gap: 3px; color: var(--color-ink); }
+  .sea-res__was { color: var(--color-ink-3); font-size: 0.92rem; }
+  .sea-none { color: var(--color-ink-3); }
+
+  .sea-dform { display: flex; flex-direction: column; gap: 16px; }
+  .sea-orig { color: var(--color-ink-2); }
+  .sea-gaps { color: var(--color-ink-3); font-size: 0.95rem; }
+  .dlg__actions .sea-left { margin-right: auto; }
+
+  .tabm .sea-awards .tp { padding: 8px 0 0; }
+  .tabm .col--tab.sea-awards { max-width: 1100px; }
+  
+  .sea-awards .dt__acts { display: flex; align-items: center; justify-content: flex-end; gap: 6px; flex-wrap: nowrap; }
+}
+@media (max-width: 640px) {
+  @layer components { .dlg__actions .sea-left { margin-right: 0; } }
+}

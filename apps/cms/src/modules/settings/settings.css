@@ -1,0 +1,10 @@
+/* Site settings: anchors for the jump palette and two small layout helpers. */
+@layer components {
+  .set-anchor { scroll-margin-top: 24px; }
+  .set-anchor + .set-anchor { margin-top: 14px; padding-top: 30px; border-top: 1px solid var(--rule); }
+  .set-anchor .esec + .esec { margin-top: 0; padding-top: 0; border-top: 0; }
+  .set-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap-field) 20px; align-items: start; }
+  .set-mono { font-feature-settings: 'tnum'; letter-spacing: 0.04em; }
+  .set-note { color: var(--color-ink-2); }
+}
+@media (max-width: 640px) { @layer components { .set-pair { grid-template-columns: minmax(0, 1fr); } } }

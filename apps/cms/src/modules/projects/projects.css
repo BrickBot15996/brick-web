@@ -1,0 +1,8 @@
+/* Projects module: the Reorder mode of its list column. Shared list/editor styles live in styles/edit.css. */
+@layer components {
+  .lp__mode { display: inline-flex; align-items: center; gap: 8px; }
+  .lp__mode .i { width: 16px; height: 16px; }
+  .lrow--order { padding-right: 4px; }
+  .lrow--order .iconbtn { --pad: 4px; border-radius: var(--ri); }
+  .lrow--order:hover { background: none; }
+}

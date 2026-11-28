@@ -1,0 +1,46 @@
+{
+  "title": "Three layouts for cms.brickbot.ro",
+  "question": "All three keep the Arena Lights look of the website, links and auth: black, exact #FFEC17, Anek Latin, squircle boards. They differ in how you move around and where team activity lives. Each sketch shows the home screen at desktop size; the list → edit pattern is described on the card and gets built in the layout you lock. Lock one, or steer and re-roll.",
+  "options": [
+    {
+      "id": "arena",
+      "kind": "assigned",
+      "label": "Arena Rail",
+      "kicker": "THE ROLL",
+      "lineage": "auth's Floodlit Split, carried inside: the arena becomes the sidebar",
+      "thesis": "The floodlit photo from sign-in shrinks into the top of a left rail and stays with you; under it, the modules you're allowed into, grouped Website / Links / Admin. Home is a wall of module boards beside a 'Pit radio' feed of who changed what.",
+      "palette": ["#000000", "#FFEC17", "#121210", "#F4F1E8"],
+      "materials": ["photo band with mark + wordmark at the top of the rail", "grouped sidebar nav", "module boards with count + last editor", "activity feed column"],
+      "viewport": "Left 280px rail: team photo band with the wordmark, then nav groups, Publish pinned at the bottom with last build status. Main: 'Hey Marius' line, a 3-column grid of module boards (Blog · 2 drafts · Ana, 2h ago). Right 340px: Pit radio, today's changes with names in ink and module names in yellow. Edit pattern: list rows on the desk; opening one swaps to EN | RO twin columns with a sticky Save bar.",
+      "risk": "The most familiar admin layout; the photo band and boards have to carry the brand so it doesn't read as a generic dashboard template.",
+      "html": ".impeccable/mocks/decision/arena.html"
+    },
+    {
+      "id": "perimeter",
+      "kind": "dealt",
+      "label": "Perimeter Board",
+      "lineage": "the website's LED perimeter strip, put to work as the team's live feed",
+      "thesis": "No sidebar: a top bar with Website ▾ Links ▾ Admin ▾ menus, and right under it a full-width LED strip that scrolls the team's latest changes. Home is a big typographic index of modules, every name a one-click door.",
+      "palette": ["#000000", "#FFEC17", "#050505", "#1B1A17"],
+      "materials": ["top bar with grouped menus", "dot-matrix LED activity strip", "large Expanded module index with condensed counts", "full-width tables"],
+      "viewport": "Top bar: mark + wordmark, three menus, Publish at right. Below: a 54px LED strip, ANA · EDITED · SPONSORS · 12 MIN, names lit yellow. Body: modules set large in three columns by group, each with its count and last change in condensed type; a 'Your recent edits' row at the bottom. Edit pattern: full-width sortable table; a row opens a full-page editor with EN | RO columns and a sticky action bar.",
+      "risk": "Scrolling activity is glanceable but not scannable; the strip needs a 'see all' that opens the full feed, and top menus cost one extra click on deep modules.",
+      "html": ".impeccable/mocks/decision/perimeter.html"
+    },
+    {
+      "id": "jump",
+      "kind": "dealt",
+      "label": "Jump Bar",
+      "lineage": "auth's lit input grown into the CMS's front door",
+      "thesis": "Keyboard first. A slim icon rail on the left, and home opens on one big lit field: 'Jump to…' (⌘K anywhere). Below it, the team's recent changes double as 'pick up where you left off': every row is a link straight into that item.",
+      "palette": ["#000000", "#FFEC17", "#121210", "#BDB9AD"],
+      "materials": ["64px icon rail with tooltips", "large command field lit yellow on focus", "activity rows that open the item", "module chips"],
+      "viewport": "Left: 64px icon rail with the logo mark on top. Main, centred 880px: 'Jump to a module, post, sponsor…' field with ⌘K hint; a row of module chips; then 'Lately on the team' as a list grouped Today / Yesterday, each row avatar initial · who · what · item · time. Edit pattern: master-detail, a 380px list on the left and the editor on the right, EN | RO side by side.",
+      "risk": "Command palettes are second nature to some members and invisible to others; the chips and icon rail must make it work without ever typing.",
+      "html": ".impeccable/mocks/decision/jump.html"
+    }
+  ],
+  "reroll": { "registers": ["safer", "bolder"] },
+  "buildPath": { "value": "code" },
+  "steer": true
+}

@@ -1,0 +1,10 @@
+/* Short URLs: the table cells and the form dialog. */
+@layer components {
+  .su-slug { color: var(--color-ink); font-weight: 700; font-stretch: 106%; }
+  .su-slug small { color: var(--color-ink-3); font-weight: 400; font-stretch: 100%; font-size: inherit; }
+  .su-to { display: block; max-width: 38ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .su-who { display: block; color: var(--color-ink-3); font-size: 0.9rem; overflow: hidden; text-overflow: ellipsis; max-width: 22ch; }
+  .su-form { display: grid; gap: 24px; }
+  .su-live { color: var(--color-ink-2); }
+  .su-clear { margin: 0 0 18px; }
+}

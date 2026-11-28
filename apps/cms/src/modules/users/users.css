@@ -1,0 +1,63 @@
+/* Admin section (Users, Permissions, Audit log): the pieces they share. Prefix .adm-, .sidep. */
+@layer components {
+  /* Condensed permission / action tags, same family as .langtag */
+  .adm-tags { display: inline-flex; flex-wrap: wrap; gap: 6px; }
+  /* row actions: quiet text actions in the link style; the confirm dialog carries the weight */
+  .dt__acts .link { min-height: 40px; padding: 0 10px; color: var(--color-ink-2); }
+  .dt__acts .link:hover:not(:disabled) { color: var(--color-yellow); }
+  .dt__acts .link:disabled { color: var(--color-ink-3); text-decoration: none; cursor: not-allowed; }
+  .adm-none { color: var(--color-ink-3); }
+
+  .adm-email { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 4px 8px; color: var(--color-ink); font-weight: 700; font-stretch: 106%; overflow-wrap: anywhere; }
+  .dt .adm-email { min-width: 230px; overflow-wrap: normal; }
+
+  .adm-status { display: inline-flex; align-items: center; gap: 8px; color: var(--color-ink); font-weight: 700; font-stretch: 100%; white-space: nowrap; }
+  .adm-lamp { width: 8px; height: 8px; flex: none; border-radius: 50%; corner-shape: round; background: var(--color-yellow); box-shadow: 0 0 6px var(--color-yellow); }
+  .adm-status[data-status='invited'] .adm-lamp { background: none; box-shadow: inset 0 0 0 2px var(--color-yellow); }
+  .adm-status[data-status='deactivated'] { color: var(--color-ink-3); font-weight: 400; }
+  .adm-status[data-status='deactivated'] .adm-lamp { background: var(--color-ink-3); box-shadow: none; }
+
+  .tp__tools .lp__filter .input--sm { height: 48px; }
+  .adm-note { margin-top: 18px; max-width: 70ch; }
+  .tp__head + .adm-note { margin-top: 18px; }
+  .adm-note + .dt, .adm-note + .adm-flash { margin-top: 14px; }
+  .adm-hint { display: flex; align-items: flex-start; gap: 8px; margin-top: 12px; max-width: 70ch; color: var(--color-ink-3); font-size: 0.95rem; }
+  .adm-hint .i { width: 16px; height: 16px; flex: none; margin-top: 3px; }
+  .adm-hint b { color: var(--color-ink-2); }
+  .adm-lead { color: var(--color-ink-2); }
+  .adm-flash { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 10px; margin-top: 14px; }
+  .adm-flash .i { width: 18px; height: 18px; flex: none; }
+  .adm-flash .link { margin-left: auto; }
+  .adm-flash--ok { color: var(--color-ink); font-weight: 700; font-stretch: 106%; }
+  .adm-flash--ok .i { color: var(--color-yellow); }
+  .tp > .adm-flash + .dt { margin-top: 14px; }
+
+  /* checkbox list of the invite panel */
+  .adm-checks { --ro: var(--r-sm); --pad: 1.5px; display: flex; flex-direction: column; gap: 0; min-width: 0; border: 0; padding: 0; }
+  .adm-checks .field__hint { margin: 4px 0 10px; }
+  .adm-check { display: flex; align-items: flex-start; gap: 14px; padding: 12px 14px; border: 1.5px solid var(--line); border-radius: var(--ro); cursor: pointer; background: var(--color-black); color: var(--color-ink-2); }
+  .adm-check + .adm-check { margin-top: 8px; }
+  .adm-check:hover { border-color: var(--color-ink-3); }
+  .adm-check:has(input:checked) { border-color: var(--color-yellow); }
+  .adm-check input { width: 22px; height: 22px; flex: none; margin: 1px 0 0; cursor: pointer; }
+  .adm-check__txt { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  .adm-check__name { color: var(--color-ink); font-weight: 800; font-stretch: 112%; }
+  .adm-check__desc { font-size: 0.95rem; line-height: 1.4; }
+
+  /* side panel */
+  .sidep__form { display: contents; }
+  .sidep__scrim { position: fixed; inset: 0; z-index: 90; display: flex; justify-content: flex-end; background: rgb(0 0 0 / 0.74); animation: fadein 0.16s var(--ease) both; }
+  .sidep { width: min(480px, 100%); height: 100%; display: flex; flex-direction: column; --ro: var(--r-md); background: var(--color-surface); border-left: 1px solid var(--line); box-shadow: -30px 0 80px -20px #000; animation: panelin 0.22s var(--ease) both; }
+  .sidep__head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 20px 14px 4px 24px; }
+  .sidep__title { padding-top: 4px; font-size: 1.4rem; font-weight: 800; font-stretch: 112%; line-height: 1.15; overflow-wrap: anywhere; }
+  .sidep__body { flex: 1; min-height: 0; overflow-y: auto; padding: 14px 24px 20px; display: flex; flex-direction: column; gap: 18px; color: var(--color-ink-2); }
+  .sidep__body b { color: var(--color-ink); }
+  .sidep__foot { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 10px; padding: 14px 24px 20px; border-top: 1px solid var(--rule); }
+  @keyframes panelin { from { translate: 24px 0; opacity: 0; } to { translate: 0 0; opacity: 1; } }
+  @media (max-width: 520px) {
+    .sidep__head { padding-left: 16px; }
+    .sidep__body, .sidep__foot { padding-left: 16px; padding-right: 16px; }
+    .sidep__foot .btn { flex: 1 1 auto; }
+  }
+  @media (prefers-reduced-motion: reduce) { .sidep { animation: none; } }
+}

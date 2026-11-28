@@ -10,7 +10,7 @@ Accounts and infrastructure that must exist before (or while) the apps are built
 
 ## Already done
 - [x] DNS for brickbot.ro is managed by Cloudflare.
-- [x] R2 bucket exists and is served at `cdn.brickbot.ro`.
+- [x] R2 bucket exists. Until launch it is served at `cdn-next.brickbot.ro` (`cdn.brickbot.ro` still serves the old site; see §3).
 - [x] This repo belongs to the BrickBot GitHub org.
 
 ---
@@ -93,6 +93,12 @@ Wrangler (the Cloudflare CLI) is installed per project as a dev dependency, so t
 - [ ] **Workers Builds.** For each app (`website`, `links`, `cms`, `auth`, `scheduler`), go to Workers & Pages → *Create* → *Import a repository*. Pick this repo, then set the app's root directory and build command (agents will give the exact values). Then attach the custom domain (`brickbot.ro`, `links.`, `cms.`, `auth.`).
 - [ ] **Deploy hooks.** Create a deploy hook for `website` and for `links` in each project's build settings. The CMS "Publish" button and the scheduler call these URLs.
 - [ ] **Localhost redirect URLs** in Supabase, and the final dev ports in the R2 CORS policy.
+- [ ] **Response header rule for SVGs on the CDN** (security). Go to Rules → Transform Rules → *Modify Response Header* → *Create rule*.
+  - Match: hostname equals `cdn-next.brickbot.ro` (later also `cdn.brickbot.ro`) **and** URI Path ends with `.svg`.
+  - Set static headers: `Content-Security-Policy` = `default-src 'none'; style-src 'unsafe-inline'; img-src data:; sandbox` and `X-Content-Type-Options` = `nosniff`.
+  - Why: the login cookie is shared with every `brickbot.ro` subdomain, so a scripted SVG opened as a page on the CDN could read it. SVGs still show up inside `<img>` tags.
+- [ ] **Secure email change.** Supabase → Authentication → Sign In / Providers → Email: turn **Secure email change** ON and **Confirm email** ON.
+- [ ] **R2 CORS allowed headers** must stay `*` (or include `content-type` and `content-disposition`), since SVG uploads now send `Content-Disposition`.
 
 ---
 
@@ -102,6 +108,11 @@ Wrangler (the Cloudflare CLI) is installed per project as a dev dependency, so t
   - Set it eligible for cache, with **Edge TTL = 1 year** (ignore origin) and **Browser TTL = 1 year**.
   - Do this only after the placeholder images are replaced through the CMS. Otherwise re-uploading a placeholder at the same path would keep serving the old file.
 - [ ] **Cutover.** Point `brickbot.ro` and `links.brickbot.ro` to the Cloudflare Workers (attaching the custom domain replaces the old Vercel DNS records). Test the legacy redirects (see CLAUDE.md §3.12), then delete the Vercel projects.
+- [ ] **Move `cdn.brickbot.ro` to the new bucket** (same session as the cutover: the old site loses its images at this moment). Until launch the new bucket is served at `cdn-next.brickbot.ro`, because `cdn.brickbot.ro` still serves the old site's bucket.
+  1. R2 → old bucket → Settings → Custom Domains: disconnect `cdn.brickbot.ro`.
+  2. R2 → new bucket → Settings → Custom Domains: connect `cdn.brickbot.ro`.
+  3. Set `CDN_URL=https://cdn.brickbot.ro` in the root `.env` and in every Workers Build's variables, then rebuild all apps. The database stores keys, not URLs, so nothing else changes.
+  4. Disconnect `cdn-next.brickbot.ro`. Do the Cache Rule above for `cdn.brickbot.ro` only after this.
 
 ---
 

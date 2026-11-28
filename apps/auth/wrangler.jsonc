@@ -1,0 +1,11 @@
+{
+  // Workers with static assets (CLAUDE.md §2). Workers Builds root: apps/auth, build: pnpm build, deploy: pnpm exec wrangler deploy.
+  // The custom domain auth.brickbot.ro is attached in the dashboard. Every unknown path serves index.html (client-side routes).
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "brickbot-auth",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "single-page-application"
+  }
+}

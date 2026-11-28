@@ -1,0 +1,4 @@
+@layer components {
+  .team-num { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 16px; }
+  @media (max-width: 480px) { .team-num { grid-template-columns: 1fr; } }
+}

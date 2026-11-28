@@ -1,0 +1,20 @@
+/* Audit log. Prefix .aud-. Shared pieces live in ../users/users.css. */
+@layer components {
+  .aud-filters { flex: 1 1 100%; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); align-items: start; gap: 12px 14px; }
+  .aud-filters .input { height: 44px; }
+  .aud-clear { justify-self: start; align-self: center; margin-top: 22px; }
+  .aud-when b { color: var(--color-ink); font-weight: 700; font-stretch: 100%; }
+  .aud-item { color: var(--color-ink); overflow-wrap: anywhere; }
+  .aud-more { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 16px; margin-top: 14px; color: var(--color-ink-3); }
+
+  .aud-sum { line-height: 1.5; }
+  .aud-diff { list-style: none; display: flex; flex-direction: column; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+  .aud-diff__row { display: flex; flex-direction: column; gap: 6px; padding: 14px 0; border-bottom: 1px solid var(--rule); }
+  .aud-diff__label { color: var(--color-ink); font-weight: 700; font-size: 0.86rem; font-stretch: 78%; letter-spacing: 0.12em; text-transform: uppercase; }
+  .aud-diff__line { display: grid; grid-template-columns: 54px minmax(0, 1fr); align-items: baseline; gap: 10px; }
+  .aud-diff__tag { color: var(--color-ink-3); font-weight: 700; font-size: 0.74rem; font-stretch: 78%; letter-spacing: 0.14em; text-transform: uppercase; }
+  .aud-diff__val { overflow-wrap: anywhere; line-height: 1.5; }
+  .aud-diff__val--old { color: var(--color-ink-3); text-decoration: line-through; text-decoration-thickness: 1px; }
+  .aud-hi { background: var(--color-yellow); color: var(--color-black); padding: 1px 6px; border-radius: calc(var(--k) * 4px); box-decoration-break: clone; -webkit-box-decoration-break: clone; font-weight: 700; }
+  .aud-toggle { align-self: flex-start; }
+}

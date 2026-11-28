@@ -1,0 +1,21 @@
+{
+  "name": "@brickbot/supabase",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./database.types": "./src/database.types.ts"
+  },
+  "scripts": {
+    "gen:types": "cd ../.. && supabase gen types typescript --local > packages/supabase/src/database.types.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test test"
+  },
+  "dependencies": {
+    "@supabase/ssr": "^0.12.7",
+    "@supabase/supabase-js": "^2.119.2"
+  },
+  "devDependencies": {
+    "typescript": "~5.9.3"
+  }
+}

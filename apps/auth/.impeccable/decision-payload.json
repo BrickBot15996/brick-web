@@ -1,0 +1,46 @@
+{
+  "title": "Three layouts for auth.brickbot.ro",
+  "question": "Same Arena Lights look as the website and linktree in all three: black, exact #FFEC17, Anek Latin, squircle boards. They differ in layout and in where the electric touch goes. Each sketch shows the sign-in screen at desktop size (open the expand chip for full size). The code, forgot-password, reset and invite screens follow the layout you pick. Lock one, or steer and re-roll.",
+  "options": [
+    {
+      "id": "rail",
+      "kind": "assigned",
+      "label": "Circuit Rail",
+      "kicker": "THE ROLL",
+      "lineage": "the website's arc of current, turned upright into a circuit",
+      "thesis": "Signing in is a short circuit: a vertical arc on the left links Sign in → Check your email → You're in, and current runs to the next node each time a step clears.",
+      "palette": ["#000000", "#FFEC17", "#121210", "#F4F1E8"],
+      "materials": ["vertical arc line with one zigzag", "lit and unlit nodes", "squircle form board", "Anek Expanded headings"],
+      "viewport": "Logo and wordmark at top left; below them the upright rail with three steps, the first lit yellow. On the right, a surface board holds “Sign in”, the email and password fields, a full-width yellow “Sign in” button and “Forgot password?”.",
+      "risk": "Three steps for a two-field form can feel like ceremony; the rail stays slim and is cut down to a one-line progress bar on phones.",
+      "html": ".impeccable/mocks/decision/rail.html"
+    },
+    {
+      "id": "split",
+      "kind": "dealt",
+      "label": "Floodlit Split",
+      "lineage": "the website hero: a floodlit competition photo with type where the scrim is",
+      "thesis": "Half the screen is the team at Worlds under the arena floodlights; the other half is a quiet black desk with the form. A slim LED strip along the photo's bottom edge reports what's happening.",
+      "palette": ["#000000", "#FFEC17", "#F4F1E8", "#050505"],
+      "materials": ["full-height team photo", "dot-matrix LED status strip", "plain black form column", "outlined inputs that light yellow on focus"],
+      "viewport": "Left 55%: the Worlds practice-field photo, scrimmed only at the lower left where the wordmark and “Team access” sit, above an LED strip reading SIGN IN · MEMBERS ONLY. Right 45%: “Sign in”, two fields, the yellow button and the forgot-password link, vertically centred.",
+      "risk": "The photo is the familiar split-screen login; it earns its place only if the LED strip does real work (code sent, wrong code, link expired).",
+      "html": ".impeccable/mocks/decision/split.html"
+    },
+    {
+      "id": "led",
+      "kind": "dealt",
+      "label": "LED Check-in",
+      "lineage": "the linktree's centred column plus the LED perimeter board",
+      "thesis": "One centred column, like links.brickbot.ro: the logo and wordmark on top, then an LED board that announces each step in lit dot-matrix type, then the form. The email code is typed into six LED digit cells.",
+      "palette": ["#000000", "#FFEC17", "#050505", "#1B1A17"],
+      "materials": ["centred mark over wordmark", "dot-matrix LED board as the step title", "six LED digit cells for the code", "squircle board for the form"],
+      "viewport": "Centred 440px column: logo mark over the wordmark; a full-width LED board reading SIGN IN with “members only” dim beside it; a surface board with email, password, the yellow button and “Forgot password?”; “Back to brickbot.ro” in the footer.",
+      "risk": "Closest to the linktree, so the most cohesive and the least surprising; the LED board must stay readable and dim, not a gimmick.",
+      "html": ".impeccable/mocks/decision/led.html"
+    }
+  ],
+  "reroll": { "registers": ["safer", "bolder"] },
+  "buildPath": { "value": "code" },
+  "steer": true
+}

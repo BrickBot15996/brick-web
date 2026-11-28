@@ -1,0 +1,130 @@
+/* The shared field and layout kit (components/edit: NumberField, DateField, ToggleField, TagPicker, FileField, DataTable,
+   SettingsPage, TabbedModule). Arena Lights tokens only; nested corners follow the --ro / --pad / --ri rule from styles.css. */
+@layer components {
+  /* ───────── small field parts ───────── */
+  .field__zone { color: var(--color-ink-3); }
+  .input--long { min-height: 168px; }
+  .input--date { color-scheme: dark; font-variant-numeric: tabular-nums; }
+  .input--date::-webkit-calendar-picker-indicator { filter: invert(0.8); cursor: pointer; }
+  .imgf__tile, .mp__tile { align-content: center; gap: 2px; }
+  .fprev__ext, .mp__ext { font-weight: 700; font-size: 0.7rem; font-stretch: 78%; letter-spacing: 0.14em; color: var(--color-ink-3); }
+
+  /* ───────── number ───────── */
+  .numf { position: relative; display: block; }
+  .numf--unit .input { padding-right: 44px; }
+  .numf__unit { position: absolute; right: 14px; top: 50%; translate: 0 -50%; color: var(--color-ink-3); font-size: 1.05rem; pointer-events: none; }
+
+  /* ───────── toggle: a pill track with a knob inset by 3px (track radius = knob radius + inset) ───────── */
+  .tgl__row { display: flex; align-items: center; gap: 14px; min-height: 44px; }
+  .tgl__btn { flex: none; padding: 0; border: 0; background: none; border-radius: 999px; cursor: pointer; }
+  .tgl__btn:focus-visible { outline-offset: 3px; }
+  .tgl__track { position: relative; display: block; width: 52px; height: 30px; border-radius: 999px; background: var(--color-black); border: 1.5px solid var(--line); transition: background-color 0.2s, border-color 0.2s; }
+  .tgl__knob { position: absolute; top: 3px; left: 3px; width: 21px; height: 21px; border-radius: 50%; background: var(--color-ink-2); transition: translate 0.2s var(--ease), background-color 0.2s; }
+  .tgl__btn:hover .tgl__track { border-color: var(--color-ink-3); }
+  .tgl__btn[aria-checked='true'] .tgl__track { background: var(--color-yellow); border-color: var(--color-yellow); }
+  .tgl__btn[aria-checked='true'] .tgl__knob { translate: 22px 0; background: var(--color-black); }
+  .tgl__label { font-weight: 700; font-stretch: 106%; font-size: 1.05rem; cursor: pointer; }
+  .tgl .field__hint { margin-left: 66px; margin-top: -4px; }
+
+  /* ───────── tag picker ───────── */
+  .tags { position: relative; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; min-height: 48px; padding: 6px 8px 6px 6px; --ro: var(--r-sm); --pad: 7.5px; border: 1.5px solid var(--line); border-radius: var(--ro); background: var(--color-black); cursor: text; transition: border-color 0.2s, box-shadow 0.2s; }
+  .tags:hover { border-color: var(--color-ink-3); }
+  .tags:focus-within { border-color: var(--color-yellow); box-shadow: 0 0 0 1px var(--color-yellow); }
+  .tags[data-invalid] { border-color: var(--color-alarm); }
+  .tags[data-invalid]:focus-within { box-shadow: 0 0 0 1px var(--color-alarm); }
+  .tags__chips { display: contents; list-style: none; }
+  .tagc { display: inline-flex; align-items: center; gap: 2px; height: 33px; padding: 0 4px 0 12px; border-radius: var(--ri); background: var(--color-surface-2); color: var(--color-ink); font-weight: 700; font-stretch: 104%; font-size: 0.98rem; }
+  .tagc__x { display: grid; place-items: center; width: 26px; height: 26px; border: 0; border-radius: calc(var(--k) * 4px); background: none; color: var(--color-ink-2); cursor: pointer; }
+  .tagc__x .i { width: 14px; height: 14px; }
+  .tagc__x:hover { color: var(--color-yellow); background: var(--color-black); }
+  .tagc__x:focus-visible { outline-offset: 0; }
+  .tags__in { flex: 1 1 120px; min-width: 80px; height: 33px; padding: 0 6px; border: 0; background: none; color: var(--color-ink); font: inherit; font-size: 1.05rem; }
+  .tags__in:focus-visible { outline: none; }
+  .tags__in::placeholder { color: var(--color-ink-3); }
+  .tags__in:disabled { cursor: not-allowed; }
+  .tags__list { position: absolute; left: -1.5px; right: -1.5px; top: calc(100% + 6px); z-index: 30; max-height: 264px; overflow-y: auto; padding: 6px; --ro: var(--r-pop); --pad: 7px; border-radius: var(--ro); background: var(--color-surface); border: 1px solid var(--line); box-shadow: 0 24px 60px -20px #000; cursor: default; }
+  .tags__opt { display: flex; align-items: center; min-height: 40px; padding: 0 10px; border-radius: var(--ri); color: var(--color-ink-2); cursor: pointer; }
+  .tags__opt[aria-selected='true'] { background: var(--color-surface-2); color: var(--color-ink); }
+  .tags__empty { padding: 10px; color: var(--color-ink-3); font-size: 0.98rem; }
+  .tags__empty b { color: var(--color-ink); }
+
+  /* ───────── data table ───────── */
+  .dt { container-type: inline-size; --ro: var(--r-md); --pad: 1px; border: 1px solid var(--rule); border-radius: var(--ro); background: var(--color-black); overflow: clip; }
+  /* the page scrolls and the header sticks to the viewport; only a table wider than its box scrolls sideways (set by DataTable) */
+  .dt__scroll { outline: none; }
+  .dt__scroll[data-x] { overflow-x: auto; }
+  .dt__table { width: 100%; min-width: 560px; border-collapse: separate; border-spacing: 0; }
+  .dt__th { position: sticky; top: 0; z-index: 2; height: 44px; padding: 0 16px; text-align: left; white-space: nowrap; background: var(--color-surface); border-bottom: 1px solid var(--line); font-weight: 700; font-size: 0.78rem; font-stretch: 78%; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-ink-3); }
+  @media (max-width: 899.98px) { .dt__th { top: 60px; } }
+  @container (max-width: 759.98px) {
+    .dt--stack .dt__scroll { overflow: visible; }
+    .dt--stack .dt__scroll[data-x] { overflow-x: visible; }
+    .dt--stack .dt__table, .dt--stack tbody { display: block; min-width: 0; }
+    .dt--stack thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+    .dt--stack .dt__row { display: flex; flex-direction: column; gap: 10px; padding: 16px; border-bottom: 1px solid var(--rule); }
+    .dt--stack .dt__row:last-child { border-bottom: 0; }
+    .dt--stack .dt__td { display: block; padding: 0; border: 0; width: auto; background: none; }
+    .dt--stack .dt__row:hover .dt__td { background: none; }
+    .dt--stack .dt__td[data-label]::before { content: attr(data-label); display: block; margin-bottom: 2px; color: var(--color-ink-3); font-weight: 700; font-size: 0.74rem; font-stretch: 78%; letter-spacing: 0.14em; text-transform: uppercase; }
+    .dt--stack .dt__td--end { text-align: left; }
+    .dt--stack .dt__td--act { text-align: left; white-space: normal; padding-right: 0; }
+    .dt--stack .dt__acts { flex-wrap: wrap; gap: 8px; }
+    /* buttons in a card sit near the table's rounded corner: concentric with it (card padding 16 + border 1) */
+    .dt--stack .dt__td--act { --pad: 17px; }
+    .dt--stack .dt__acts .btn, .dt--stack .dt__acts .iconbtn { border-radius: var(--ri); }
+    .dt--stack .dt__skel { display: block; padding: 8px 16px; }
+    .dt--stack .dt__skel td { display: block; padding: 0; border: 0; }
+  }
+  .dt__th--end, .dt__td--end { text-align: right; }
+  .dt__sort { display: inline-flex; align-items: center; gap: 6px; margin: 0 -8px; padding: 6px 8px; --pad: 8px; border: 0; border-radius: var(--ri); background: none; color: inherit; font: inherit; letter-spacing: inherit; text-transform: inherit; cursor: pointer; }
+  .dt__sort:hover { color: var(--color-ink); }
+  .dt__sort:focus-visible { outline-offset: -2px; }
+  .dt__th[aria-sort='ascending'] .dt__sort, .dt__th[aria-sort='descending'] .dt__sort { color: var(--color-ink); }
+  .dt__arrow { width: 14px; height: 14px; opacity: 0; transition: opacity 0.15s; }
+  .dt__sort:hover .dt__arrow, .dt__sort:focus-visible .dt__arrow { opacity: 0.55; }
+  .dt__sort .dt__arrow--on { opacity: 1; color: var(--color-yellow); }
+  .dt__td { padding: 12px 16px; border-bottom: 1px solid var(--rule); color: var(--color-ink-2); vertical-align: middle; }
+  .dt__table tbody tr:last-child .dt__td, .dt__skel:last-child td { border-bottom: 0; }
+  .dt__row { position: relative; }
+  .dt__row:hover .dt__td { background: var(--color-surface); }
+  .dt__row[aria-current='true'] .dt__td { background: var(--color-surface-2); }
+  .dt__link { color: var(--color-ink); font-weight: 700; font-stretch: 106%; text-decoration: none; }
+  .dt__link::after { content: ''; position: absolute; inset: 0; z-index: 1; }
+  .dt__link:focus-visible { outline: none; }
+  .dt__link:focus-visible::after { outline: 2px solid var(--color-yellow); outline-offset: -2px; border-radius: var(--r-sm); }
+  .dt__row[data-link]:hover .dt__link { color: var(--color-yellow); }
+  .dt__th--act, .dt__td--act { width: 1%; white-space: nowrap; text-align: right; }
+  /* clear of the table's rounded corner, so the action buttons are not nested in it */
+  .dt__td--act { padding-right: 28px; }
+  .dt__acts { position: relative; z-index: 2; display: inline-flex; align-items: center; gap: 2px; }
+  .dt__skel td { padding: 11px 16px; border-bottom: 1px solid var(--rule); }
+  .dt__empty { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; padding: 28px 0; color: var(--color-ink-2); max-width: 44ch; }
+  .dt__empty .btn { margin-top: 10px; }
+  .dt__empty-t { color: var(--color-ink); font-weight: 800; font-stretch: 112%; font-size: 1.3rem; line-height: 1.15; }
+  .dt__none { padding: 20px 0; color: var(--color-ink-2); }
+
+  /* ───────── table page and settings page ───────── */
+  .tp { padding: 12px 40px 72px; }
+  .tp__tools { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px; margin: 18px 0 16px; }
+  .tp__tools .lp__search { flex: 1 1 260px; max-width: 360px; }
+  .tp > .dt, .tp > .notice, .tp > .dt__empty { margin-top: 18px; }
+
+  .sp { --ed-top: 12px; --gut: 40px; --above: var(--phead-h); display: flex; flex-direction: column; min-height: calc(100svh - var(--above, 0px)); }
+  .sp > .ed { flex: 1; }
+
+  /* ───────── a tab row sits above these ───────── */
+  .tabm .tp { padding-top: 28px; }
+  .tabm .sp { --above: calc(var(--phead-h) + 48px); --ed-top: 12px; }
+}
+@supports (corner-shape: squircle) {
+  .tgl__btn, .tgl__track, .tgl__knob { corner-shape: round; }
+}
+@container (max-width: 760px) {
+  .dt__sec { display: none; }
+}
+@media (max-width: 899px) {
+  .tp { padding: 12px 16px 56px; }
+  .tabm .tp { padding: 16px 16px 56px; }
+  .sp { --ed-top: 10px; --gut: 16px; --above: 150px; }
+  .tabm .sp { --above: 198px; --ed-top: 10px; }
+}

@@ -1,0 +1,114 @@
+@import "tailwindcss";
+@import "./styles/edit.css";
+
+/* BrickBot CMS · Arena Lights (apps/website/DESIGN.md, apps/auth/DESIGN.md). Fonts: same files and metric-matched fallback as apps/website. */
+@font-face { font-family: 'Anek Latin'; src: url('/fonts/anek-latin-latin.woff2') format('woff2'); font-weight: 100 800; font-stretch: 75% 125%; font-display: optional;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Anek Latin'; src: url('/fonts/anek-latin-latin-ext.woff2') format('woff2'); font-weight: 100 800; font-stretch: 75% 125%; font-display: optional;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+/* Metric-matched stand-in, same as apps/website: with font-display: optional a slow first visit keeps it for that view, with no swap. */
+@font-face { font-family: 'Anek Latin Fallback'; src: local('Arial'), local('ArialMT'), local('Liberation Sans'), local('Arimo'); font-weight: 400; font-stretch: 75% 79%; size-adjust: 65.0%; ascent-override: 138.5%; descent-override: 30.8%; line-gap-override: 0%; }
+@font-face { font-family: 'Anek Latin Fallback'; src: local('Arial Bold'), local('Arial-BoldMT'), local('Liberation Sans Bold'), local('Arimo Bold'); font-weight: 700; font-stretch: 75% 79%; size-adjust: 70.0%; ascent-override: 128.6%; descent-override: 28.6%; line-gap-override: 0%; }
+@font-face { font-family: 'Anek Latin Fallback'; src: local('Arial'), local('ArialMT'), local('Liberation Sans'), local('Arimo'); font-weight: 400; font-stretch: 79% 90%; size-adjust: 68.0%; ascent-override: 132.4%; descent-override: 29.4%; line-gap-override: 0%; }
+@font-face { font-family: 'Anek Latin Fallback'; src: local('Arial Bold'), local('Arial-BoldMT'), local('Liberation Sans Bold'), local('Arimo Bold'); font-weight: 700; font-stretch: 79% 90%; size-adjust: 73.0%; ascent-override: 123.3%; descent-override: 27.4%; line-gap-override: 0%; }
+@font-face { font-family: 'Anek Latin Fallback'; src: local('Arial'), local('ArialMT'), local('Liberation Sans'), local('Arimo'); font-weight: 400; font-stretch: 90% 103%; size-adjust: 93.0%; ascent-override: 96.8%; descent-override: 21.5%; line-gap-override: 0%; }
+@font-face { font-family: 'Anek Latin Fallback'; src: local('Arial Bold'), local('Arial-BoldMT'), local('Liberation Sans Bold'), local('Arimo Bold'); font-weight: 700; font-stretch: 90% 103%; size-adjust: 91.5%; ascent-override: 98.4%; descent-override: 21.9%; line-gap-override: 0%; }
+@font-face { font-family: 'Anek Latin Fallback'; src: local('Arial'), local('ArialMT'), local('Liberation Sans'), local('Arimo'); font-weight: 400; font-stretch: 103% 108%; size-adjust: 100.0%; ascent-override: 90.0%; descent-override: 20.0%; line-gap-override: 0%; }
+@font-face { font-family: 'Anek Latin Fallback'; src: local('Arial Bold'), local('Arial-BoldMT'), local('Liberation Sans Bold'), local('Arimo Bold'); font-weight: 700; font-stretch: 103% 108%; size-adjust: 97.0%; ascent-override: 92.8%; descent-override: 20.6%; line-gap-override: 0%; }
+@font-face { font-family: 'Anek Latin Fallback'; src: local('Arial'), local('ArialMT'), local('Liberation Sans'), local('Arimo'); font-weight: 400; font-stretch: 108% 112%; size-adjust: 104.5%; ascent-override: 86.1%; descent-override: 19.1%; line-gap-override: 0%; }
+@font-face { font-family: 'Anek Latin Fallback'; src: local('Arial Bold'), local('Arial-BoldMT'), local('Liberation Sans Bold'), local('Arimo Bold'); font-weight: 700; font-stretch: 108% 112%; size-adjust: 101.0%; ascent-override: 89.1%; descent-override: 19.8%; line-gap-override: 0%; }
+@font-face { font-family: 'Anek Latin Fallback'; src: local('Arial'), local('ArialMT'), local('Liberation Sans'), local('Arimo'); font-weight: 400; font-stretch: 112% 116%; size-adjust: 110.0%; ascent-override: 81.8%; descent-override: 18.2%; line-gap-override: 0%; }
+@font-face { font-family: 'Anek Latin Fallback'; src: local('Arial Bold'), local('Arial-BoldMT'), local('Liberation Sans Bold'), local('Arimo Bold'); font-weight: 700; font-stretch: 112% 116%; size-adjust: 105.5%; ascent-override: 85.3%; descent-override: 19.0%; line-gap-override: 0%; }
+@font-face { font-family: 'Anek Latin Fallback'; src: local('Arial'), local('ArialMT'), local('Liberation Sans'), local('Arimo'); font-weight: 400; font-stretch: 116% 117%; size-adjust: 113.5%; ascent-override: 79.3%; descent-override: 17.6%; line-gap-override: 0%; }
+@font-face { font-family: 'Anek Latin Fallback'; src: local('Arial'), local('ArialMT'), local('Liberation Sans'), local('Arimo'); font-weight: 400; font-stretch: 117% 125%; size-adjust: 116.0%; ascent-override: 77.6%; descent-override: 17.2%; line-gap-override: 0%; }
+@font-face { font-family: 'Anek Latin Fallback'; src: local('Arial Bold'), local('Arial-BoldMT'), local('Liberation Sans Bold'), local('Arimo Bold'); font-weight: 700; font-stretch: 116% 117%; size-adjust: 108.5%; ascent-override: 82.9%; descent-override: 18.4%; line-gap-override: 0%; }
+@font-face { font-family: 'Anek Latin Fallback'; src: local('Arial Bold'), local('Arial-BoldMT'), local('Liberation Sans Bold'), local('Arimo Bold'); font-weight: 700; font-stretch: 117% 125%; size-adjust: 110.5%; ascent-override: 81.4%; descent-override: 18.1%; line-gap-override: 0%; }
+
+
+@theme {
+  --color-black: #000;
+  --color-diode: #050505;
+  --color-surface: #121210;
+  --color-surface-2: #1c1b18;
+  --color-unlit: #1b1a17;
+  --color-ink: #f4f1e8;
+  --color-ink-2: #bdb9ad;
+  --color-ink-3: #8e8b81;
+  --color-yellow: #ffec17;
+  --color-spark: #fffbd6;
+  --color-alarm: #ff7b8e;
+  --font-sans: 'Anek Latin', 'Anek Latin Fallback', system-ui, sans-serif;
+}
+
+:root {
+  --rule: rgb(244 241 232 / 0.14);
+  --line: rgb(244 241 232 / 0.24);
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --rail: 68px;
+  --phead-h: 92px;
+  --rail-open: 240px;
+
+  /* Corners. Plain radii here; squircles below. Same rule as apps/website: a rounded element inset by --pad inside a
+     container of radius --ro gets --ri = max(--ro - k * --pad, k * 4px); k is 1 for plain radii and 2 for squircles
+     (they run about twice a circular arc). A container sets --ro and --pad (padding plus border); its rounded
+     children use border-radius: var(--ri). A child that sits deeper sets its own --pad. */
+  --k: 1;
+  --r-btn: 12px; --r-sm: 10px; --r-md: 12px; --r-tile: 10px; --r-row: 12px; --r-pop: 12px;
+  --ro: 0px; --pad: 0px;
+}
+@supports (corner-shape: squircle) {
+  :root { --k: 2; --r-btn: 22px; --r-sm: 18px; --r-md: 24px; --r-tile: 16px; --r-row: 18px; --r-pop: 24px; }
+  /* One corner shape everywhere, so an inner and its outer always match. Circles keep the round shape. */
+  * { corner-shape: squircle; }
+  .led, .spin, .ml__bar, .upl__bar { corner-shape: round; }
+}
+* { --ri: max(calc(var(--ro) - var(--k) * var(--pad)), calc(var(--k) * 4px)); }
+
+@layer base {
+  html { background: var(--color-black); color-scheme: dark; scrollbar-color: #3a3933 var(--color-black); -webkit-text-size-adjust: 100%; }
+  body { min-height: 100svh; background: var(--color-black); color: var(--color-ink); font-family: var(--font-sans); font-size: 1rem; line-height: 1.45; -webkit-font-smoothing: antialiased; }
+  ::selection { background: var(--color-yellow); color: var(--color-black); }
+  :focus-visible { outline: 2px solid var(--color-yellow); outline-offset: 3px; }
+  html { scroll-padding-bottom: 112px; }
+  h1, h2 { font-weight: 800; text-wrap: balance; }
+  p { text-wrap: pretty; }
+  input { caret-color: var(--color-yellow); }
+  input[type='checkbox'], input[type='radio'] { accent-color: var(--color-yellow); }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-thumb { background: #3a3933; border-radius: 6px; border: 2px solid var(--color-black); }
+  ::-webkit-scrollbar-track { background: var(--color-black); }
+  .i { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+  .mark { aspect-ratio: 325.6 / 231.89; background: var(--color-yellow); -webkit-mask: var(--logomark) center / contain no-repeat; mask: var(--logomark) center / contain no-repeat; }
+  .word { aspect-ratio: 1114.99 / 217.14; background: var(--color-yellow); -webkit-mask: var(--wordmark) center / contain no-repeat; mask: var(--wordmark) center / contain no-repeat; }
+  .tnum { font-variant-numeric: tabular-nums; }
+}
+
+@layer components {
+  .btn { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 0.5em; min-height: 44px; padding: 0 20px; font-family: inherit; font-weight: 700; font-size: 1.05rem; font-stretch: 112%; line-height: 1; border-radius: var(--r-btn); border: 0; cursor: pointer; text-decoration: none; white-space: nowrap;
+    transition: background-color 0.25s, color 0.25s, box-shadow 0.25s, transform 0.25s var(--ease); }
+  .btn:active { transform: translateY(1px); }
+  .btn:focus-visible { outline-offset: 4px; }
+  .btn:disabled { cursor: default; }
+  /* Floodlight glow: the one primary action is lit at rest, brighter on hover */
+  .btn--primary { background: var(--color-yellow); color: var(--color-black); box-shadow: 0 10px 30px -12px rgb(255 236 23 / 0.6); }
+  .btn--primary:hover:not(:disabled) { box-shadow: 0 12px 34px -10px rgb(255 236 23 / 0.8); }
+  .btn--primary:disabled { background: var(--color-surface-2); color: var(--color-ink-3); box-shadow: none; }
+  .btn--ghost { background: none; color: var(--color-ink); border: 1.5px solid rgb(244 241 232 / 0.62); }
+  .btn--ghost:hover { color: var(--color-yellow); border-color: var(--color-yellow); }
+  .link { color: var(--color-yellow); font: inherit; font-weight: 700; font-stretch: 110%; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 0.32em; background: none; border: 0; padding: 0; cursor: pointer; }
+  .notice { padding: 13px 16px; border-radius: var(--r-sm); background: var(--color-surface-2); border: 1.5px solid var(--color-alarm); font-size: 1rem; line-height: 1.45; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; }
+  .notice .link { margin-left: auto; }
+  /* the one small status tag (components/Tag): Condensed caps on the raised board; lit = yellow text + 1px yellow hairline */
+  .tag { flex: none; display: inline-flex; align-items: center; height: 22px; padding: 0 8px; border-radius: calc(var(--k) * 4px); background: var(--color-surface-2); box-shadow: inset 0 0 0 1px var(--rule); color: var(--color-ink-3); font-weight: 700; font-size: 0.74rem; font-stretch: 78%; letter-spacing: 0.14em; line-height: 1; text-transform: uppercase; white-space: nowrap; }
+  .tag--lit { color: var(--color-yellow); box-shadow: inset 0 0 0 1px var(--color-yellow); }
+  .label { font-weight: 700; font-size: 0.78rem; font-stretch: 78%; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-ink-3); }
+}
+
+@keyframes rise { from { opacity: 0; transform: translateY(8px); } }
+@keyframes pulse { 50% { opacity: 0.35; } }
+@keyframes shimmer { to { background-position: -200% 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+}

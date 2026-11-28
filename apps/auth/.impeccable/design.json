@@ -1,0 +1,451 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-27T10:35:48Z",
+  "title": "Design System: BrickBot Auth",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Floodlight Yellow",
+        "canonical": "#ffec17",
+        "tonalRamp": [
+          "#2b2706",
+          "#4a4100",
+          "#7a6c00",
+          "#b3a000",
+          "#e6d200",
+          "#ffec17",
+          "#fff27a",
+          "#fffbd6"
+        ]
+      },
+      "spark": {
+        "role": "primary",
+        "displayName": "Spark White",
+        "canonical": "#fffbd6",
+        "tonalRamp": [
+          "#2b2706",
+          "#4a4100",
+          "#7a6c00",
+          "#b3a000",
+          "#e6d200",
+          "#ffec17",
+          "#fff27a",
+          "#fffbd6"
+        ]
+      },
+      "alarm": {
+        "role": "state",
+        "displayName": "Alarm",
+        "canonical": "#ff7b8e",
+        "tonalRamp": [
+          "#2a0a10",
+          "#4d121d",
+          "#7a1d2f",
+          "#a82c44",
+          "#d64a63",
+          "#ff7b8e",
+          "#ffaebb",
+          "#ffe1e6"
+        ]
+      },
+      "black": {
+        "role": "neutral",
+        "displayName": "Venue Black",
+        "canonical": "#000000",
+        "tonalRamp": [
+          "#000000",
+          "#050505",
+          "#121210",
+          "#1c1b18",
+          "#3a3933",
+          "#8e8b81",
+          "#bdb9ad",
+          "#f4f1e8"
+        ]
+      },
+      "diode": {
+        "role": "neutral",
+        "displayName": "Diode Housing (declared, unpainted)",
+        "canonical": "#050505",
+        "tonalRamp": [
+          "#000000",
+          "#050505",
+          "#121210",
+          "#1c1b18",
+          "#3a3933",
+          "#8e8b81",
+          "#bdb9ad",
+          "#f4f1e8"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Board",
+        "canonical": "#121210",
+        "tonalRamp": [
+          "#000000",
+          "#050505",
+          "#121210",
+          "#1c1b18",
+          "#3a3933",
+          "#8e8b81",
+          "#bdb9ad",
+          "#f4f1e8"
+        ]
+      },
+      "surface-raised": {
+        "role": "neutral",
+        "displayName": "Raised Board",
+        "canonical": "#1c1b18",
+        "tonalRamp": [
+          "#000000",
+          "#050505",
+          "#121210",
+          "#1c1b18",
+          "#3a3933",
+          "#8e8b81",
+          "#bdb9ad",
+          "#f4f1e8"
+        ]
+      },
+      "unlit": {
+        "role": "neutral",
+        "displayName": "Unlit Diode (declared, unpainted)",
+        "canonical": "#1b1a17",
+        "tonalRamp": [
+          "#000000",
+          "#050505",
+          "#121210",
+          "#1c1b18",
+          "#3a3933",
+          "#8e8b81",
+          "#bdb9ad",
+          "#f4f1e8"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "House Light",
+        "canonical": "#f4f1e8",
+        "tonalRamp": [
+          "#000000",
+          "#050505",
+          "#121210",
+          "#1c1b18",
+          "#3a3933",
+          "#8e8b81",
+          "#bdb9ad",
+          "#f4f1e8"
+        ]
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Dimmed House Light",
+        "canonical": "#bdb9ad",
+        "tonalRamp": [
+          "#000000",
+          "#050505",
+          "#121210",
+          "#1c1b18",
+          "#3a3933",
+          "#8e8b81",
+          "#bdb9ad",
+          "#f4f1e8"
+        ]
+      },
+      "ink-faint": {
+        "role": "neutral",
+        "displayName": "Faint House Light",
+        "canonical": "#8e8b81",
+        "tonalRamp": [
+          "#000000",
+          "#050505",
+          "#121210",
+          "#1c1b18",
+          "#3a3933",
+          "#8e8b81",
+          "#bdb9ad",
+          "#f4f1e8"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "rgb(244 241 232 / 0.14)",
+        "tonalRamp": [
+          "#000000",
+          "#050505",
+          "#121210",
+          "#1c1b18",
+          "#3a3933",
+          "#8e8b81",
+          "#bdb9ad",
+          "#f4f1e8"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Field Line",
+        "canonical": "rgb(244 241 232 / 0.24)",
+        "tonalRamp": [
+          "#000000",
+          "#050505",
+          "#121210",
+          "#1c1b18",
+          "#3a3933",
+          "#8e8b81",
+          "#bdb9ad",
+          "#f4f1e8"
+        ]
+      },
+      "scrollbar": {
+        "role": "neutral",
+        "displayName": "Scrollbar",
+        "canonical": "#3a3933",
+        "tonalRamp": [
+          "#000000",
+          "#050505",
+          "#121210",
+          "#1c1b18",
+          "#3a3933",
+          "#8e8b81",
+          "#bdb9ad",
+          "#f4f1e8"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Arena line under the wordmark; payoff words yellow. Hidden under 900px."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "The one heading per step."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Optional helper line under a heading, and input text."
+      },
+      "fine": {
+        "displayName": "Fine",
+        "purpose": "Desk footer and notices."
+      },
+      "hint": {
+        "displayName": "Hint",
+        "purpose": "Field hints, ink-faint."
+      },
+      "note": {
+        "displayName": "Note",
+        "purpose": "Development-only preview note in the desk footer."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Condensed uppercase field labels. Never a kicker."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "Primary button label."
+      },
+      "link": {
+        "displayName": "Link",
+        "purpose": "Yellow text links (700) and back links (regular)."
+      },
+      "code-digit": {
+        "displayName": "Code Digit",
+        "purpose": "Digits in the six code cells, tabular."
+      },
+      "code-digit-mobile": {
+        "displayName": "Code Digit Mobile",
+        "purpose": "Code cell digits under 900px."
+      }
+    },
+    "shadows": [
+      {
+        "name": "floodlight-glow",
+        "value": "0 10px 30px -12px rgb(255 236 23 / 0.6)",
+        "purpose": "Primary button at rest (auth); hover 0 12px 34px -10px rgb(255 236 23 / 0.75)."
+      },
+      {
+        "name": "focus-outline",
+        "value": "outline: 2px solid #ffec17; outline-offset: 3px; border-radius: 4px",
+        "purpose": "Global focus style for links and buttons."
+      },
+      {
+        "name": "field-focus-ring",
+        "value": "0 0 0 1px #ffec17",
+        "purpose": "Focused input or active code cell; alarm on invalid fields."
+      },
+      {
+        "name": "arena-scrim",
+        "value": "radial-gradient(120% 80% at 0% 100%, rgb(0 0 0 / 0.88), rgb(0 0 0 / 0.55) 38%, transparent 66%), linear-gradient(rgb(0 0 0 / 0.55), transparent 18%)",
+        "purpose": "Darkens only the lower-left type corner and a thin top band of the arena photo."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "All transitions."
+      },
+      {
+        "name": "photo-settle",
+        "value": "scale(1.06) to none, 1.8s ease",
+        "purpose": "Arena photo once at load."
+      },
+      {
+        "name": "step-in",
+        "value": "opacity 0 + translateY(10px) to none, 0.5s ease",
+        "purpose": "Desk content on every step change."
+      },
+      {
+        "name": "caret",
+        "value": "1s steps(1) infinite",
+        "purpose": "Blinking caret in the active empty code cell."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "all animations and transitions ~0",
+        "purpose": "Photo settle and step-in stop."
+      },
+      {
+        "name": "paused-check",
+        "value": "900ms after typing stops; on blur (non-empty); on submit",
+        "purpose": "Field validation timing; a shown message stays current and clears once valid."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "stack",
+        "value": "899px (max-width)"
+      },
+      {
+        "name": "even-split",
+        "value": "900px–1199px"
+      },
+      {
+        "name": "wide-split",
+        "value": "1200px"
+      }
+    ],
+    "inherits": {
+      "system": "Arena Lights",
+      "source": "apps/website/DESIGN.md",
+      "detail": "apps/website/.impeccable/design-full.md"
+    }
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one action per step: full width, yellow, Floodlight glow at rest.",
+      "html": "<button class=\"ds-btn-primary\" type=\"button\">Sign in <svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></button>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:.6em;width:100%;min-height:56px;padding:0 28px;font-family:'Anek Latin',system-ui,sans-serif;font-weight:700;font-size:1.15rem;font-stretch:112%;line-height:1;border:0;border-radius:12px;cursor:pointer;background:#ffec17;color:#000;box-shadow:0 10px 30px -12px rgb(255 236 23/.6);transition:box-shadow .25s,transform .25s cubic-bezier(.16,1,.3,1)}.ds-btn-primary svg{transition:transform .3s cubic-bezier(.16,1,.3,1)}.ds-btn-primary:hover{box-shadow:0 12px 34px -10px rgb(255 236 23/.75)}.ds-btn-primary:hover svg{transform:translateX(4px)}.ds-btn-primary:focus-visible{outline:2px solid #ffec17;outline-offset:4px}.ds-btn-primary:active{transform:translateY(1px)}@supports (corner-shape:squircle){.ds-btn-primary{border-radius:22px;corner-shape:squircle}}"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Condensed label over an outlined squircle input on black that lights yellow on focus.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-label\">Email</span><input class=\"ds-input\" type=\"email\" placeholder=\"you@example.com\"></label>",
+      "css": ".ds-field{display:flex;flex-direction:column;gap:8px;font-family:'Anek Latin',system-ui,sans-serif;}.ds-label{font-weight:700;font-size:.86rem;font-stretch:78%;letter-spacing:.12em;text-transform:uppercase;color:#bdb9ad}.ds-input{width:100%;height:56px;padding:0 18px;border-radius:10px;border:1.5px solid rgb(244 241 232/.24);background:#000;color:#f4f1e8;font:inherit;font-size:1.125rem;caret-color:#ffec17;transition:border-color .2s,box-shadow .2s}.ds-input::placeholder{color:#8e8b81}.ds-input:hover{border-color:#8e8b81}.ds-input:focus-visible{outline:none;border-color:#ffec17;box-shadow:0 0 0 1px #ffec17}@supports (corner-shape:squircle){.ds-input{border-radius:18px;corner-shape:squircle}}"
+    },
+    {
+      "name": "Text Field, Error",
+      "kind": "input",
+      "refersTo": "input-error",
+      "description": "Invalid field: alarm stroke and an alarm message under it.",
+      "html": "<label class=\"ds-field-e\"><span class=\"ds-label-e\">Password</span><input class=\"ds-input-e\" type=\"password\" value=\"short\" aria-invalid=\"true\"><span class=\"ds-err\">Use at least 8 characters.</span></label>",
+      "css": ".ds-field-e{display:flex;flex-direction:column;gap:8px;font-family:'Anek Latin',system-ui,sans-serif;}.ds-label-e{font-weight:700;font-size:.86rem;font-stretch:78%;letter-spacing:.12em;text-transform:uppercase;color:#bdb9ad}.ds-input-e{width:100%;height:56px;padding:0 18px;border-radius:10px;border:1.5px solid #ff7b8e;background:#000;color:#f4f1e8;font:inherit;font-size:1.125rem}.ds-input-e:focus-visible{outline:none;box-shadow:0 0 0 1px #ff7b8e}.ds-err{color:#ff7b8e;font-size:.98rem}@supports (corner-shape:squircle){.ds-input-e{border-radius:18px;corner-shape:squircle}}"
+    },
+    {
+      "name": "Password Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Input with a 44px show/hide eye toggle inside its right edge.",
+      "html": "<div class=\"ds-pw\"><input class=\"ds-pw-input\" type=\"password\" value=\"hunter22\"><button class=\"ds-pw-toggle\" type=\"button\" aria-label=\"Show password\" aria-pressed=\"false\"><svg viewBox=\"0 0 24 24\" width=\"22\" height=\"22\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/></svg></button></div>",
+      "css": ".ds-pw{position:relative;font-family:'Anek Latin',system-ui,sans-serif;}.ds-pw-input{width:100%;height:56px;padding:0 60px 0 18px;border-radius:10px;border:1.5px solid rgb(244 241 232/.24);background:#000;color:#f4f1e8;font:inherit;font-size:1.125rem}.ds-pw-input:focus-visible{outline:none;border-color:#ffec17;box-shadow:0 0 0 1px #ffec17}.ds-pw-toggle{position:absolute;right:6px;top:6px;width:44px;height:44px;display:grid;place-items:center;border:0;border-radius:6px;background:none;color:#bdb9ad;cursor:pointer}.ds-pw-toggle:hover{color:#ffec17;background:#121210}.ds-pw-toggle:focus-visible{outline:2px solid #ffec17;outline-offset:3px}@supports (corner-shape:squircle){.ds-pw-input{border-radius:18px;corner-shape:squircle}}"
+    },
+    {
+      "name": "Code Input",
+      "kind": "custom",
+      "refersTo": "code-cell",
+      "description": "Six squircle cells over one real input; the active cell lights yellow with a blinking caret.",
+      "html": "<div class=\"ds-code\"><span class=\"ds-cell\">4</span><span class=\"ds-cell\">8</span><span class=\"ds-cell ds-cell-on\"></span><span class=\"ds-cell\"></span><span class=\"ds-cell\"></span><span class=\"ds-cell\"></span></div>",
+      "css": ".ds-code{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;font-family:'Anek Latin',system-ui,sans-serif;}.ds-cell{height:68px;display:grid;place-items:center;border-radius:10px;border:1.5px solid rgb(244 241 232/.24);background:#000;color:#f4f1e8;font-weight:800;font-stretch:112%;font-size:2rem;font-variant-numeric:tabular-nums}.ds-cell-on{border-color:#ffec17;box-shadow:0 0 0 1px #ffec17}.ds-cell-on:empty::after{content:'';width:2px;height:30px;background:#ffec17;animation:ds-caret 1s steps(1) infinite}@keyframes ds-caret{50%{opacity:0}}@supports (corner-shape:squircle){.ds-cell{border-radius:18px;corner-shape:squircle}}"
+    },
+    {
+      "name": "Notice",
+      "kind": "card",
+      "refersTo": "notice",
+      "description": "Step-level message on Raised Board: alarm border for errors, yellow for confirmations.",
+      "html": "<div class=\"ds-notice\" role=\"alert\">That code isn’t right. <a href=\"#\">Send a new one</a>.</div><div class=\"ds-notice ds-notice-ok\" role=\"status\" style=\"margin-top:12px\">New code sent. Only the latest one works.</div>",
+      "css": ".ds-notice{padding:13px 16px;border-radius:10px;background:#1c1b18;border:1.5px solid #ff7b8e;color:#f4f1e8;font-family:'Anek Latin',system-ui,sans-serif;font-size:1rem;line-height:1.45}.ds-notice-ok{border-color:#ffec17}.ds-notice a{color:#ffec17;font-weight:700;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:.32em}@supports (corner-shape:squircle){.ds-notice{border-radius:18px;corner-shape:squircle}}"
+    },
+    {
+      "name": "Text Link",
+      "kind": "custom",
+      "refersTo": "link",
+      "description": "Yellow underlined action such as Forgot password? or Send a new code.",
+      "html": "<a class=\"ds-link\" href=\"#\">Forgot password?</a>",
+      "css": ".ds-link{font-family:'Anek Latin',system-ui,sans-serif;color:#ffec17;font-weight:700;font-stretch:110%;font-size:1.05rem;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:.32em}.ds-link:focus-visible{outline:2px solid #ffec17;outline-offset:3px;border-radius:4px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Arena Lights, the inside view",
+    "overview": "auth.brickbot.ro inherits Arena Lights, the system recorded in `apps/website/DESIGN.md` (detail in `apps/website/.impeccable/design-full.md`). Same black ground, same exact brand yellow, same warm-white ink and its two muted steps, same one-family Anek Latin worked across its width axis, same squircle corners. This file records what auth ships and what it adds; where it is silent, the website's system governs.\n\nAuth is the same club seen from the inside, quieter than the public site. One screen at a time, one primary action, nothing to scroll past. The page is the **Floodlit Split**: the team under the floodlights fills the left column, and a black desk holding the current step sits on the right. It refuses the centred card on a blank page. Auth carries no LED strip: the photo is the only spectacle, and state lives in the desk's notices and field errors.\n\nThe one colour auth adds is a state colour, not a brand colour: **Alarm** (`alarm`), the same pink-red the website's contact form already uses for invalid fields and its error status. It appears only on errors.",
+    "keyCharacteristics": [
+      "Floodlit Split: a full-height photo on one side, a 460px desk on the other; on phones the photo becomes a short band over the desk.",
+      "State is carried by the desk alone: notices for the step, messages under fields.",
+      "Fields are checked when the member pauses, not on every keystroke.",
+      "Outlined squircle inputs on black that light yellow on focus.",
+      "One full-width yellow primary button per step, lit by the Floodlight glow at rest.",
+      "Exact #FFEC17 for every lit element; alarm only on errors."
+    ],
+    "rules": [
+      {
+        "name": "The Exact Yellow Rule",
+        "body": "Inherited: the primary is the brand yellow at full value, never tinted or shifted.",
+        "section": "colors"
+      },
+      {
+        "name": "The No Second Brand Color Rule",
+        "body": "Inherited and still in force. Alarm is a state colour, not a second brand colour: it marks an error and nothing else. It never fills a button, a board or a heading, and it never appears on a screen that has no error.",
+        "section": "colors"
+      },
+      {
+        "name": "The Width Is Hierarchy Rule",
+        "body": "Inherited: Expanded for headings and buttons, 100 for reading, Condensed for labels.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Family Rule",
+        "body": "Inherited: Anek Latin is the only face.",
+        "section": "typography"
+      },
+      {
+        "name": "The Scrim Where The Type Is Rule",
+        "body": "Inherited: darken only the corner the type occupies.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do use the brand yellow at full value for every lit element, with black text on it.",
+      "Do keep one full-width primary button per step, lit by the Floodlight glow.",
+      "Do carry state in the desk: a notice for the step, a message under the field.",
+      "Do check fields after the member pauses (about 900ms), on blur or on submit, and clear the message the moment the value is valid.",
+      "Do use alarm only where something failed: the invalid field, its message, the code cells, the error notice.",
+      "Do make every error say what to do next.",
+      "Do nudge the wordmark `translate: 0 -13.8%` beside the mark, as everywhere else in the brand."
+    ],
+    "donts": [
+      "Don't treat alarm as a brand colour: no alarm fills, buttons, headings or decoration.",
+      "Don't put the form in a centred card on a blank page; the desk sits on the black ground beside the arena.",
+      "Don't validate on every keystroke or flag an empty field before blur or submit.",
+      "Don't set a heading in anything but Anek Latin Expanded.",
+      "Don't put a small uppercase label above a heading as a kicker; condensed labels only caption the field under them."
+    ]
+  }
+}

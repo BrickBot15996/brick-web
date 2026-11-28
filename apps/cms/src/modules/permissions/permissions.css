@@ -1,0 +1,45 @@
+/* Permissions matrix. Prefix .perm. Shared pieces live in ../users/users.css. */
+@layer components {
+  .perm { margin-top: 14px; }
+  .dt.perm .dt__scroll.perm__scroll { overflow: auto; max-height: none; }
+  .perm__table { width: 100%; min-width: 560px; border-collapse: separate; border-spacing: 0; }
+  .perm__corner, .perm__colh { position: sticky; top: 0; z-index: 3; padding: 14px 16px; text-align: left; vertical-align: bottom; background: var(--color-surface); border-bottom: 1px solid var(--line); font-weight: 400; }
+  .perm__corner { left: 0; z-index: 4; width: 38%; font-weight: 700; font-size: 0.78rem; font-stretch: 78%; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-ink-3); vertical-align: bottom; }
+  .perm__colh { min-width: 150px; }
+  .perm__colh > * { display: block; }
+  .perm__colh .tag { display: inline-flex; background: var(--color-black); }
+  .perm__label { margin-top: 8px; color: var(--color-ink); font-weight: 800; font-stretch: 108%; font-size: 1.02rem; line-height: 1.2; }
+  .perm__desc { margin-top: 4px; color: var(--color-ink-3); font-size: 0.88rem; line-height: 1.35; }
+  .perm__colh[data-hl] { background: var(--color-surface-2); }
+
+  .perm__user { min-width: 220px; position: sticky; left: 0; z-index: 1; padding: 10px 16px; text-align: left; background: var(--color-black); border-bottom: 1px solid var(--rule); font-weight: 400; vertical-align: middle; }
+  .perm__user > * { display: flex; }
+  .perm__user .adm-email { overflow-wrap: normal; }
+  .perm__user .adm-status { margin-top: 2px; font-size: 0.9rem; font-weight: 400; color: var(--color-ink-2); }
+  .perm__cell { padding: 0; border-bottom: 1px solid var(--rule); background: var(--color-black); vertical-align: middle; transition: background 0.12s; }
+  .perm__table tbody tr:last-child > * { border-bottom: 0; }
+  .perm__cell[data-hl='row'], .perm__cell[data-hl='col'] { background: var(--color-surface); }
+  .perm__cell[data-hl='both'] { background: var(--color-surface-2); }
+  .perm__row[data-hl] .perm__user { background: var(--color-surface); }
+  .perm__box { display: grid; place-items: center; min-height: 56px; width: 100%; cursor: pointer; }
+  .perm__box input { width: 22px; height: 22px; cursor: pointer; margin: 0; }
+  .perm__box input:disabled { cursor: not-allowed; opacity: 0.5; }
+  .perm__cell[data-changed] .perm__box { position: relative; }
+  .perm__cell[data-changed] .perm__box::after { content: ''; position: absolute; left: calc(50% + 18px); top: calc(50% - 3px); width: 7px; height: 7px; border-radius: 50%; corner-shape: round; background: var(--color-yellow); }
+
+  .perm-page { display: flex; flex-direction: column; min-height: 100svh; }
+  .perm-page > .tp { flex: 1; }
+  .perm__bar { position: sticky; bottom: 0; z-index: 20; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px 20px; padding: 12px 40px; background: var(--color-black); border-top: 1px solid var(--rule); }
+  .perm__bar[hidden] { display: none; }
+  .perm__info { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 18px; min-width: 0; }
+  .perm__bar .sbar__status { color: var(--color-ink); }
+  .perm__sum { color: var(--color-ink-2); font-weight: 400; font-stretch: 100%; }
+  @media (max-width: 760px) { .perm__bar { padding: 12px 16px; } }
+}
+@layer components {
+  @media (max-width: 520px) {
+    .perm__user { min-width: 0; width: 140px; padding: 10px 12px; }
+    .perm__user .adm-email, .dt .perm__user .adm-email { min-width: 0; overflow-wrap: anywhere; font-size: 0.92rem; }
+    .perm__corner { padding-inline: 12px; width: 140px; }
+  }
+}

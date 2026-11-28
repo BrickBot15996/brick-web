@@ -1,0 +1,522 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-27T12:00:00Z",
+  "title": "Design System: BrickBot CMS",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Floodlight Yellow",
+        "canonical": "#ffec17",
+        "tonalRamp": [
+          "#2b2706",
+          "#4a4100",
+          "#7a6c00",
+          "#b3a000",
+          "#e6d200",
+          "#ffec17",
+          "#fff27a",
+          "#fffbd6"
+        ]
+      },
+      "spark": {
+        "role": "primary",
+        "displayName": "Spark White (declared, unpainted)",
+        "canonical": "#fffbd6",
+        "tonalRamp": [
+          "#2b2706",
+          "#4a4100",
+          "#7a6c00",
+          "#b3a000",
+          "#e6d200",
+          "#ffec17",
+          "#fff27a",
+          "#fffbd6"
+        ]
+      },
+      "alarm": {
+        "role": "state",
+        "displayName": "Alarm",
+        "canonical": "#ff7b8e",
+        "tonalRamp": [
+          "#2a0a10",
+          "#4d121d",
+          "#7a1d2f",
+          "#a82c44",
+          "#d64a63",
+          "#ff7b8e",
+          "#ffaebb",
+          "#ffe1e6"
+        ]
+      },
+      "black": {
+        "role": "neutral",
+        "displayName": "Venue Black",
+        "canonical": "#000000",
+        "tonalRamp": [
+          "#000000",
+          "#050505",
+          "#121210",
+          "#1c1b18",
+          "#3a3933",
+          "#8e8b81",
+          "#bdb9ad",
+          "#f4f1e8"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Board",
+        "canonical": "#121210",
+        "tonalRamp": [
+          "#000000",
+          "#050505",
+          "#121210",
+          "#1c1b18",
+          "#3a3933",
+          "#8e8b81",
+          "#bdb9ad",
+          "#f4f1e8"
+        ]
+      },
+      "surface-raised": {
+        "role": "neutral",
+        "displayName": "Raised Board",
+        "canonical": "#1c1b18",
+        "tonalRamp": [
+          "#000000",
+          "#050505",
+          "#121210",
+          "#1c1b18",
+          "#3a3933",
+          "#8e8b81",
+          "#bdb9ad",
+          "#f4f1e8"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "House Light",
+        "canonical": "#f4f1e8",
+        "tonalRamp": [
+          "#000000",
+          "#050505",
+          "#121210",
+          "#1c1b18",
+          "#3a3933",
+          "#8e8b81",
+          "#bdb9ad",
+          "#f4f1e8"
+        ]
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Dimmed House Light",
+        "canonical": "#bdb9ad",
+        "tonalRamp": [
+          "#000000",
+          "#050505",
+          "#121210",
+          "#1c1b18",
+          "#3a3933",
+          "#8e8b81",
+          "#bdb9ad",
+          "#f4f1e8"
+        ]
+      },
+      "ink-faint": {
+        "role": "neutral",
+        "displayName": "Faint House Light",
+        "canonical": "#8e8b81",
+        "tonalRamp": [
+          "#000000",
+          "#050505",
+          "#121210",
+          "#1c1b18",
+          "#3a3933",
+          "#8e8b81",
+          "#bdb9ad",
+          "#f4f1e8"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "rgb(244 241 232 / 0.14)",
+        "tonalRamp": [
+          "#000000",
+          "#050505",
+          "#121210",
+          "#1c1b18",
+          "#3a3933",
+          "#8e8b81",
+          "#bdb9ad",
+          "#f4f1e8"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Field Line",
+        "canonical": "rgb(244 241 232 / 0.24)",
+        "tonalRamp": [
+          "#000000",
+          "#050505",
+          "#121210",
+          "#1c1b18",
+          "#3a3933",
+          "#8e8b81",
+          "#bdb9ad",
+          "#f4f1e8"
+        ]
+      },
+      "ghost-line": {
+        "role": "neutral",
+        "displayName": "Ghost Line",
+        "canonical": "rgb(244 241 232 / 0.62)",
+        "tonalRamp": [
+          "#000000",
+          "#050505",
+          "#121210",
+          "#1c1b18",
+          "#3a3933",
+          "#8e8b81",
+          "#bdb9ad",
+          "#f4f1e8"
+        ]
+      },
+      "scrim": {
+        "role": "neutral",
+        "displayName": "Scrim",
+        "canonical": "rgb(0 0 0 / 0.78)",
+        "tonalRamp": [
+          "#000000",
+          "#050505",
+          "#121210",
+          "#1c1b18",
+          "#3a3933",
+          "#8e8b81",
+          "#bdb9ad",
+          "#f4f1e8"
+        ]
+      },
+      "scrollbar": {
+        "role": "neutral",
+        "displayName": "Scrollbar",
+        "canonical": "#3a3933",
+        "tonalRamp": [
+          "#000000",
+          "#050505",
+          "#121210",
+          "#1c1b18",
+          "#3a3933",
+          "#8e8b81",
+          "#bdb9ad",
+          "#f4f1e8"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The home greeting."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "The open item's title in the editor."
+      },
+      "page-title": {
+        "displayName": "Page title",
+        "purpose": "The module name in the shell's header row."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Home section heads."
+      },
+      "section-title": {
+        "displayName": "Section title",
+        "purpose": "Editor sections."
+      },
+      "jump": {
+        "displayName": "Jump",
+        "purpose": "Text in the jump field."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text."
+      },
+      "input": {
+        "displayName": "Input",
+        "purpose": "Text inside fields."
+      },
+      "item": {
+        "displayName": "Item",
+        "purpose": "List row names, table links, result labels, emails in sentences."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "Every button."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Field labels, repeater numbers."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Group captions over lists, table headers."
+      },
+      "tag": {
+        "displayName": "Tag",
+        "purpose": "The Tag component, including EN / RO language tags."
+      }
+    },
+    "shadows": [
+      {
+        "name": "floodlight-glow",
+        "value": "0 10px 30px -12px rgb(255 236 23 / 0.6)",
+        "purpose": "Primary buttons at rest; hover 0 12px 34px -10px rgb(255 236 23 / 0.8)."
+      },
+      {
+        "name": "jump-glow",
+        "value": "0 18px 50px -24px rgb(255 236 23 / 0.45)",
+        "purpose": "The jump field at rest; focused adds a 1px yellow ring and 0 18px 50px -20px rgb(255 236 23 / 0.6)."
+      },
+      {
+        "name": "float",
+        "value": "0 24px 60px -20px rgb(0 0 0 / 0.85)",
+        "purpose": "Popovers, the jump results list, the tag picker list, menus."
+      },
+      {
+        "name": "dialog",
+        "value": "0 30px 80px -20px #000",
+        "purpose": "Dialogs."
+      },
+      {
+        "name": "lamp",
+        "value": "0 0 6px #ffec17",
+        "purpose": "A lit status lamp."
+      },
+      {
+        "name": "field-focus",
+        "value": "0 0 0 1px #ffec17",
+        "purpose": "Doubles a focused field's 1.5px stroke; alarm on an invalid field."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Every transition and entrance."
+      },
+      {
+        "name": "rise",
+        "value": "translateY(8px) + fade, 180ms",
+        "purpose": "The jump overlay, popovers, the nav sheet; dialogs 200ms; tooltips 140ms."
+      },
+      {
+        "name": "swap",
+        "value": "fade, 200ms",
+        "purpose": "List → editor swaps."
+      },
+      {
+        "name": "rail",
+        "value": "grid-template-columns, 200ms",
+        "purpose": "The rail expanding and collapsing."
+      },
+      {
+        "name": "hover",
+        "value": "200–250ms colour",
+        "purpose": "Hover and state colour changes."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "all durations 0.001ms",
+        "purpose": "prefers-reduced-motion makes everything instant."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "phone",
+        "value": "max-width: 899px",
+        "purpose": "Top bar and nav sheet replace the rail; 16px gutters; the publish strip wraps, with Sample data right-aligned."
+      },
+      {
+        "name": "master-detail",
+        "value": "min-width: 1100px",
+        "purpose": "List and editor side by side."
+      },
+      {
+        "name": "bilingual-stack",
+        "value": "container max-width: 560px",
+        "purpose": "EN and RO columns stack."
+      },
+      {
+        "name": "table-stack",
+        "value": "container max-width: 760px",
+        "purpose": "Every data table (Users, Audit log, Short URLs, Seasons events and awards) becomes labelled cards."
+      },
+      {
+        "name": "header-compact",
+        "value": "container max-width: 920px",
+        "purpose": "Publish status drops its time."
+      }
+    ],
+    "radiusRule": {
+      "formula": "inner = max(outer − k × pad, k × 4px)",
+      "k": "1 for plain radii, 2 under corner-shape: squircle",
+      "vars": [
+        "--ro",
+        "--pad",
+        "--ri",
+        "--k"
+      ]
+    }
+  },
+  "components": [
+    {
+      "name": "Jump Field",
+      "kind": "input",
+      "refersTo": "jump-field",
+      "description": "The signature: one lit field that reaches any module or item; inline on home, an overlay everywhere else.",
+      "html": "<label class=\"ds-jump\"><svg class=\"ds-jump__i\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\"><circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"m20 20-3.5-3.5\"/></svg><input class=\"ds-jump__in\" placeholder=\"Jump to a module, post, sponsor, season…\"><span class=\"ds-jump__k\"><kbd>⌘</kbd><kbd>K</kbd></span></label>",
+      "css": ".ds-jump{font-family:'Anek Latin',system-ui,sans-serif;display:flex;align-items:center;gap:16px;height:76px;padding:0 22px;border:1.5px solid #ffec17;border-radius:12px;background:#000;box-shadow:0 18px 50px -24px rgb(255 236 23 / .45);transition:box-shadow .25s}.ds-jump:focus-within{box-shadow:0 0 0 1px #ffec17,0 18px 50px -20px rgb(255 236 23 / .6)}.ds-jump__i{width:26px;height:26px;color:#bdb9ad;flex:none}.ds-jump:focus-within .ds-jump__i{color:#ffec17}.ds-jump__in{flex:1;min-width:0;border:0;outline:none;background:none;color:#f4f1e8;font:inherit;font-size:1.4rem;caret-color:#ffec17}.ds-jump__in::placeholder{color:#8e8b81}.ds-jump__k{display:flex;gap:6px}.ds-jump__k kbd{min-width:32px;height:30px;display:grid;place-items:center;padding:0 8px;border:1.5px solid rgb(244 241 232 / .24);border-radius:4px;font:inherit;font-size:.9rem;font-weight:700;font-stretch:90%;color:#bdb9ad}@supports (corner-shape:squircle){.ds-jump{corner-shape:squircle;border-radius:24px}.ds-jump__k kbd{corner-shape:squircle;border-radius:8px}}"
+    },
+    {
+      "name": "Publish (primary button)",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one solid yellow in the header row, lit by the Floodlight glow at rest.",
+      "html": "<button class=\"ds-btn-primary\"><svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linejoin=\"round\"><path d=\"M13 2 4 14h7l-1 8 9-12h-7z\"/></svg>Publish</button>",
+      "css": ".ds-btn-primary{font-family:'Anek Latin',system-ui,sans-serif;display:inline-flex;align-items:center;gap:.5em;height:44px;padding:0 20px;border:0;border-radius:12px;background:#ffec17;color:#000;font-weight:700;font-size:1.05rem;font-stretch:112%;line-height:1;cursor:pointer;box-shadow:0 10px 30px -12px rgb(255 236 23 / .6);transition:box-shadow .25s,transform .25s cubic-bezier(.16,1,.3,1)}.ds-btn-primary:hover{box-shadow:0 12px 34px -10px rgb(255 236 23 / .8)}.ds-btn-primary:focus-visible{outline:2px solid #ffec17;outline-offset:4px}.ds-btn-primary:active{transform:translateY(1px)}@supports (corner-shape:squircle){.ds-btn-primary{corner-shape:squircle;border-radius:22px}}"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Every secondary action, including a page's own actions in the header row.",
+      "html": "<button class=\"ds-btn-ghost\">+ New</button>",
+      "css": ".ds-btn-ghost{font-family:'Anek Latin',system-ui,sans-serif;display:inline-flex;align-items:center;height:44px;padding:0 20px;border:1.5px solid rgb(244 241 232 / .62);border-radius:12px;background:none;color:#f4f1e8;font-weight:700;font-size:1.05rem;font-stretch:112%;line-height:1;cursor:pointer;transition:color .25s,border-color .25s}.ds-btn-ghost:hover{color:#ffec17;border-color:#ffec17}.ds-btn-ghost:focus-visible{outline:2px solid #ffec17;outline-offset:4px}@supports (corner-shape:squircle){.ds-btn-ghost{corner-shape:squircle;border-radius:22px}}"
+    },
+    {
+      "name": "Bilingual Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "One label, EN and RO side by side, each headed by its Condensed language tag; a missing translation is dashed.",
+      "html": "<div class=\"ds-field\"><span class=\"ds-label\">Name</span><div class=\"ds-bi\"><div class=\"ds-col\"><span class=\"ds-tag\">EN</span><input class=\"ds-input\" value=\"Focșani Tech Challenge\"></div><div class=\"ds-col\"><span class=\"ds-tag\">RO</span><input class=\"ds-input ds-input--missing\" placeholder=\"Missing\"></div></div></div>",
+      "css": ".ds-field{font-family:'Anek Latin',system-ui,sans-serif;display:flex;flex-direction:column;gap:8px;color:#f4f1e8}.ds-label{font-weight:700;font-size:.86rem;font-stretch:78%;letter-spacing:.12em;text-transform:uppercase;color:#bdb9ad}.ds-bi{display:grid;grid-template-columns:1fr 1fr;gap:14px}.ds-col{display:flex;flex-direction:column;gap:8px;align-items:flex-start}.ds-tag{display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:4px;background:#1c1b18;box-shadow:inset 0 0 0 1px rgb(244 241 232 / .14);color:#8e8b81;font-weight:700;font-size:.74rem;font-stretch:78%;letter-spacing:.14em;line-height:1}.ds-input{width:100%;box-sizing:border-box;height:48px;padding:0 14px;border:1.5px solid rgb(244 241 232 / .24);border-radius:10px;background:#000;color:#f4f1e8;font:inherit;font-size:1.05rem;caret-color:#ffec17;transition:border-color .2s,box-shadow .2s}.ds-input::placeholder{color:#8e8b81}.ds-input:hover{border-color:#8e8b81}.ds-input:focus-visible{outline:none;border-color:#ffec17;box-shadow:0 0 0 1px #ffec17}.ds-input--missing{border-style:dashed;border-color:#8e8b81}.ds-input--missing:focus-visible{border-style:solid}@supports (corner-shape:squircle){.ds-input,.ds-tag{corner-shape:squircle}.ds-input{border-radius:18px}.ds-tag{border-radius:8px}}"
+    },
+    {
+      "name": "Tag",
+      "kind": "chip",
+      "refersTo": "tag",
+      "description": "The one small status tag: neutral, or lit with a yellow hairline. Never a yellow fill.",
+      "html": "<span class=\"ds-tag\">Blog</span> <span class=\"ds-tag ds-tag--lit\">Published</span>",
+      "css": ".ds-tag{font-family:'Anek Latin',system-ui,sans-serif;display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:4px;background:#1c1b18;box-shadow:inset 0 0 0 1px rgb(244 241 232 / .14);color:#8e8b81;font-weight:700;font-size:.74rem;font-stretch:78%;letter-spacing:.14em;line-height:1;text-transform:uppercase}.ds-tag--lit{color:#ffec17;box-shadow:inset 0 0 0 1px #ffec17}@supports (corner-shape:squircle){.ds-tag{corner-shape:squircle;border-radius:8px}}"
+    },
+    {
+      "name": "Icon Rail",
+      "kind": "nav",
+      "refersTo": "rail-item",
+      "description": "68px icon rail; the current module is Raised Board with a yellow icon. Expands to a labelled 240px sidebar.",
+      "html": "<nav class=\"ds-rail\"><a class=\"ds-ri\" aria-current=\"page\" href=\"#\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linejoin=\"round\"><path d=\"M4 10 12 4l8 6v10H4z\"/></svg><span>Home</span></a><a class=\"ds-ri\" href=\"#\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\"><path d=\"M4 20h4L19 9l-4-4L4 16z\"/></svg><span>Blog</span></a><a class=\"ds-ri\" href=\"#\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\"><path d=\"M5 21V4h11l-2 4 2 4H5\"/></svg><span>Seasons</span></a></nav>",
+      "css": ".ds-rail{font-family:'Anek Latin',system-ui,sans-serif;width:216px;display:flex;flex-direction:column;gap:2px;padding:12px;background:#000;border-right:1px solid rgb(244 241 232 / .14)}.ds-ri{display:flex;align-items:center;gap:12px;height:34px;padding:0 12px;border-radius:10px;color:#8e8b81;text-decoration:none;transition:color .2s,background-color .2s}.ds-ri svg{width:20px;height:20px;flex:none}.ds-ri span{font-weight:700;font-stretch:104%;color:#bdb9ad}.ds-ri:hover{background:#121210;color:#f4f1e8}.ds-ri:hover span{color:#f4f1e8}.ds-ri[aria-current=page]{background:#1c1b18;color:#ffec17}.ds-ri[aria-current=page] span{color:#f4f1e8}.ds-ri:focus-visible{outline:2px solid #ffec17;outline-offset:1px}@supports (corner-shape:squircle){.ds-ri{corner-shape:squircle;border-radius:18px}}"
+    },
+    {
+      "name": "Publish Status",
+      "kind": "custom",
+      "description": "Lamp grammar: solid lit = live, yellow ring = changes waiting, faint solid = saved and idle.",
+      "html": "<div class=\"ds-pstat\"><span><i class=\"ds-led\"></i><b>Live</b> · published yesterday 18:42</span><span><i class=\"ds-led ds-led--dirty\"></i><b>4 changes waiting</b> · live since yesterday</span><span><i class=\"ds-led ds-led--idle\"></i><b>All changes saved</b></span></div>",
+      "css": ".ds-pstat{font-family:'Anek Latin',system-ui,sans-serif;display:flex;flex-direction:column;gap:10px;font-size:.92rem;color:#bdb9ad}.ds-pstat span{display:inline-flex;align-items:center;gap:8px}.ds-pstat b{color:#f4f1e8}.ds-led{width:8px;height:8px;border-radius:50%;background:#ffec17;box-shadow:0 0 6px #ffec17}.ds-led--dirty{background:none;box-shadow:inset 0 0 0 2px #ffec17}.ds-led--idle{background:#8e8b81;box-shadow:none}"
+    },
+    {
+      "name": "List Row",
+      "kind": "card",
+      "refersTo": "list-row",
+      "description": "A master list row: thumbnail, name, Condensed meta; current row is Raised Board with a yellow name. Thumbnail nests concentrically.",
+      "html": "<div class=\"ds-rows\"><a class=\"ds-lrow\" aria-current=\"page\" href=\"#\"><span class=\"ds-thumb\"></span><span class=\"ds-txt\"><b>Focșani Tech Challenge</b><small>/focsani-tech-challenge</small></span></a><a class=\"ds-lrow\" href=\"#\"><span class=\"ds-thumb\"></span><span class=\"ds-txt\"><b>BrickBot Caravan</b><small>/brickbot-caravan</small></span></a></div>",
+      "css": ".ds-rows{font-family:'Anek Latin',system-ui,sans-serif;width:340px}.ds-lrow{display:flex;align-items:center;gap:14px;min-height:64px;padding:8px 12px;border-radius:12px;color:#bdb9ad;text-decoration:none;transition:background-color .2s}.ds-lrow:hover{background:#121210}.ds-lrow[aria-current=page]{background:#1c1b18}.ds-lrow[aria-current=page] b{color:#ffec17}.ds-lrow:focus-visible{outline:2px solid #ffec17;outline-offset:0}.ds-thumb{width:44px;height:44px;flex:none;border-radius:4px;background:#1c1b18;border:1px solid rgb(244 241 232 / .14);box-sizing:border-box}.ds-txt{display:flex;flex-direction:column;gap:3px;min-width:0}.ds-txt b{color:#f4f1e8;font-weight:700;font-stretch:106%;font-size:1.02rem}.ds-txt small{color:#8e8b81;font-weight:700;font-size:.76rem;font-stretch:78%;letter-spacing:.1em;text-transform:uppercase}@supports (corner-shape:squircle){.ds-lrow,.ds-thumb{corner-shape:squircle}.ds-lrow{border-radius:18px}.ds-thumb{border-radius:8px}}"
+    },
+    {
+      "name": "Save Bar",
+      "kind": "custom",
+      "refersTo": "save-bar",
+      "description": "Sticky, opaque black bar at the editor's foot: state in words beside a lamp, Save at right.",
+      "html": "<div class=\"ds-sbar\"><span class=\"ds-sbar__st\"><i></i>Unsaved changes</span><button class=\"ds-sbar__btn\">Save</button></div>",
+      "css": ".ds-sbar{font-family:'Anek Latin',system-ui,sans-serif;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:12px 24px;background:#000;border-top:1px solid rgb(244 241 232 / .14)}.ds-sbar__st{display:flex;align-items:center;gap:10px;font-weight:700;font-stretch:106%;color:#f4f1e8}.ds-sbar__st i{width:8px;height:8px;border-radius:50%;box-shadow:inset 0 0 0 2px #ffec17}.ds-sbar__btn{height:44px;padding:0 20px;border:0;border-radius:12px;background:#ffec17;color:#000;font:inherit;font-weight:700;font-size:1.05rem;font-stretch:112%;cursor:pointer;box-shadow:0 10px 30px -12px rgb(255 236 23 / .6)}.ds-sbar__btn:hover{box-shadow:0 12px 34px -10px rgb(255 236 23 / .8)}.ds-sbar__btn:focus-visible{outline:2px solid #ffec17;outline-offset:4px}@supports (corner-shape:squircle){.ds-sbar__btn{corner-shape:squircle;border-radius:22px}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Arena Lights, the working view",
+    "overview": "cms.brickbot.ro inherits Arena Lights, the system recorded in `apps/website/DESIGN.md` (detail in `apps/website/.impeccable/design-full.md`) and extended by `apps/auth/DESIGN.md`. Same black ground, same exact brand yellow, same warm-white ink and its two muted steps, same two boards, same one-family Anek Latin worked across its width axis, same squircles, same alarm colour for errors. This file records what the CMS ships and what it adds; where it is silent, auth and then the website govern.\n\nThe CMS is the club's control room, calmer and denser than anything public. There are no photos, no LED strips and no arc: the spectacle is a single lit object, the **jump field**, a yellow-outlined field that reaches any module or item in one move, inline on home and as an overlay from every screen. Everything else is quiet: a thin icon rail, black work areas, boards only where something floats or groups. Yellow marks what is live, current, focused or the one thing to do next; the header row has exactly one solid yellow, Publish.\n\nPeople appear only as email addresses, with a two-letter tile derived from the address. Errors use alarm and nothing else does.",
+    "keyCharacteristics": [
+      "One lit jump field (76px, yellow 1.5px outline, soft yellow underglow) as the signature, reachable everywhere with ⌘K / Ctrl+K or \"/\".",
+      "A 68px icon rail that widens to a 240px labelled sidebar on demand; the choice is remembered.",
+      "A shell-drawn header row on every module: name, sub line, the page's ghost actions, a divider, then the publish status and the one yellow Publish button.",
+      "Master-detail editing: a 380px list beside the editor, EN | RO side by side, a sticky opaque save bar at the editor's foot.",
+      "Concentric corners everywhere: an inner radius is derived from its container's radius and padding.",
+      "Status lamps: solid lit yellow, yellow ring, or faint grey solid.",
+      "Alarm only on errors."
+    ],
+    "rules": [
+      {
+        "name": "The Email Only Rule",
+        "body": "An owner rule: accounts carry only an email. Wherever a person appears (activity, last editor, audit log, users, the account menu) they are shown by email, the current member as \"You\", and their tile's initials come from the address. Nothing greets or labels anyone by name, and there are no avatars.",
+        "section": "overview"
+      },
+      {
+        "name": "The Exact Yellow Rule",
+        "body": "Inherited, and an owner rule: the primary is #FFEC17 at full value, never tinted, shifted or mixed into a second yellow. Its glows are light around a full-value element, never a paler fill.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Solid Yellow Rule",
+        "body": "In the header row Publish is the only solid yellow; a page's own actions (New, Invite, Upload) render as ghost buttons there even when the page marks them primary. Below the header, the save bar's Save is the one primary of an editor, and it turns raised-board grey while there is nothing to save.",
+        "section": "colors"
+      },
+      {
+        "name": "The Alarm Is Only An Error Rule",
+        "body": "Alarm marks a failure and nothing else: no alarm fills, buttons, headings or decoration, and never on a screen with no error.",
+        "section": "colors"
+      },
+      {
+        "name": "The Width Is Hierarchy Rule",
+        "body": "Inherited: Expanded for titles and buttons, 100 for reading, Condensed for labels, captions and tags.",
+        "section": "typography"
+      },
+      {
+        "name": "The Caption Sits Over Its Data Rule",
+        "body": "Condensed caps caption the field, list or column under them. They never sit above a title as a kicker.",
+        "section": "typography"
+      },
+      {
+        "name": "The Boards Not Cards Rule",
+        "body": "Containers are flat boards (`surface`, `surface-raised`) or hairline-bordered black; a drop shadow means the thing floats above the page.",
+        "section": "elevation & depth"
+      },
+      {
+        "name": "The Concentric Corner Rule",
+        "body": "An owner rule: a rounded element inside a rounded container is concentric with it. Never give a nested element the same radius as its parent; derive it.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "**Do** use #FFEC17 at full value for every lit element, with black text on any yellow fill.",
+      "**Do** keep Publish the only solid yellow in the header row; render the page's own actions as ghost buttons.",
+      "**Do** show every person by email, the current member as \"You\", and derive initials tiles from the email.",
+      "**Do** derive every nested radius from its container: inner = max(outer − k × pad, k × 4px), k = 2 under squircle.",
+      "**Do** edit translatable fields as EN | RO side by side, each column headed by its Condensed language tag, with a dashed stroke on a missing translation.",
+      "**Do** keep the save bar sticky and opaque at the editor's foot, with the state in words beside a lamp.",
+      "**Do** use the lamp grammar for state: solid lit, yellow ring, faint solid.",
+      "**Do** use alarm only where something failed."
+    ],
+    "donts": [
+      "**Don't** tint, lighten, darken or mix the primary yellow.",
+      "**Don't** greet or label anyone by name; there are no display names or avatars.",
+      "**Don't** fill a Tag with yellow; lit tags are yellow text on a yellow hairline.",
+      "**Don't** put a second solid yellow button in the header row.",
+      "**Don't** give a nested element the same radius as its container.",
+      "**Don't** add stat tiles or a dashboard to home; it is a jump field and recent activity.",
+      "**Don't** put a Condensed caption above a title as a kicker.",
+      "**Don't** use alarm for decoration, headings, fills or anything that is not an error."
+    ]
+  }
+}
